@@ -92,6 +92,9 @@ packet_send_EXTERNAL_OBJECTS =
 
 packet_send: CMakeFiles/packet_send.dir/main_pkt_send.cpp.o
 packet_send: CMakeFiles/packet_send.dir/build.make
+packet_send: libpacket_utils.a
+packet_send: /usr/lib/aarch64-linux-gnu/libssl.so
+packet_send: /usr/lib/aarch64-linux-gnu/libcrypto.so
 packet_send: CMakeFiles/packet_send.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable packet_send"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/packet_send.dir/link.txt --verbose=$(VERBOSE)

@@ -47,26 +47,23 @@
 #include <vector>
 #include <memory>
 #include <random>
+#include <thread>
+#include <openssl/sha.h>
 #include "packet_utils.h"
 
-#define RX_RING_SIZE 1024
-#define TX_RING_SIZE 1024
 
-#define NUM_MBUFS 8191
-#define MBUF_CACHE_SIZE 250
-#define BURST_SIZE 64
 
-#define _WRS_PACK_ALIGN(x) __attribute__((packed, aligned(x)))
-#define ARRAY_SIZE 65536
-#define MAX_CORES 40
+struct rte_mempool *mbuf_pool;
+
 
 uint32_t num_rx_queues;
 uint32_t num_tx_queues;
 uint32_t num_cores;
 
 
-
-
+uint32_t total_num[MAX_CORES] = {};
+uint32_t burst_num[MAX_CORES] = {};
+uint32_t send_offset[MAX_CORES] = {};
 
 static const struct rte_eth_conf port_conf_default = {
         .rxmode = {
@@ -74,8 +71,7 @@ static const struct rte_eth_conf port_conf_default = {
         },
 };
 
-static inline int
-init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint32_t tx_queues)
+static inline int init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint32_t tx_queues)
 {
     struct rte_eth_conf port_conf = port_conf_default;
     const uint16_t rx_rings = rx_queues, tx_rings = tx_queues; // 接收队列和发送队列数量
@@ -156,14 +152,6 @@ init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint
     return 0;
 }
 
-
-int array[ARRAY_SIZE];
-int vote[ARRAY_SIZE];
-
-uint32_t total_num[MAX_CORES] = {};
-uint32_t burst_num[MAX_CORES] = {};
-
-struct rte_mempool *mbuf_pool;
 static int packet_send_process(void *arg){
     uint32_t core_id = rte_lcore_id();
     uint32_t queue_id;
@@ -174,17 +162,24 @@ static int packet_send_process(void *arg){
     queue_id = config->queues[core_id];
     std::cout << "core_id: " << core_id << " queue id: " << queue_id << std::endl;
 
+    uint32_t send_index = 0;
+    uint32_t pre_core_works = (ARRAY_NUM * ARRAY_SIZE) / num_cores;
+    uint32_t offset = pre_core_works * core_id;
+
 
     while (1){
+        send_index = send_index % pre_core_works;
+
         for (int i = 0; i < BURST_SIZE; i++){
             bufs[i] = rte_pktmbuf_alloc(mbuf_pool);
             if (bufs[i] == NULL){
                 printf("rte_pktmbuf_alloc failed\n");
-                return -1;
+                continue;
             }
             my_pkt *pkt = rte_pktmbuf_mtod(bufs[i], my_pkt *);
-            pkt->idx = 114;
-            pkt->value = 514;
+            pkt->idx = send_index + offset;
+            pkt->value = *(&array[0][0] + pkt->idx);
+            send_index++;
             bufs[i]->pkt_len = bufs[i]->data_len = sizeof(my_pkt);
 
         }
@@ -202,11 +197,36 @@ static int packet_send_process(void *arg){
     return 0;
 }
 
+void simulate_recv(){
+    while (true){
+        update_flow();
+    }
+}
+
+void print_max(){
+    while (true){
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        uint32_t max_num = 0;
+        for(int i = 0; i < ARRAY_NUM; ++i){
+            for(int j = 0; j < ARRAY_SIZE; ++j){
+                if (array[i][j] > max_num){
+                    max_num = array[i][j];
+                }
+            }
+            std::cout << "array: " << i << " max num: " << max_num << std::endl;
+        }
+
+    }
+}
+
 int main(int argc, char *argv[])
 {
     int ret;
     struct send_config config = {};
 
+    // 模拟收包
+    std::thread recv_thread(simulate_recv);
+    std::thread print_thread(print_max);
 
     /* Initialize EAL */
     ret = rte_eal_init(argc, argv);
@@ -247,8 +267,6 @@ int main(int argc, char *argv[])
     num_rx_queues = used_cores;
     num_tx_queues = used_cores;
 
-
-
     // 启动dpdk
     uint16_t portid = 0;
     ret = init_port(portid, mbuf_pool, num_rx_queues, num_tx_queues);
@@ -267,9 +285,8 @@ int main(int argc, char *argv[])
 
     config.port_id = portid;
 
-
-
     rte_eal_mp_remote_launch(packet_send_process, &config, CALL_MAIN);
+
     uint32_t lcore_id;
     RTE_LCORE_FOREACH(lcore_id){
         if (rte_eal_wait_lcore(lcore_id) < 0){

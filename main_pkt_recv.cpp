@@ -58,6 +58,9 @@
 #define ARRAY_SIZE 65536
 
 
+//TODO 使用一个map来储存接收到的数据
+
+
 static const struct rte_eth_conf port_conf_default = {
     .rxmode = {
         .max_lro_pkt_size = RTE_ETHER_MAX_LEN,
@@ -168,10 +171,6 @@ uint64_t get_time()
 
     return ns;
 }
-
-
-int array[ARRAY_SIZE];
-int vote[ARRAY_SIZE];
 
 
 uint64_t total_num = 0;

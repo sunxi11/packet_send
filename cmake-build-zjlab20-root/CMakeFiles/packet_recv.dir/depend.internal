@@ -3,3 +3,4 @@
 
 CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o
  /home/zju/sunxi/turbomon/packet_send/main_pkt_recv.cpp
+ /home/zju/sunxi/turbomon/packet_send/packet_utils.h

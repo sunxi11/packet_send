@@ -8,4 +8,5 @@ Call Stack (most recent call first):
 
 -- DPDK_INCLUDE_DIR: 
 -- DPDK_LIB_DIR: 
+-- OPENSSL:  /opt/homebrew/Cellar/openssl@3/3.2.1/lib/libssl.dylib;/opt/homebrew/Cellar/openssl@3/3.2.1/lib/libcrypto.dylib
 -- Configuring incomplete, errors occurred!

@@ -149,6 +149,19 @@ main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
 
+#=============================================================================
+# Target rules for targets named packet_utils
+
+# Build rule for target.
+packet_utils: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 packet_utils
+.PHONY : packet_utils
+
+# fast build rule for target.
+packet_utils/fast:
+	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/build
+.PHONY : packet_utils/fast
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -230,6 +243,33 @@ main_pkt_send.cpp.s:
 	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/main_pkt_send.cpp.s
 .PHONY : main_pkt_send.cpp.s
 
+packet_utils.o: packet_utils.cpp.o
+
+.PHONY : packet_utils.o
+
+# target to build an object file
+packet_utils.cpp.o:
+	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.o
+.PHONY : packet_utils.cpp.o
+
+packet_utils.i: packet_utils.cpp.i
+
+.PHONY : packet_utils.i
+
+# target to preprocess a source file
+packet_utils.cpp.i:
+	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.i
+.PHONY : packet_utils.cpp.i
+
+packet_utils.s: packet_utils.cpp.s
+
+.PHONY : packet_utils.s
+
+# target to generate assembly for a file
+packet_utils.cpp.s:
+	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.s
+.PHONY : packet_utils.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -241,6 +281,7 @@ help:
 	@echo "... packet_send"
 	@echo "... packet_recv"
 	@echo "... main"
+	@echo "... packet_utils"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
@@ -250,6 +291,9 @@ help:
 	@echo "... main_pkt_send.o"
 	@echo "... main_pkt_send.i"
 	@echo "... main_pkt_send.s"
+	@echo "... packet_utils.o"
+	@echo "... packet_utils.i"
+	@echo "... packet_utils.s"
 .PHONY : help
 
 

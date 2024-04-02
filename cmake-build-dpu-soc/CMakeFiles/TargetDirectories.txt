@@ -1,3 +1,4 @@
+/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc/CMakeFiles/packet_utils.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc/CMakeFiles/main.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc/CMakeFiles/packet_recv.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc/CMakeFiles/packet_send.dir
