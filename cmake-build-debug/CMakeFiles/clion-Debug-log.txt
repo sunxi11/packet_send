@@ -1,0 +1,11 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/Applications/CLion.app/Contents/bin/ninja/mac/ninja -G Ninja -S /Users/sun/CLionProjects/packet_send -B /Users/sun/CLionProjects/packet_send/cmake-build-debug
+-- Checking for one of the modules 'libdpdk'
+CMake Error at /Applications/CLion.app/Contents/bin/cmake/mac/share/cmake-3.26/Modules/FindPkgConfig.cmake:894 (message):
+  None of the required 'libdpdk' found
+Call Stack (most recent call first):
+  CMakeLists.txt:12 (pkg_search_module)
+
+
+-- DPDK_INCLUDE_DIR: 
+-- DPDK_LIB_DIR: 
+-- Configuring incomplete, errors occurred!
