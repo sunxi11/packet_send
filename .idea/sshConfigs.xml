@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SshConfigs">
+    <configs>
+      <sshConfig host="8.130.69.55" id="d72ccf55-442f-4d0b-853b-dd259a92df32" keyPath="$USER_HOME$/.ssh/id_rsa" port="5558" nameFormat="DESCRIPTIVE" username="zju" useOpenSSHConfig="true" />
+      <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="localhost" id="0d5e91a2-89d3-43e5-886b-e34fa3153c0c" port="22" customName="zjlab20" nameFormat="CUSTOM" useOpenSSHConfig="true">
+        <option name="customName" value="zjlab20" />
+      </sshConfig>
+    </configs>
+  </component>
+</project>

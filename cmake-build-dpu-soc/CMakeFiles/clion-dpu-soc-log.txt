@@ -1,0 +1,6 @@
+/usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/ubuntu/sunxi/packet_send -B /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc
+-- DPDK_INCLUDE_DIR: /opt/mellanox/dpdk/include/dpdk;/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk;/opt/mellanox/dpdk/include/dpdk;/usr/include/libnl3
+-- DPDK_LIB_DIR: /opt/mellanox/dpdk/lib/aarch64-linux-gnu
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc

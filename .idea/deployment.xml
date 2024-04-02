@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" autoUpload="Always" serverName="Remote zjlab20 (ee939723-6128-4ad6-8956-ff1f6d77a704)" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false">
+    <option name="confirmBeforeUploading" value="false" />
+    <serverData>
+      <paths name="Remote dpu soc (26d8e82e-e33d-4b18-8d63-501f234e199e)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/ubuntu/sunxi/packet_send" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20-root" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="Remote zjlab-root (6208c5e4-2e6b-47d0-82ef-9a2cdb344cd4)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zju/sunxi/turbomon/packet_send" local="$PROJECT_DIR$" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20-root" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="Remote zjlab20 (ee939723-6128-4ad6-8956-ff1f6d77a704)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zju/sunxi/turbomon/packet_send" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/usr/local/include" local="$PROJECT_DIR$/include" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20-root" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="zjlab20-root">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zju/sunxi/turbomon/packet_send" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/usr/local/include" local="$PROJECT_DIR$/include" web="/" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
+    </serverData>
+    <option name="myAutoUpload" value="ALWAYS" />
+  </component>
+</project>
