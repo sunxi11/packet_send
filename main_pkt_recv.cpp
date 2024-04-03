@@ -45,6 +45,9 @@
 #include <rte_mbuf.h>
 
 #include <iostream>
+#include <vector>
+#include <algorithm>
+#include <map>
 #include "packet_utils.h"
 
 #define RX_RING_SIZE 1024
@@ -58,17 +61,32 @@
 #define ARRAY_SIZE 65536
 
 
-//TODO 使用一个map来储存接收到的数据
+std::map<uint32_t, uint32_t> sketch_data;
 
 
 static const struct rte_eth_conf port_conf_default = {
     .rxmode = {
+        .mq_mode = RTE_ETH_MQ_RX_RSS,
         .max_lro_pkt_size = RTE_ETHER_MAX_LEN,
     },
+    .rx_adv_conf{
+        .rss_conf = {
+                .rss_key = NULL,
+                .rss_key_len = 40,
+                .rss_hf = RTE_ETH_RSS_IPV4,
+        }
+    }
 };
 
-const int num_rx_queues = 1; // 接收队列，最多有8个，这里只设置1个接收队列数量
-const int num_tx_queues = 0;
+uint32_t num_rx_queues;
+uint32_t num_tx_queues;
+uint32_t num_cores;
+
+
+uint64_t total_num[MAX_CORES] = {};
+uint64_t burst_num[MAX_CORES] = {};
+
+uint32_t total_array_num[MAX_CORES] = {};
 
 // 低位在前面
 void show_ip(uint32_t ip)
@@ -82,10 +100,10 @@ void show_ip(uint32_t ip)
 }
 
 static inline int
-init_port(uint16_t port, struct rte_mempool *mbuf_pool)
+init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint32_t tx_queues)
 {
     struct rte_eth_conf port_conf = port_conf_default;
-    const uint16_t rx_rings = 1, tx_rings = 1;
+    const uint16_t rx_rings = rx_queues, tx_rings = tx_queues;
     uint16_t nb_rxd = RX_RING_SIZE;
     uint16_t nb_txd = TX_RING_SIZE;
     int retval;
@@ -173,10 +191,57 @@ uint64_t get_time()
 }
 
 
-uint64_t total_num = 0;
-uint64_t burst_num = 0;
+
+static int packet_recv_process(void *arg){
+    uint32_t core_id = rte_lcore_id();
+    uint32_t queue_id = core_id;
+    uint16_t portid = 0;
+
+    std::cout << "core_id: " << core_id << " recv from queue: " << queue_id << std::endl;
+
+    while (1)
+    {
+        struct rte_mbuf *mbufs[BURST_SIZE];
+
+        if(total_num[core_id] > 10){
+            total_num[core_id] = 0;
+            total_array_num[core_id]++;
+//            std::cout << "core " << core_id << " total_array_num: " << total_array_num[core_id] << std::endl;
+        }
+
+        uint16_t num_recv = rte_eth_rx_burst(portid, queue_id, mbufs, BURST_SIZE);
+        if (num_recv > BURST_SIZE)
+        {
+            rte_exit(EXIT_FAILURE, "Error receiving from eth\n");
+        }
+
+        if (num_recv == 0)
+        {
+            continue;
+        }
+
+//        std::cout << "received " << num_recv << " packets" << std::endl;
+        total_num[core_id] += num_recv;
+
+        for (int i = 0; i < num_recv; i++)
+        {
+            struct rte_mbuf *buf = mbufs[i];
+
+            auto pkt = new my_pkt;
+            pkt = rte_pktmbuf_mtod_offset(buf, my_pkt *, 0);
+            sketch_data[pkt->idx] = pkt->value;
+
+//                pkt->idx = pkt->idx);
+//                pkt->value = ntohl(pkt->value);
+
+//                std::cout << "index = " << pkt->idx << ", value = " << pkt->value << std::endl;
+            rte_pktmbuf_free(mbufs[i]);
+        }
+
+    }
 
 
+}
 
 
 
@@ -218,54 +283,46 @@ int main(int argc, char *argv[])
         rte_exit(EXIT_FAILURE, "Could not create mbuf pool\n");
     }
 
+
+    uint32_t used_cores = rte_lcore_count();
+    std::cout << "used cores: " << used_cores << std::endl;
+
+    num_cores = used_cores;
+    num_rx_queues = used_cores;
+    num_tx_queues = used_cores;
+
+
     // 启动dpdk
     uint16_t portid = 0;
-    ret = init_port(portid, mbuf_pool);
+    ret = init_port(portid, mbuf_pool, num_rx_queues, num_tx_queues);
     if (ret != 0)
     {
         printf("port init error!\n");
     }
 
     // printf("size of mypkt: %d", sizeof(my_pkt));
-    printf("start to recveve data!\n");
-    start1 = get_time();
-    printf("start time: %" PRIu64 " ns \n", start1);
+//    printf("start to recveve data!\n");
+//    start1 = get_time();
+//    printf("start time: %" PRIu64 " ns \n", start1);
 
-    while (1)
-    {
-        struct rte_mbuf *mbufs[BURST_SIZE];
+    rte_eal_mp_remote_launch(packet_recv_process, nullptr, SKIP_MAIN);
 
-        for (int r = 0; r < num_rx_queues; r++)
-        {
-            uint16_t num_recv = rte_eth_rx_burst(portid, r, mbufs, BURST_SIZE);
-            if (num_recv > BURST_SIZE)
-            {
-                rte_exit(EXIT_FAILURE, "Error receiving from eth\n");
-            }
+    std::cout << "start to process data" << std::endl;
 
-            if (num_recv == 0)
-            {
-                continue;
-            }
 
-            std::cout << "received " << num_recv << " packets" << std::endl;
 
-            for (int i = 0; i < num_recv; i++, burst_num++)
-            {
-                struct rte_mbuf *buf = mbufs[i];
-
-                auto pkt = new(my_pkt);
-                pkt = rte_pktmbuf_mtod_offset(buf, my_pkt *, 0);
-
-//                pkt->idx = pkt->idx);
-//                pkt->value = ntohl(pkt->value);
-
-                std::cout << "index = " << pkt->idx << ", value = " << pkt->value << std::endl;
-
-                rte_pktmbuf_free(mbufs[i]);
-            }
+    uint32_t lcore_id;
+    RTE_LCORE_FOREACH(lcore_id){
+        if (rte_eal_wait_lcore(lcore_id) < 0){
+            return -1;
         }
     }
+
+
+    std::cout << "end to process data" << std::endl;
+    return 0;
+
+
 }
 
 

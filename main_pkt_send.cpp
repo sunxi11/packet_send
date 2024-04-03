@@ -162,13 +162,17 @@ static int packet_send_process(void *arg){
     queue_id = config->queues[core_id];
     std::cout << "core_id: " << core_id << " queue id: " << queue_id << std::endl;
 
-    uint32_t send_index = 0;
+    uint32_t send_index = 0, update_times = 0;
     uint32_t pre_core_works = (ARRAY_NUM * ARRAY_SIZE) / num_cores;
     uint32_t offset = pre_core_works * core_id;
 
-
     while (1){
-        send_index = send_index % pre_core_works;
+
+        if(send_index > pre_core_works){
+            send_index = send_index % pre_core_works;
+            update_times++;
+            std::cout << "core: " << core_id << " update times: " << update_times << std::endl;
+        }
 
         for (int i = 0; i < BURST_SIZE; i++){
             bufs[i] = rte_pktmbuf_alloc(mbuf_pool);
@@ -226,7 +230,7 @@ int main(int argc, char *argv[])
 
     // 模拟收包
     std::thread recv_thread(simulate_recv);
-    std::thread print_thread(print_max);
+//    std::thread print_thread(print_max);
 
     /* Initialize EAL */
     ret = rte_eal_init(argc, argv);
