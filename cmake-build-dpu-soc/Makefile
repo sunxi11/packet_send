@@ -130,6 +130,19 @@ packet_utils/fast:
 .PHONY : packet_utils/fast
 
 #=============================================================================
+# Target rules for targets named sketch_operations
+
+# Build rule for target.
+sketch_operations: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 sketch_operations
+.PHONY : sketch_operations
+
+# fast build rule for target.
+sketch_operations/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/build
+.PHONY : sketch_operations/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -167,6 +180,30 @@ packet_send: cmake_check_build_system
 packet_send/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/build
 .PHONY : packet_send/fast
+
+Sketch_operations.o: Sketch_operations.cpp.o
+.PHONY : Sketch_operations.o
+
+# target to build an object file
+Sketch_operations.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o
+.PHONY : Sketch_operations.cpp.o
+
+Sketch_operations.i: Sketch_operations.cpp.i
+.PHONY : Sketch_operations.i
+
+# target to preprocess a source file
+Sketch_operations.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.i
+.PHONY : Sketch_operations.cpp.i
+
+Sketch_operations.s: Sketch_operations.cpp.s
+.PHONY : Sketch_operations.s
+
+# target to generate assembly for a file
+Sketch_operations.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s
+.PHONY : Sketch_operations.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -276,6 +313,10 @@ help:
 	@echo "... packet_recv"
 	@echo "... packet_send"
 	@echo "... packet_utils"
+	@echo "... sketch_operations"
+	@echo "... Sketch_operations.o"
+	@echo "... Sketch_operations.i"
+	@echo "... Sketch_operations.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

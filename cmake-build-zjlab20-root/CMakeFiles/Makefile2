@@ -56,6 +56,7 @@ CMAKE_BINARY_DIR = /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root
 all: CMakeFiles/packet_send.dir/all
 all: CMakeFiles/packet_recv.dir/all
 all: CMakeFiles/main.dir/all
+all: CMakeFiles/sketch_operations.dir/all
 all: CMakeFiles/packet_utils.dir/all
 
 .PHONY : all
@@ -69,6 +70,7 @@ preinstall:
 clean: CMakeFiles/packet_send.dir/clean
 clean: CMakeFiles/packet_recv.dir/clean
 clean: CMakeFiles/main.dir/clean
+clean: CMakeFiles/sketch_operations.dir/clean
 clean: CMakeFiles/packet_utils.dir/clean
 
 .PHONY : clean
@@ -104,6 +106,7 @@ CMakeFiles/packet_send.dir/clean:
 # Target rules for target CMakeFiles/packet_recv.dir
 
 # All Build rule for target.
+CMakeFiles/packet_recv.dir/all: CMakeFiles/sketch_operations.dir/all
 CMakeFiles/packet_recv.dir/all: CMakeFiles/packet_utils.dir/all
 	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/depend
 	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/build
@@ -112,7 +115,7 @@ CMakeFiles/packet_recv.dir/all: CMakeFiles/packet_utils.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/packet_recv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles 4
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/packet_recv.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles 0
 .PHONY : CMakeFiles/packet_recv.dir/rule
@@ -153,6 +156,33 @@ main: CMakeFiles/main.dir/rule
 CMakeFiles/main.dir/clean:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/clean
 .PHONY : CMakeFiles/main.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/sketch_operations.dir
+
+# All Build rule for target.
+CMakeFiles/sketch_operations.dir/all: CMakeFiles/packet_utils.dir/all
+	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/depend
+	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles --progress-num=9,10 "Built target sketch_operations"
+.PHONY : CMakeFiles/sketch_operations.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/sketch_operations.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles 4
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sketch_operations.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles 0
+.PHONY : CMakeFiles/sketch_operations.dir/rule
+
+# Convenience name for target.
+sketch_operations: CMakeFiles/sketch_operations.dir/rule
+
+.PHONY : sketch_operations
+
+# clean rule for target.
+CMakeFiles/sketch_operations.dir/clean:
+	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/clean
+.PHONY : CMakeFiles/sketch_operations.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/packet_utils.dir

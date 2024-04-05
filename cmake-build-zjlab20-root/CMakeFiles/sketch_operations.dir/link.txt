@@ -1,0 +1,2 @@
+/usr/bin/ar qc libsketch_operations.a  CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o
+/usr/bin/ranlib libsketch_operations.a

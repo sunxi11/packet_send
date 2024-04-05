@@ -3,4 +3,5 @@
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/CMakeFiles/packet_send.dir
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/CMakeFiles/packet_recv.dir
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/CMakeFiles/main.dir
+/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/CMakeFiles/sketch_operations.dir
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/CMakeFiles/packet_utils.dir

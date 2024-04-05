@@ -27,13 +27,16 @@ link_directories(${DPDK_LIBRARY_DIRS})
 add_library(packet_utils packet_utils.cpp)
 target_link_libraries(packet_utils ${OPENSSL_LIBRARIES})
 
+add_library(sketch_operations Sketch_operations.cpp)
+target_link_libraries(sketch_operations packet_utils)
+
 
 # 添加可执行文件
 add_executable(main main.cpp)
 target_link_libraries(main packet_utils)
 
 add_executable(packet_recv main_pkt_recv.cpp)
-target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils pthread)
+target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils sketch_operations pthread)
 
 add_executable(packet_send main_pkt_send.cpp)
 target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils pthread)

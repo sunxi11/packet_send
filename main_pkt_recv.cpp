@@ -48,7 +48,11 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <thread>
+#include <list>
+
 #include "packet_utils.h"
+#include "Sketch_operations.h"
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
@@ -60,8 +64,6 @@
 #define _WRS_PACK_ALIGN(x) __attribute__((packed, aligned(x)))
 #define ARRAY_SIZE 65536
 
-
-std::map<uint32_t, uint32_t> sketch_data;
 
 
 static const struct rte_eth_conf port_conf_default = {
@@ -87,6 +89,8 @@ uint64_t total_num[MAX_CORES] = {};
 uint64_t burst_num[MAX_CORES] = {};
 
 uint32_t total_array_num[MAX_CORES] = {};
+
+recv_data DataMap_array;
 
 // 低位在前面
 void show_ip(uint32_t ip)
@@ -190,12 +194,37 @@ uint64_t get_time()
     return ns;
 }
 
+int test_operation(void *){
+    uint32_t tem_max = 0, tem_max2 = 0;
+    std::cout << "start to process data" << std::endl;
+    while (true){
+        std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+        for (int i = 0; i < ARRAY_SIZE; ++i) {
+            tem_max2 = operator_max(DataMap_array, i);
+            if (tem_max2 > tem_max){
+                tem_max = tem_max2;
+            }
+        }
+
+        std::cout << "max value: " << tem_max << std::endl;
+
+    }
+    return 0;
+}
 
 
 static int packet_recv_process(void *arg){
     uint32_t core_id = rte_lcore_id();
     uint32_t queue_id = core_id;
     uint16_t portid = 0;
+
+
+
+    if(core_id == 1){
+        std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+        test_operation(nullptr);
+        return 0;
+    }
 
     std::cout << "core_id: " << core_id << " recv from queue: " << queue_id << std::endl;
 
@@ -229,12 +258,20 @@ static int packet_recv_process(void *arg){
 
             auto pkt = new my_pkt;
             pkt = rte_pktmbuf_mtod_offset(buf, my_pkt *, 0);
-            sketch_data[pkt->idx] = pkt->value;
+            uint32_t col, colum;
+            col = (pkt->idx / ARRAY_SIZE) % ARRAY_NUM;
+            colum = pkt->idx % ARRAY_SIZE;
+            DataMap_array[col][colum] = pkt->value;
+
+//            sketch_data[pkt->idx] = pkt->value;
 
 //                pkt->idx = pkt->idx);
 //                pkt->value = ntohl(pkt->value);
 
-//                std::cout << "index = " << pkt->idx << ", value = " << pkt->value << std::endl;
+            if(total_num[core_id] > 10000){
+                std::cout << "index = " << pkt->idx << ", value = " << pkt->value << std::endl;
+                total_num[core_id] = 0;
+            }
             rte_pktmbuf_free(mbufs[i]);
         }
 
@@ -245,11 +282,13 @@ static int packet_recv_process(void *arg){
 
 
 
+
 int main(int argc, char *argv[])
 {
     int ret;
     bool flag;
     uint64_t pkts_count = 0, start1, end1, circle1, start2, end2, circle2, circles;
+
 
     ret = rte_eal_init(argc, argv);
     if (ret < 0)
@@ -300,16 +339,8 @@ int main(int argc, char *argv[])
         printf("port init error!\n");
     }
 
-    // printf("size of mypkt: %d", sizeof(my_pkt));
-//    printf("start to recveve data!\n");
-//    start1 = get_time();
-//    printf("start time: %" PRIu64 " ns \n", start1);
 
-    rte_eal_mp_remote_launch(packet_recv_process, nullptr, SKIP_MAIN);
-
-    std::cout << "start to process data" << std::endl;
-
-
+    rte_eal_mp_remote_launch(packet_recv_process, nullptr, CALL_MAIN);
 
     uint32_t lcore_id;
     RTE_LCORE_FOREACH(lcore_id){
@@ -317,8 +348,6 @@ int main(int argc, char *argv[])
             return -1;
         }
     }
-
-
     std::cout << "end to process data" << std::endl;
     return 0;
 

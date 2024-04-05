@@ -150,6 +150,19 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
+# Target rules for targets named sketch_operations
+
+# Build rule for target.
+sketch_operations: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 sketch_operations
+.PHONY : sketch_operations
+
+# fast build rule for target.
+sketch_operations/fast:
+	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/build
+.PHONY : sketch_operations/fast
+
+#=============================================================================
 # Target rules for targets named packet_utils
 
 # Build rule for target.
@@ -161,6 +174,33 @@ packet_utils: cmake_check_build_system
 packet_utils/fast:
 	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/build
 .PHONY : packet_utils/fast
+
+Sketch_operations.o: Sketch_operations.cpp.o
+
+.PHONY : Sketch_operations.o
+
+# target to build an object file
+Sketch_operations.cpp.o:
+	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o
+.PHONY : Sketch_operations.cpp.o
+
+Sketch_operations.i: Sketch_operations.cpp.i
+
+.PHONY : Sketch_operations.i
+
+# target to preprocess a source file
+Sketch_operations.cpp.i:
+	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.i
+.PHONY : Sketch_operations.cpp.i
+
+Sketch_operations.s: Sketch_operations.cpp.s
+
+.PHONY : Sketch_operations.s
+
+# target to generate assembly for a file
+Sketch_operations.cpp.s:
+	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s
+.PHONY : Sketch_operations.cpp.s
 
 main.o: main.cpp.o
 
@@ -281,7 +321,11 @@ help:
 	@echo "... packet_send"
 	@echo "... packet_recv"
 	@echo "... main"
+	@echo "... sketch_operations"
 	@echo "... packet_utils"
+	@echo "... Sketch_operations.o"
+	@echo "... Sketch_operations.i"
+	@echo "... Sketch_operations.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

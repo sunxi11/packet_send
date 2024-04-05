@@ -175,6 +175,52 @@
 					<DistClean command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="sketch_operations">
+				<Option output="/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/libsketch_operations.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 sketch_operations"/>
+					<CompileFile command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="sketch_operations/fast">
+				<Option output="/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/libsketch_operations.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 sketch_operations/fast"/>
+					<CompileFile command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j40 -f &quot;/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="packet_utils">
 				<Option output="/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/libpacket_utils.a" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20"/>
@@ -222,6 +268,12 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/zju/sunxi/turbomon/packet_send/Sketch_operations.cpp">
+			<Option target="sketch_operations"/>
+		</Unit>
+		<Unit filename="/home/zju/sunxi/turbomon/packet_send/Sketch_operations.h">
+			<Option target="sketch_operations"/>
+		</Unit>
 		<Unit filename="/home/zju/sunxi/turbomon/packet_send/main.cpp">
 			<Option target="main"/>
 		</Unit>

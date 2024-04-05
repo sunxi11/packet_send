@@ -15,6 +15,13 @@
 #include <algorithm>
 #include <memory>
 
+#include "packet_utils.h"
+
+typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
+
+uint32_t operator_min(recv_data &data, uint32_t key);
+uint32_t operator_max(recv_data &data, uint32_t key);
+
 class Sketch_data{
 public:
     Sketch_data(std::vector<std::pair<uint32_t , uint32_t>> data){
@@ -118,6 +125,8 @@ public:
         }
     }
 
+    Sketch_datas(std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> &data_map_array);
+
     uint32_t MAX(uint32_t flow_index){
         std::list<uint32_t> maxs;
         for(auto &i : datas){
@@ -180,6 +189,13 @@ private:
     uint32_t max_num;
 };
 
+
+class sd_test{
+public:
+
+    std::map<uint32_t, uint32_t> data_map;
+
+};
 
 
 

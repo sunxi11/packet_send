@@ -51,7 +51,7 @@
 #include <openssl/sha.h>
 #include "packet_utils.h"
 
-
+//TODO 发送的数据包有问题
 
 struct rte_mempool *mbuf_pool;
 
@@ -168,12 +168,6 @@ static int packet_send_process(void *arg){
 
     while (1){
 
-        if(send_index > pre_core_works){
-            send_index = send_index % pre_core_works;
-            update_times++;
-            std::cout << "core: " << core_id << " update times: " << update_times << std::endl;
-        }
-
         for (int i = 0; i < BURST_SIZE; i++){
             bufs[i] = rte_pktmbuf_alloc(mbuf_pool);
             if (bufs[i] == NULL){
@@ -183,8 +177,17 @@ static int packet_send_process(void *arg){
             my_pkt *pkt = rte_pktmbuf_mtod(bufs[i], my_pkt *);
             pkt->idx = send_index + offset;
             pkt->value = *(&array[0][0] + pkt->idx);
-            send_index++;
+//            pkt->idx = 1234;
+//            pkt->value = 5678;
             bufs[i]->pkt_len = bufs[i]->data_len = sizeof(my_pkt);
+
+            send_index++;
+            if(send_index > pre_core_works){
+                send_index = send_index % pre_core_works;
+                update_times++;
+                std::cout << "core: " << core_id << " update times: " << update_times << std::endl;
+                std::cout << "pkt idx: " << pkt->idx << " pkt value: " << pkt->value << std::endl;
+            }
 
         }
         uint16_t nb_tx = rte_eth_tx_burst(config->port_id, queue_id, bufs, BURST_SIZE);

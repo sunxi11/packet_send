@@ -80,6 +80,8 @@ packet_recv_EXTERNAL_OBJECTS =
 packet_recv: CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o
 packet_recv: CMakeFiles/packet_recv.dir/build.make
 packet_recv: libpacket_utils.a
+packet_recv: libsketch_operations.a
+packet_recv: libpacket_utils.a
 packet_recv: /usr/lib/x86_64-linux-gnu/libssl.so
 packet_recv: /usr/lib/x86_64-linux-gnu/libcrypto.so
 packet_recv: CMakeFiles/packet_recv.dir/link.txt

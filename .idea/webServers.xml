@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d421d1df-6fee-46a6-96fc-dc26e773676b" name="dpu-soc-root">
+        <fileTransfer accessType="SFTP" host="47.97.81.43" port="6001" sshConfigId="9d4ae972-6d30-41b8-86c2-b20482b52254" sshConfig="dpu-soc-root">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

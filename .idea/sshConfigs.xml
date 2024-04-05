@@ -6,6 +6,9 @@
       <sshConfig authType="PASSWORD" connectionConfig="{&quot;serverAliveInterval&quot;:300}" host="localhost" id="0d5e91a2-89d3-43e5-886b-e34fa3153c0c" port="22" customName="zjlab20" nameFormat="CUSTOM" useOpenSSHConfig="true">
         <option name="customName" value="zjlab20" />
       </sshConfig>
+      <sshConfig authType="PASSWORD" host="47.97.81.43" id="9d4ae972-6d30-41b8-86c2-b20482b52254" port="6001" customName="dpu-soc-root" nameFormat="CUSTOM" username="root" useOpenSSHConfig="false">
+        <option name="customName" value="dpu-soc-root" />
+      </sshConfig>
     </configs>
   </component>
 </project>
