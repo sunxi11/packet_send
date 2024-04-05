@@ -291,7 +291,6 @@ int main(int argc, char *argv[])
     }
 
     config.port_id = portid;
-
     rte_eal_mp_remote_launch(packet_send_process, &config, CALL_MAIN);
 
     uint32_t lcore_id;
