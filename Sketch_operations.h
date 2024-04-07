@@ -21,6 +21,14 @@ typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
 
 uint32_t operator_min(recv_data &data, uint32_t key);
 uint32_t operator_max(recv_data &data, uint32_t key);
+recv_data operator_filter(recv_data &data, bool (*condition)(std::pair<uint32_t, uint32_t>));
+recv_data operator_merge(const std::vector<recv_data> &sources);
+std::unique_ptr<std::unique_ptr<uint32_t[]>[]> operator_decode(recv_data &data);
+bool operator_exist(recv_data &data, uint32_t key);
+uint32_t operator_distinct(recv_data &data);
+
+
+
 
 class Sketch_data{
 public:
@@ -114,7 +122,6 @@ private:
     std::unordered_map<uint32_t , uint32_t> data_map;
     std::map<uint32_t , uint32_t> data_map_sorted;
 };
-
 class Sketch_datas{
 public:
     Sketch_datas(std::initializer_list<Sketch_data> datas){
@@ -188,8 +195,6 @@ private:
     std::vector<Sketch_data> datas;
     uint32_t max_num;
 };
-
-
 class sd_test{
 public:
 
