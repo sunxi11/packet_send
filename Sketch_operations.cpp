@@ -15,32 +15,6 @@
 #include "Sketch_operations.h"
 
 
-//void Sketch_data::merge(std::vector<std::pair<uint32_t, uint32_t>> new_data) {
-//    std::map<uint32_t, uint32_t> new_data_map;
-//    for(auto &i : new_data){
-//        new_data_map[i.first] += i.second;
-//    }
-//    // 先更新map
-//    for(auto &i : new_data_map){
-//        data_map_sorted[i.first] += i.second;
-//        data_map[i.first] += i.second;
-//    }
-//    // 更新data
-//    data.clear();
-//    for(auto &i : data_map_sorted){
-//        data.push_back(i);
-//    }
-//
-//}
-//
-//Sketch_datas::Sketch_datas(std::array<std::map<uint32_t, uint32_t>, 4> &data_map_array) {
-//    this->array_num = data_map_array.size();
-////    for (auto &i : data_map_array) {
-////        Sketch_data sketch_data(i);
-////        this->data.push_back(sketch_data);
-////    }
-//}
-
 
 uint32_t operator_max(recv_data &data, uint32_t key){
     uint32_t max = 0;
