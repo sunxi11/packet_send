@@ -35,8 +35,8 @@ target_link_libraries(sketch_operations packet_utils)
 add_executable(main main.cpp)
 target_link_libraries(main packet_utils)
 
-add_executable(packet_recv main_pkt_recv.cpp)
+add_executable(packet_recv um_packet_recv.cpp)
 target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils sketch_operations pthread)
 
-add_executable(packet_send main_pkt_send.cpp)
+add_executable(packet_send um_packet_send.cpp)
 target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils pthread)

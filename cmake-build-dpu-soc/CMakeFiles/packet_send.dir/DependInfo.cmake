@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ubuntu/sunxi/packet_send/main_pkt_send.cpp" "CMakeFiles/packet_send.dir/main_pkt_send.cpp.o" "gcc" "CMakeFiles/packet_send.dir/main_pkt_send.cpp.o.d"
+  "/home/ubuntu/sunxi/packet_send/um_packet_send.cpp" "CMakeFiles/packet_send.dir/um_packet_send.cpp.o" "gcc" "CMakeFiles/packet_send.dir/um_packet_send.cpp.o.d"
   )
 
 # Targets to which this target links.

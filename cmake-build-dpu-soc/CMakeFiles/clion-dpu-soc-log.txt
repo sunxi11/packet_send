@@ -5,3 +5,6 @@
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc
+
+Problems were encountered while collecting compiler information:
+	c++: error: unrecognized command-line option '-mssse3'

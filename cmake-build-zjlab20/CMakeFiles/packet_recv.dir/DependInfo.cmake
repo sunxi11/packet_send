@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/zju/sunxi/turbomon/packet_send/main_pkt_recv.cpp" "/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o"
+  "/home/zju/sunxi/turbomon/packet_send/um_packet_recv.cpp" "/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20/CMakeFiles/packet_recv.dir/um_packet_recv.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

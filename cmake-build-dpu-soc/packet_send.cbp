@@ -297,17 +297,17 @@
 		<Unit filename="/home/ubuntu/sunxi/packet_send/main.cpp">
 			<Option target="main"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/sunxi/packet_send/main_pkt_recv.cpp">
-			<Option target="packet_recv"/>
-		</Unit>
-		<Unit filename="/home/ubuntu/sunxi/packet_send/main_pkt_send.cpp">
-			<Option target="packet_send"/>
-		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/packet_utils.cpp">
 			<Option target="packet_utils"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/packet_utils.h">
 			<Option target="packet_utils"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/um_packet_recv.cpp">
+			<Option target="packet_recv"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/um_packet_send.cpp">
+			<Option target="packet_send"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
