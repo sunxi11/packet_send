@@ -251,6 +251,162 @@ packet_send_IS_TOP_LEVEL:STATIC=ON
 packet_send_SOURCE_DIR:STATIC=/home/ubuntu/sunxi/packet_send
 
 //Path to a library.
+pkgcfg_lib_DPDK_rte_acl:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_acl.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_bbdev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_bbdev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_bitratestats:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_bitratestats.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_bpf:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_bpf.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_cfgfile:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_cfgfile.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_cmdline:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_cmdline.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_compressdev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_compressdev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_cryptodev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_cryptodev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_distributor:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_distributor.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_dmadev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_dmadev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_eal:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_eal.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_efd:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_efd.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_ethdev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_ethdev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_eventdev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_eventdev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_fib:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_fib.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_gpudev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_gpudev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_graph:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_graph.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_gro:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_gro.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_gso:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_gso.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_hash:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_hash.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_ip_frag:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_ip_frag.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_ipsec:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_ipsec.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_jobstats:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_jobstats.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_kvargs:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_kvargs.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_latencystats:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_latencystats.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_lpm:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_lpm.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_mbuf:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_mbuf.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_member:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_member.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_mempool:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_mempool.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_meter:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_meter.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_metrics:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_metrics.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_net:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_net.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_node:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_node.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_pcapng:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_pcapng.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_pci:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_pci.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_pdump:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_pdump.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_pipeline:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_pipeline.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_port:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_port.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_power:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_power.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_rawdev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_rawdev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_rcu:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_rcu.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_regexdev:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_regexdev.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_reorder:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_reorder.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_rib:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_rib.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_ring:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_ring.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_sched:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_sched.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_security:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_security.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_stack:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_stack.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_table:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_table.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_telemetry:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_telemetry.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_timer:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_timer.so
+
+//Path to a library.
+pkgcfg_lib_DPDK_rte_vhost:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_vhost.so
+
+//Path to a library.
 pkgcfg_lib__OPENSSL_crypto:FILEPATH=/usr/lib/aarch64-linux-gnu/libcrypto.so
 
 //Path to a library.
@@ -412,27 +568,37 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
-DPDK_CFLAGS:INTERNAL=
+DPDK_CFLAGS:INTERNAL=-include;rte_config.h;-mcpu=cortex-a72;-I/opt/mellanox/dpdk/include/dpdk;-I/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk;-I/opt/mellanox/dpdk/include/dpdk;-I/opt/mellanox/grpc/include;-I/usr/include/libnl3
 DPDK_CFLAGS_I:INTERNAL=
-DPDK_CFLAGS_OTHER:INTERNAL=
-DPDK_FOUND:INTERNAL=
-DPDK_INCLUDEDIR:INTERNAL=
-DPDK_LIBDIR:INTERNAL=
+DPDK_CFLAGS_OTHER:INTERNAL=-include;rte_config.h;-mcpu=cortex-a72
+DPDK_FOUND:INTERNAL=1
+DPDK_INCLUDEDIR:INTERNAL=/opt/mellanox/dpdk/include/dpdk
+DPDK_INCLUDE_DIRS:INTERNAL=/opt/mellanox/dpdk/include/dpdk;/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk;/opt/mellanox/dpdk/include/dpdk;/opt/mellanox/grpc/include;/usr/include/libnl3
+DPDK_LDFLAGS:INTERNAL=-L/opt/mellanox/dpdk/lib/aarch64-linux-gnu;-Wl,--as-needed;-lrte_node;-lrte_graph;-lrte_pipeline;-lrte_table;-lrte_pdump;-lrte_port;-lrte_fib;-lrte_ipsec;-lrte_vhost;-lrte_stack;-lrte_security;-lrte_sched;-lrte_reorder;-lrte_rib;-lrte_dmadev;-lrte_regexdev;-lrte_rawdev;-lrte_power;-lrte_pcapng;-lrte_member;-lrte_lpm;-lrte_latencystats;-lrte_jobstats;-lrte_gso;-lrte_gro;-lrte_gpudev;-lrte_eventdev;-lrte_efd;-lrte_distributor;-lrte_cryptodev;-lrte_compressdev;-lrte_cfgfile;-lrte_bpf;-lrte_bitratestats;-lrte_bbdev;-lrte_acl;-lrte_timer;-lrte_metrics;-lrte_cmdline;-lrte_pci;-lrte_ethdev;-lrte_ip_frag;-lrte_hash;-lrte_meter;-lrte_net;-lrte_mbuf;-lrte_mempool;-lrte_rcu;-lrte_ring;-lrte_eal;-lrte_telemetry;-lrte_kvargs
+DPDK_LDFLAGS_OTHER:INTERNAL=-Wl,--as-needed
+DPDK_LIBDIR:INTERNAL=/opt/mellanox/dpdk/lib/aarch64-linux-gnu
+DPDK_LIBRARIES:INTERNAL=rte_node;rte_graph;rte_pipeline;rte_table;rte_pdump;rte_port;rte_fib;rte_ipsec;rte_vhost;rte_stack;rte_security;rte_sched;rte_reorder;rte_rib;rte_dmadev;rte_regexdev;rte_rawdev;rte_power;rte_pcapng;rte_member;rte_lpm;rte_latencystats;rte_jobstats;rte_gso;rte_gro;rte_gpudev;rte_eventdev;rte_efd;rte_distributor;rte_cryptodev;rte_compressdev;rte_cfgfile;rte_bpf;rte_bitratestats;rte_bbdev;rte_acl;rte_timer;rte_metrics;rte_cmdline;rte_pci;rte_ethdev;rte_ip_frag;rte_hash;rte_meter;rte_net;rte_mbuf;rte_mempool;rte_rcu;rte_ring;rte_eal;rte_telemetry;rte_kvargs
+DPDK_LIBRARY_DIRS:INTERNAL=/opt/mellanox/dpdk/lib/aarch64-linux-gnu
 DPDK_LIBS:INTERNAL=
 DPDK_LIBS_L:INTERNAL=
 DPDK_LIBS_OTHER:INTERNAL=
 DPDK_LIBS_PATHS:INTERNAL=
-DPDK_MODULE_NAME:INTERNAL=
-DPDK_PREFIX:INTERNAL=
-DPDK_STATIC_CFLAGS:INTERNAL=
+DPDK_MODULE_NAME:INTERNAL=libdpdk
+DPDK_PREFIX:INTERNAL=/opt/mellanox/dpdk
+DPDK_STATIC_CFLAGS:INTERNAL=-include;rte_config.h;-mcpu=cortex-a72;-I/opt/mellanox/dpdk/include/dpdk;-I/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk;-I/opt/mellanox/dpdk/include/dpdk;-I/opt/mellanox/grpc/include;-I/usr/include/libnl3
 DPDK_STATIC_CFLAGS_I:INTERNAL=
-DPDK_STATIC_CFLAGS_OTHER:INTERNAL=
+DPDK_STATIC_CFLAGS_OTHER:INTERNAL=-include;rte_config.h;-mcpu=cortex-a72
+DPDK_STATIC_INCLUDE_DIRS:INTERNAL=/opt/mellanox/dpdk/include/dpdk;/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk;/opt/mellanox/dpdk/include/dpdk;/opt/mellanox/grpc/include;/usr/include/libnl3
+DPDK_STATIC_LDFLAGS:INTERNAL=-L/opt/mellanox/dpdk/lib/aarch64-linux-gnu;-L/opt/mellanox/grpc/lib;-L/usr/lib/aarch64-linux-gnu;-Wl,--whole-archive;-l:librte_bus_auxiliary.a;-l:librte_bus_pci.a;-l:librte_bus_vdev.a;-l:librte_common_mlx5.a;-l:librte_mempool_bucket.a;-l:librte_mempool_ring.a;-l:librte_mempool_stack.a;-l:librte_net_af_packet.a;-l:librte_net_mlx5.a;-l:librte_net_vhost.a;-l:librte_net_virtio.a;-l:librte_compress_mlx5.a;-l:librte_regex_mlx5.a;-l:librte_vdpa_mlx5.a;-l:librte_gpu_cuda.a;-l:librte_node.a;-l:librte_graph.a;-l:librte_pipeline.a;-l:librte_table.a;-l:librte_pdump.a;-l:librte_port.a;-l:librte_fib.a;-l:librte_ipsec.a;-l:librte_vhost.a;-l:librte_stack.a;-l:librte_security.a;-l:librte_sched.a;-l:librte_reorder.a;-l:librte_rib.a;-l:librte_dmadev.a;-l:librte_regexdev.a;-l:librte_rawdev.a;-l:librte_power.a;-l:librte_pcapng.a;-l:librte_member.a;-l:librte_lpm.a;-l:librte_latencystats.a;-l:librte_jobstats.a;-l:librte_gso.a;-l:librte_gro.a;-l:librte_gpudev.a;-l:librte_eventdev.a;-l:librte_efd.a;-l:librte_distributor.a;-l:librte_cryptodev.a;-l:librte_compressdev.a;-l:librte_cfgfile.a;-l:librte_bpf.a;-l:librte_bitratestats.a;-l:librte_bbdev.a;-l:librte_acl.a;-l:librte_timer.a;-l:librte_metrics.a;-l:librte_cmdline.a;-l:librte_pci.a;-l:librte_ethdev.a;-l:librte_ip_frag.a;-l:librte_hash.a;-l:librte_meter.a;-l:librte_net.a;-l:librte_mbuf.a;-l:librte_mempool.a;-l:librte_rcu.a;-l:librte_ring.a;-l:librte_eal.a;-l:librte_telemetry.a;-l:librte_kvargs.a;-Wl,--no-whole-archive;-Wl,--export-dynamic;-lmtcr_ul;-lmlx5;-libverbs;-lmlx5;-libverbs;-lnl-route-3;-lnl-3;-lpcap;-ldbus-1;-lelf;-lz;-ljansson;-Wl,--as-needed;-lrte_node;-lrte_graph;-lrte_pipeline;-lrte_table;-lrte_pdump;-lrte_port;-lrte_fib;-lrte_ipsec;-lrte_vhost;-lrte_stack;-lrte_security;-lrte_sched;-lrte_reorder;-lrte_rib;-lrte_dmadev;-lrte_regexdev;-lrte_rawdev;-lrte_power;-lrte_pcapng;-lrte_member;-lrte_lpm;-lrte_latencystats;-lrte_jobstats;-lrte_gso;-lrte_gro;-lrte_gpudev;-lrte_eventdev;-lrte_efd;-lrte_distributor;-lrte_cryptodev;-lrte_compressdev;-lrte_cfgfile;-lrte_bpf;-lrte_bitratestats;-lrte_bbdev;-lrte_acl;-lrte_timer;-lrte_metrics;-lrte_cmdline;-lrte_pci;-lrte_ethdev;-lrte_ip_frag;-lrte_hash;-lrte_meter;-lrte_net;-lrte_mbuf;-lrte_mempool;-lrte_rcu;-lrte_ring;-lrte_eal;-lrte_telemetry;-lrte_kvargs;-pthread;-lm;-ldl;-lnuma;-lpcap
+DPDK_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,--whole-archive;-Wl,--no-whole-archive;-Wl,--export-dynamic;-Wl,--as-needed;-pthread
 DPDK_STATIC_LIBDIR:INTERNAL=
+DPDK_STATIC_LIBRARIES:INTERNAL=:librte_bus_auxiliary.a;:librte_bus_pci.a;:librte_bus_vdev.a;:librte_common_mlx5.a;:librte_mempool_bucket.a;:librte_mempool_ring.a;:librte_mempool_stack.a;:librte_net_af_packet.a;:librte_net_mlx5.a;:librte_net_vhost.a;:librte_net_virtio.a;:librte_compress_mlx5.a;:librte_regex_mlx5.a;:librte_vdpa_mlx5.a;:librte_gpu_cuda.a;:librte_node.a;:librte_graph.a;:librte_pipeline.a;:librte_table.a;:librte_pdump.a;:librte_port.a;:librte_fib.a;:librte_ipsec.a;:librte_vhost.a;:librte_stack.a;:librte_security.a;:librte_sched.a;:librte_reorder.a;:librte_rib.a;:librte_dmadev.a;:librte_regexdev.a;:librte_rawdev.a;:librte_power.a;:librte_pcapng.a;:librte_member.a;:librte_lpm.a;:librte_latencystats.a;:librte_jobstats.a;:librte_gso.a;:librte_gro.a;:librte_gpudev.a;:librte_eventdev.a;:librte_efd.a;:librte_distributor.a;:librte_cryptodev.a;:librte_compressdev.a;:librte_cfgfile.a;:librte_bpf.a;:librte_bitratestats.a;:librte_bbdev.a;:librte_acl.a;:librte_timer.a;:librte_metrics.a;:librte_cmdline.a;:librte_pci.a;:librte_ethdev.a;:librte_ip_frag.a;:librte_hash.a;:librte_meter.a;:librte_net.a;:librte_mbuf.a;:librte_mempool.a;:librte_rcu.a;:librte_ring.a;:librte_eal.a;:librte_telemetry.a;:librte_kvargs.a;mtcr_ul;mlx5;ibverbs;mlx5;ibverbs;nl-route-3;nl-3;pcap;dbus-1;elf;z;jansson;rte_node;rte_graph;rte_pipeline;rte_table;rte_pdump;rte_port;rte_fib;rte_ipsec;rte_vhost;rte_stack;rte_security;rte_sched;rte_reorder;rte_rib;rte_dmadev;rte_regexdev;rte_rawdev;rte_power;rte_pcapng;rte_member;rte_lpm;rte_latencystats;rte_jobstats;rte_gso;rte_gro;rte_gpudev;rte_eventdev;rte_efd;rte_distributor;rte_cryptodev;rte_compressdev;rte_cfgfile;rte_bpf;rte_bitratestats;rte_bbdev;rte_acl;rte_timer;rte_metrics;rte_cmdline;rte_pci;rte_ethdev;rte_ip_frag;rte_hash;rte_meter;rte_net;rte_mbuf;rte_mempool;rte_rcu;rte_ring;rte_eal;rte_telemetry;rte_kvargs;m;dl;numa;pcap
+DPDK_STATIC_LIBRARY_DIRS:INTERNAL=/opt/mellanox/dpdk/lib/aarch64-linux-gnu;/opt/mellanox/grpc/lib;/usr/lib/aarch64-linux-gnu
 DPDK_STATIC_LIBS:INTERNAL=
 DPDK_STATIC_LIBS_L:INTERNAL=
 DPDK_STATIC_LIBS_OTHER:INTERNAL=
 DPDK_STATIC_LIBS_PATHS:INTERNAL=
-DPDK_VERSION:INTERNAL=
+DPDK_VERSION:INTERNAL=22.11.2307.2.0
 DPDK_libdpdk_INCLUDEDIR:INTERNAL=
 DPDK_libdpdk_LIBDIR:INTERNAL=
 DPDK_libdpdk_PREFIX:INTERNAL=
@@ -493,9 +659,113 @@ _OPENSSL_openssl_VERSION:INTERNAL=
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
 __pkg_config_checked_DPDK:INTERNAL=1
 __pkg_config_checked__OPENSSL:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_acl
+pkgcfg_lib_DPDK_rte_acl-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_bbdev
+pkgcfg_lib_DPDK_rte_bbdev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_bitratestats
+pkgcfg_lib_DPDK_rte_bitratestats-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_bpf
+pkgcfg_lib_DPDK_rte_bpf-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_cfgfile
+pkgcfg_lib_DPDK_rte_cfgfile-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_cmdline
+pkgcfg_lib_DPDK_rte_cmdline-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_compressdev
+pkgcfg_lib_DPDK_rte_compressdev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_cryptodev
+pkgcfg_lib_DPDK_rte_cryptodev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_distributor
+pkgcfg_lib_DPDK_rte_distributor-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_dmadev
+pkgcfg_lib_DPDK_rte_dmadev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_eal
+pkgcfg_lib_DPDK_rte_eal-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_efd
+pkgcfg_lib_DPDK_rte_efd-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_ethdev
+pkgcfg_lib_DPDK_rte_ethdev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_eventdev
+pkgcfg_lib_DPDK_rte_eventdev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_fib
+pkgcfg_lib_DPDK_rte_fib-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_gpudev
+pkgcfg_lib_DPDK_rte_gpudev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_graph
+pkgcfg_lib_DPDK_rte_graph-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_gro
+pkgcfg_lib_DPDK_rte_gro-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_gso
+pkgcfg_lib_DPDK_rte_gso-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_hash
+pkgcfg_lib_DPDK_rte_hash-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_ip_frag
+pkgcfg_lib_DPDK_rte_ip_frag-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_ipsec
+pkgcfg_lib_DPDK_rte_ipsec-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_jobstats
+pkgcfg_lib_DPDK_rte_jobstats-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_kvargs
+pkgcfg_lib_DPDK_rte_kvargs-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_latencystats
+pkgcfg_lib_DPDK_rte_latencystats-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_lpm
+pkgcfg_lib_DPDK_rte_lpm-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_mbuf
+pkgcfg_lib_DPDK_rte_mbuf-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_member
+pkgcfg_lib_DPDK_rte_member-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_mempool
+pkgcfg_lib_DPDK_rte_mempool-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_meter
+pkgcfg_lib_DPDK_rte_meter-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_metrics
+pkgcfg_lib_DPDK_rte_metrics-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_net
+pkgcfg_lib_DPDK_rte_net-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_node
+pkgcfg_lib_DPDK_rte_node-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_pcapng
+pkgcfg_lib_DPDK_rte_pcapng-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_pci
+pkgcfg_lib_DPDK_rte_pci-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_pdump
+pkgcfg_lib_DPDK_rte_pdump-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_pipeline
+pkgcfg_lib_DPDK_rte_pipeline-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_port
+pkgcfg_lib_DPDK_rte_port-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_power
+pkgcfg_lib_DPDK_rte_power-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_rawdev
+pkgcfg_lib_DPDK_rte_rawdev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_rcu
+pkgcfg_lib_DPDK_rte_rcu-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_regexdev
+pkgcfg_lib_DPDK_rte_regexdev-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_reorder
+pkgcfg_lib_DPDK_rte_reorder-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_rib
+pkgcfg_lib_DPDK_rte_rib-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_ring
+pkgcfg_lib_DPDK_rte_ring-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_sched
+pkgcfg_lib_DPDK_rte_sched-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_security
+pkgcfg_lib_DPDK_rte_security-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_stack
+pkgcfg_lib_DPDK_rte_stack-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_table
+pkgcfg_lib_DPDK_rte_table-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_telemetry
+pkgcfg_lib_DPDK_rte_telemetry-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_timer
+pkgcfg_lib_DPDK_rte_timer-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_DPDK_rte_vhost
+pkgcfg_lib_DPDK_rte_vhost-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto
 pkgcfg_lib__OPENSSL_crypto-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_ssl
 pkgcfg_lib__OPENSSL_ssl-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/usr/lib/aarch64-linux-gnu
+prefix_result:INTERNAL=/opt/mellanox/dpdk/lib/aarch64-linux-gnu
 

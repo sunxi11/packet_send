@@ -17,7 +17,10 @@
 #include <openssl/sha.h>
 #include <netinet/in.h>
 #include <sys/socket.h>
+#include <fcntl.h>
 #include <arpa/inet.h>
+#include <sys/epoll.h>
+#include <unistd.h>
 
 #include "packet_utils.h"
 
@@ -36,59 +39,13 @@ uint32_t total_num[MAX_CORES] = {};
 uint32_t burst_num[MAX_CORES] = {};
 uint32_t send_offset[MAX_CORES] = {};
 
-
-
-//static int packet_send_process(void *arg){
-//    uint32_t core_id = rte_lcore_id();
-//    uint32_t queue_id;
-//    struct rte_mbuf *bufs[BURST_SIZE];
-//
-//    auto config = new struct send_config;
-//    config = (struct send_config *)arg;
-//    queue_id = config->queues[core_id];
-//    std::cout << "core_id: " << core_id << " queue id: " << queue_id << std::endl;
-//
-//    uint32_t send_index = 0, update_times = 0;
-//    uint32_t pre_core_works = (ARRAY_NUM * ARRAY_SIZE) / num_cores;
-//    uint32_t offset = pre_core_works * core_id;
-//
-//    while (1){
-//
-//        for (int i = 0; i < BURST_SIZE; i++){
-//            bufs[i] = rte_pktmbuf_alloc(mbuf_pool);
-//            if (bufs[i] == NULL){
-//                printf("rte_pktmbuf_alloc failed\n");
-//                continue;
-//            }
-//            my_pkt *pkt = rte_pktmbuf_mtod(bufs[i], my_pkt *);
-//            pkt->idx = send_index + offset;
-//            pkt->value = *(&array[0][0] + pkt->idx);
-////            pkt->idx = 1234;
-////            pkt->value = 5678;
-//            bufs[i]->pkt_len = bufs[i]->data_len = sizeof(my_pkt);
-//
-//            send_index++;
-//            if(send_index > pre_core_works){
-//                send_index = send_index % pre_core_works;
-//                update_times++;
-//                std::cout << "core: " << core_id << " update times: " << update_times << std::endl;
-//                std::cout << "pkt idx: " << pkt->idx << " pkt value: " << pkt->value << std::endl;
-//            }
-//
-//        }
-//        uint16_t nb_tx = rte_eth_tx_burst(config->port_id, queue_id, bufs, BURST_SIZE);
-//        if (nb_tx < BURST_SIZE){
-//            for (int i = nb_tx; i < BURST_SIZE; i++){
-//                rte_pktmbuf_free(bufs[i]);
-//            }
-//        }
-//        total_num[core_id] += nb_tx;
-//        burst_num[core_id]++;
-////        std::cout << "total send num: " << total_num[core_id] << " from core: " << core_id << std::endl;
-//    }
-//
-//    return 0;
-//}
+// 设置非阻塞socket
+int setNonBlocking(int sockfd) {
+    int flags;
+    if ((flags = fcntl(sockfd, F_GETFL, 0)) == -1)
+        flags = 0;
+    return fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
+}
 
 void simulate_recv(){
     while (true){
@@ -112,6 +69,64 @@ void print_max(){
     }
 }
 
+void handle_listen_socket(int server_fd){
+    struct epoll_event event, events[10];
+    int epoll_fd = epoll_create1(0);
+    int new_socket;
+    event.events = EPOLLIN;
+    event.data.fd = server_fd;
+
+    epoll_ctl(epoll_fd, EPOLL_CTL_ADD, server_fd, &event);
+
+    while (true){
+        int event_num = epoll_wait(epoll_fd, events, 10, -1);
+        for(int i = 0; i < event_num; i++){
+            if(events[i].data.fd == server_fd){
+                struct sockaddr_in client_address;
+                socklen_t client_address_len = sizeof(client_address);
+                int client_fd = accept(server_fd, (struct sockaddr *)&client_address, &client_address_len);
+                setNonBlocking(client_fd);
+                event.data.fd = client_fd;
+                epoll_ctl(epoll_fd, EPOLL_CTL_ADD, client_fd, &event);
+                std::cout << "new connection" << std::endl;
+
+            } else{
+                //不是连接请求，可能是客户端发送数据
+                //类似于TCP ack 的机制，客户端告诉服务器期望的 offset
+                ssize_t ret;
+                uint32_t offset;
+                ret = recv(events[i].data.fd, &offset, sizeof(offset), 0);
+                if(ret <= 0){ // ret==0 表示客户端关闭连接，ret<0 需要根据错误代码判断是否关闭
+                    if(ret == 0 || (ret < 0 && errno != EAGAIN && errno != EWOULDBLOCK)){
+                        std::cout << (ret == 0 ? "Client closed connection\n" : "Recv error\n");
+                        close(events[i].data.fd); // 关闭套接字
+                        epoll_ctl(epoll_fd, EPOLL_CTL_DEL, events[i].data.fd, &event); // 从epoll中移除
+                    }
+                    continue;
+                }
+                ret = send(events[i].data.fd, (&array[0][0] + offset), sizeof(*(&array[0][0] + offset)), 0);
+                if(ret < 0){
+                    std::cerr << "send error: " << strerror(errno) << std::endl;
+                    if(errno != EAGAIN && errno != EWOULDBLOCK){
+                        close(events[i].data.fd); // 发送失败时关闭套接字
+                        epoll_ctl(epoll_fd, EPOLL_CTL_DEL, events[i].data.fd, &event); // 从epoll中移除
+                    }
+                    continue;
+                }
+
+                if(offset % 10000 == 0){
+                    std::cout << "send data: " << offset << std::endl;
+                }
+            }
+        }
+
+    }
+}
+
+
+
+
+
 int main(int argc, char *argv[])
 {
     int ret;
@@ -126,51 +141,35 @@ int main(int argc, char *argv[])
     }
     const char* server_ip = argv[1];
 
-
-    // 模拟收包
     std::thread recv_thread(simulate_recv);
 
     if((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
         std::cerr << "Socket creation failed" << std::endl;
         return -1;
     }
-
-
     address.sin_family = AF_INET;
     address.sin_addr.s_addr = inet_addr(server_ip);
     address.sin_port = htons(8811);
-
     if (bind(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
         std::cerr << "bind failed" << std::endl;
         return -1;
     }
 
-    if (listen(server_fd, 1) < 0) {
+    if (listen(server_fd, 10) < 0) {
         std::cerr << "listen" << std::endl;
         return -1;
     }
-
-    if ((new_socket = accept(server_fd, (struct sockaddr *)NULL, NULL)) < 0) {
-        std::cerr << "accept" << std::endl;
-        return -1;
-    }
-
-    std::cout << "accept new socket" << std::endl;
+    setNonBlocking(server_fd);
+    std::thread hander_connected(handle_listen_socket, server_fd);
 
 
 
 
 
-
-
-//    std::cout << "size of array: " << sizeof(array) << std::endl;
-//
-//
-//    uint32_t byte_num = send(new_socket, array, sizeof(array), 0);;
-//    std::cout << "Array sent, byte num: " << byte_num << std::endl;
 
 
     recv_thread.join();
+    hander_connected.join();
 
 
     return 0;

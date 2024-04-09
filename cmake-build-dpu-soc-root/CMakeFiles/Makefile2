@@ -164,8 +164,8 @@ CMakeFiles/main.dir/clean:
 # Target rules for target CMakeFiles/packet_recv.dir
 
 # All Build rule for target.
-CMakeFiles/packet_recv.dir/all: CMakeFiles/sketch_operations.dir/all
 CMakeFiles/packet_recv.dir/all: CMakeFiles/packet_utils.dir/all
+CMakeFiles/packet_recv.dir/all: CMakeFiles/sketch_operations.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=3,4 "Built target packet_recv"

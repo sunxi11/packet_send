@@ -3,6 +3,20 @@
   <component name="PublishConfigData" autoUpload="Always" serverName="dpu-soc-root" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" compareModeInSync="TEXT">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
+      <paths name="Remote dpu Host (60200640-2f24-409c-8ea3-fe9d67ad9049)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.X1iUZGfgDu" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20-root" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc-root" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
       <paths name="Remote dpu soc (26d8e82e-e33d-4b18-8d63-501f234e199e)">
         <serverdata>
           <mappings>
