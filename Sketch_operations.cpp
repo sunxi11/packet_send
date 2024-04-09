@@ -9,13 +9,18 @@
 #include <map>
 #include <random>
 #include <stdint.h>
-#include <functional>
 
 #include "packet_utils.h"
 #include "Sketch_operations.h"
 
 
 
+/**
+ * @brief  calculates the maximum value of a specific portion of sketch data
+ * @param data
+ * @param key
+ * @return
+ */
 uint32_t operator_max(recv_data &data, uint32_t key){
     uint32_t max = 0;
     for(auto &i : data){
@@ -39,7 +44,6 @@ uint32_t operator_min(recv_data &data, uint32_t key){
     }
     return min;
 }
-
 
 /**
  * @brief  calculates the sum of a specific portion of sketch data
@@ -95,11 +99,6 @@ std::unique_ptr<std::unique_ptr<uint32_t[]>[]> operator_decode(recv_data &data){
 
 
 
-////    for (auto &i : data_map_array) {
-////        Sketch_data sketch_data(i);
-////        this->data.push_back(sketch_data);
-////    }
-//}
 
 /**
  * @brief  locates a specific portion of sketch data with respect to user-specified conditions
@@ -111,15 +110,16 @@ std::unique_ptr<std::unique_ptr<uint32_t[]>[]> operator_decode(recv_data &data){
 recv_data operator_filter(recv_data &data, bool (*condition)(std::pair<uint32_t, uint32_t>))
 {
     recv_data res;
-    auto resIt = res.begin();
-    for (auto &map : data)
+    std::map<uint32_t, uint32_t> map;
+    for (int i = 0; i < data.size(); i++)
     {
-        for (auto it = map.begin(); it != map.end(); ){
-            if(condition(*it)){
-                (*resIt).insert(*it);
+        map = data[i];
+        for (auto & it : map){
+            if(condition(it)){
+                map.insert(it);
             }
         }
-        ++resIt;
+        res[i] = map;
     }
     return res;
 }
@@ -145,20 +145,3 @@ recv_data operator_merge(const std::vector<recv_data>& sources){
     }
     return res;
 }
-
-
-
-
-
-
-
-
-//int main(){
-//
-//
-//
-//
-//    return 0;
-//}
-
-
