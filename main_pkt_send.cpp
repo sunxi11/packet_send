@@ -51,7 +51,7 @@
 #include <openssl/sha.h>
 #include "packet_utils.h"
 
-//TODO 发送的数据包有问题
+//-a 0000:5e:00.0 -l 0
 
 struct rte_mempool *mbuf_pool;
 

@@ -64,7 +64,7 @@
 #define _WRS_PACK_ALIGN(x) __attribute__((packed, aligned(x)))
 #define ARRAY_SIZE 65536
 
-
+//-a auxiliary/mlx5_core.sf.2 -l 0-1
 
 static const struct rte_eth_conf port_conf_default = {
     .rxmode = {
@@ -221,7 +221,7 @@ static int packet_recv_process(void *arg){
 
 
     if(core_id == 1){
-        std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         test_operation(nullptr);
         return 0;
     }
