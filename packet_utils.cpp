@@ -24,6 +24,13 @@ std::uniform_int_distribution<uint32_t> disIP(0, UINT32_MAX);
 std::uniform_int_distribution<uint16_t> disPort(1024, UINT16_MAX); // 通常使用1024以上的端口号
 std::uniform_int_distribution<uint8_t> disProtocol(6, 17); // TCP(6) 或 UDP(17)
 
+/**
+ * @brief 将数组转换为recv_data
+ * @param raw_array
+ * @param totol_num
+ * @param Recv_data
+ * @return void
+ */
 void array_to_recv_data(int *raw_array, uint32_t totol_num, recv_data &Recv_data){
     uint32_t col, colum;
     for(int i = 0; i < totol_num; i++){
