@@ -44,15 +44,6 @@ int recv_buf[ARRAY_NUM * ARRAY_SIZE + 1000] = {0};
 
 recv_data DataMap_array;
 
-uint64_t get_time()
-{
-    struct timespec time1 = {0, 0};
-    clock_gettime(CLOCK_THREAD_CPUTIME_ID, &time1);
-    uint64_t ns = time1.tv_sec * 1000000000 + time1.tv_nsec;
-
-    return ns;
-}
-
 int test_operation(void *){
     uint32_t tem_max = 0, tem_max2 = 0;
     std::cout << "start to process data" << std::endl;
@@ -75,11 +66,11 @@ int test_operation(void *){
 static int packet_recv_process(int server_fd){
     uint32_t offset = 0;
     ssize_t ret;
-
-
     while (true){
         if(offset >= ARRAY_NUM * ARRAY_SIZE){
             offset = 0;
+            std::thread array2recvdata(array_to_recv_data,recv_buf, ARRAY_NUM * ARRAY_SIZE, std::ref(DataMap_array));
+            array2recvdata.join();
             std::cout << "update array" << std::endl;
         }
 
@@ -135,8 +126,10 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    std::thread test_thread(test_operation, nullptr);
     std::thread recv_thread(packet_recv_process, server_fd);
     recv_thread.join();
+    test_thread.join();
 
 
 

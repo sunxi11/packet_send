@@ -17,7 +17,8 @@
 
 #include "packet_utils.h"
 
-typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
+
+
 
 uint32_t operator_min(recv_data &data, uint32_t key);
 uint32_t operator_max(recv_data &data, uint32_t key);

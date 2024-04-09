@@ -11,6 +11,7 @@
 #include <cstring>
 #include <array>
 
+
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
 
@@ -24,7 +25,7 @@
 #define MAX_ARRAY_NUM 8
 #define MAX_CORES 40
 
-
+typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
 extern int array[ARRAY_NUM][ARRAY_SIZE];
 
 typedef struct
@@ -53,7 +54,7 @@ uint64_t rdtsc();
 five_tuble get_random_flow();
 std::array<uint32_t, MAX_ARRAY_NUM> hashNetworkFlowTuple(const five_tuble & flow);
 void update_flow();
-
+void array_to_recv_data(int *, uint32_t totol_num, recv_data &Recv_data);
 
 
 

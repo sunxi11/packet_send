@@ -7,9 +7,9 @@
 #include <cstring>
 #include <random>
 #include <iostream>
-
 #include <openssl/sha.h>
 
+#include "Sketch_operations.h"
 #include "packet_utils.h"
 
 
@@ -24,6 +24,14 @@ std::uniform_int_distribution<uint32_t> disIP(0, UINT32_MAX);
 std::uniform_int_distribution<uint16_t> disPort(1024, UINT16_MAX); // 通常使用1024以上的端口号
 std::uniform_int_distribution<uint8_t> disProtocol(6, 17); // TCP(6) 或 UDP(17)
 
+void array_to_recv_data(int *raw_array, uint32_t totol_num, recv_data &Recv_data){
+    uint32_t col, colum;
+    for(int i = 0; i < totol_num; i++){
+        col = (i / ARRAY_SIZE) % ARRAY_NUM;
+        colum = i % ARRAY_SIZE;
+        Recv_data[col][colum] = raw_array[i];
+    }
+}
 
 uint64_t rdtsc()
 {
