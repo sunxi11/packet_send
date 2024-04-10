@@ -45,10 +45,10 @@ set(rdma_libs
 add_executable(main main.cpp)
 target_link_libraries(main packet_utils)
 
-add_executable(packet_recv ow_packet_recv.cpp simplest_client.cpp)
+add_executable(packet_recv ow_packet_recv.cpp rdma_client.cpp)
 target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
-add_executable(packet_send ow_packet_send.cpp simplest_server.cpp)
+add_executable(packet_send ow_packet_send.cpp rdma_server.cpp)
 target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
 add_executable(ibinfo get_ibinfo.cpp)
