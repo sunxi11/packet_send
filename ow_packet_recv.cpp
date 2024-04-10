@@ -14,6 +14,7 @@
 
 #include "include/packet_utils.h"
 #include "include/Sketch_operations.h"
+#include "include/rdma-utils.h"
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
@@ -104,22 +105,22 @@ int main(int argc, char *argv[])
     }
     const char* server_ip = argv[1];
 
-    //连接服务器
-    int client = socket(AF_INET, SOCK_DGRAM, 0);
-    if(client < 0){
-        std::cerr << "socket error: " << strerror(errno) << std::endl;
-        return -1;
-    }
+    char *start_buf, *rdma_buf;
+    start_buf = (char *)malloc(1000);
+    rdma_buf = (char *)malloc(1000);
 
-    struct sockaddr_in address;
-    address.sin_family = AF_INET;
-    address.sin_addr.s_addr = inet_addr(server_ip);
-    address.sin_port = htons(8811);
+    strcpy(start_buf, "hello world form client");
+    auto *client = new simple_client(server_ip, 1245, start_buf, 1000, rdma_buf, 1000);
+    client->start();
+
+    client->rdma_read();
+
+    client->rdma_write();
+
+    client->rdma_read();
 
 
     std::thread test_thread(test_operation, nullptr);
-    std::thread recv_thread(packet_recv_process, client, std::ref(address));
-    recv_thread.join();
     test_thread.join();
 
 

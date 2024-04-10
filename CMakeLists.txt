@@ -11,8 +11,15 @@ find_package(PkgConfig REQUIRED)
 pkg_search_module(DPDK REQUIRED libdpdk)
 find_package(OpenSSL REQUIRED)
 
+pkg_search_module(RDMA REQUIRED librdmacm)
+pkg_search_module(IBVERBS REQUIRED libibverbs)
 
+include_directories(${IBVERBS_INCLUDE_DIRS})
+include_directories(${RDMA_INCLUDE_DIRS})
 include_directories(${DPDK_INCLUDE_DIRS})
+
+link_directories(${IBVERBS_LIBRARY_DIRS})
+link_directories(${RDMA_LIBRARY_DIRS})
 link_directories(${DPDK_LIBRARY_DIRS})
 
 # 添加库
@@ -27,24 +34,22 @@ add_library(rdmacm_tools STATIC
         common.c
 )
 
+set(rdma_libs
+        ibverbs
+        rdmacm
+        rdmacm_tools
+        )
 
 
 # 添加可执行文件
 add_executable(main main.cpp)
 target_link_libraries(main packet_utils)
 
-add_executable(packet_recv ow_packet_recv.cpp)
-target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils sketch_operations pthread)
+add_executable(packet_recv ow_packet_recv.cpp simplest_client.cpp)
+target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
-add_executable(packet_send ow_packet_send.cpp)
-target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operations pthread)
-
-
-add_executable(simple_client simplest_client.cpp )
-target_link_libraries(simple_client rdmacm ibverbs rdmacm_tools pthread)
-
-add_executable(simple_server simplest_server.cpp )
-target_link_libraries(simple_server rdmacm ibverbs rdmacm_tools pthread)
+add_executable(packet_send ow_packet_send.cpp simplest_server.cpp)
+target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
 add_executable(ibinfo get_ibinfo.cpp)
-target_link_libraries(ibinfo rdmacm ibverbs rdmacm_tools pthread)
+target_link_libraries(ibinfo pthread ${rdma_libs})

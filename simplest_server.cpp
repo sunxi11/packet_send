@@ -409,25 +409,3 @@ void simple_server::start() {
 }
 
 
-int main() {
-//    char *start_buf = (char *)malloc(32);
-//    char *rdma_buf = (char *)malloc(32);
-
-    char *start_buf, *rdma_buf;
-
-    start_buf = (char *)malloc(1000);
-    rdma_buf = (char *)malloc(1000);
-
-    strcpy(start_buf, "hello world form server");
-
-
-    simple_server *server = new simple_server("10.0.0.5", 1245, start_buf, 1000, rdma_buf, 1000);
-    server->start();
-//    server->rdma_read();
-
-
-
-
-    while (1){}
-};
-
