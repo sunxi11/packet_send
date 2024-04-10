@@ -1,5 +1,4 @@
-#include <stdio.h>
-#include <stdarg.h>
+
 #include <errno.h>
 #include <getopt.h>
 #include <signal.h>
@@ -26,8 +25,8 @@
 
 //-a 0000:5e:00.0 -l 0
 
-
 struct rte_mempool *mbuf_pool;
+
 
 
 uint32_t num_rx_queues;
@@ -104,7 +103,7 @@ void handle_listen_socket(int server_fd){
                     }
                     continue;
                 }
-                ret = send(events[i].data.fd, (&array[0][0] + offset), sizeof(*(&array[0][0] + offset)), 0);
+                ret = send(events[i].data.fd, (&array[0][0] + offset), sizeof(*(&array[0][0] + offset)) * UM_SEND_BATCH, 0);
                 if(ret < 0){
                     std::cerr << "send error: " << strerror(errno) << std::endl;
                     if(errno != EAGAIN && errno != EWOULDBLOCK){

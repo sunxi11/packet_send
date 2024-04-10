@@ -10,7 +10,7 @@
 #include <vector>
 #include <cstring>
 #include <array>
-
+#include <map>
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
@@ -24,6 +24,7 @@
 #define ARRAY_NUM 4
 #define MAX_ARRAY_NUM 8
 #define MAX_CORES 40
+#define UM_SEND_BATCH 256
 
 typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
 extern int array[ARRAY_NUM][ARRAY_SIZE];
