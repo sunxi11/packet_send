@@ -1,13 +1,6 @@
-
-#include <errno.h>
-#include <getopt.h>
-#include <signal.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cerrno>
+#include <cstring>
 #include <arpa/inet.h>
-#include <time.h>
-
 #include <iostream>
 #include <vector>
 #include <memory>
