@@ -63,9 +63,10 @@ int test_operation(void *){
 }
 
 
-static int packet_recv_process(int server_fd){
+static int packet_recv_process(int client_fd, struct sockaddr_in &address){
     uint32_t offset = 0;
     ssize_t ret;
+    socklen_t client_address_len = sizeof(address);
     while (true){
         if(offset >= ARRAY_NUM * ARRAY_SIZE){
             offset = 0;
@@ -74,13 +75,13 @@ static int packet_recv_process(int server_fd){
             std::cout << "update array" << std::endl;
         }
 
-        ret = send(server_fd, &offset, sizeof(offset), 0);
+        ret = sendto(client_fd, &offset, sizeof(offset), 0, (struct sockaddr *)&address, client_address_len);
         if(ret < 0){
             std::cerr << "send error: " << strerror(errno) << std::endl;
             return -1;
         }
 
-        ret = recv(server_fd, recv_buf + offset, sizeof(recv_buf), 0);
+        ret = recvfrom(client_fd, recv_buf + offset, sizeof(recv_buf), 0, (struct sockaddr *)&address, &client_address_len);
         if(ret < 0){
             std::cerr << "recv error: " << strerror(errno) << std::endl;
             return -1;
@@ -110,8 +111,8 @@ int main(int argc, char *argv[])
     const char* server_ip = argv[1];
 
     //连接服务器
-    int server_fd = socket(AF_INET, SOCK_STREAM, 0);
-    if(server_fd < 0){
+    int client = socket(AF_INET, SOCK_DGRAM, 0);
+    if(client < 0){
         std::cerr << "socket error: " << strerror(errno) << std::endl;
         return -1;
     }
@@ -121,13 +122,9 @@ int main(int argc, char *argv[])
     address.sin_addr.s_addr = inet_addr(server_ip);
     address.sin_port = htons(8811);
 
-    if (connect(server_fd, (struct sockaddr *)&address, sizeof(address)) < 0) {
-        std::cerr << "Connection Failed" << std::endl;
-        return -1;
-    }
 
     std::thread test_thread(test_operation, nullptr);
-    std::thread recv_thread(packet_recv_process, server_fd);
+    std::thread recv_thread(packet_recv_process, client, std::ref(address));
     recv_thread.join();
     test_thread.join();
 

@@ -81,29 +81,32 @@ void handle_listen_socket(int server_fd){
         int event_num = epoll_wait(epoll_fd, events, 10, -1);
         for(int i = 0; i < event_num; i++){
             if(events[i].data.fd == server_fd){
-                struct sockaddr_in client_address;
-                socklen_t client_address_len = sizeof(client_address);
-                int client_fd = accept(server_fd, (struct sockaddr *)&client_address, &client_address_len);
-                setNonBlocking(client_fd);
-                event.data.fd = client_fd;
-                epoll_ctl(epoll_fd, EPOLL_CTL_ADD, client_fd, &event);
-                std::cout << "new connection" << std::endl;
-
-            } else{
+//                struct sockaddr_in client_address;
+//                socklen_t client_address_len = sizeof(client_address);
+//                int client_fd = accept(server_fd, (struct sockaddr *)&client_address, &client_address_len);
+//                setNonBlocking(client_fd);
+//                event.data.fd = client_fd;
+//                epoll_ctl(epoll_fd, EPOLL_CTL_ADD, client_fd, &event);
+//                std::cout << "new connection" << std::endl;
+//
+//            } else{
                 //不是连接请求，可能是客户端发送数据
                 //类似于TCP ack 的机制，客户端告诉服务器期望的 offset
                 ssize_t ret;
                 uint32_t offset;
-                ret = recv(events[i].data.fd, &offset, sizeof(offset), 0);
+                struct sockaddr_in client_address;
+                socklen_t client_address_len = sizeof(client_address);
+
+                ret = recvfrom(events[i].data.fd, &offset, sizeof(offset), 0, (struct sockaddr *)&client_address, &client_address_len);
                 if(ret <= 0){ // ret==0 表示客户端关闭连接，ret<0 需要根据错误代码判断是否关闭
                     if(ret == 0 || (ret < 0 && errno != EAGAIN && errno != EWOULDBLOCK)){
                         std::cout << (ret == 0 ? "Client closed connection\n" : "Recv error\n");
-                        close(events[i].data.fd); // 关闭套接字
                         epoll_ctl(epoll_fd, EPOLL_CTL_DEL, events[i].data.fd, &event); // 从epoll中移除
                     }
                     continue;
                 }
-                ret = send(events[i].data.fd, (&array[0][0] + offset), sizeof(*(&array[0][0] + offset)) * UM_SEND_BATCH, 0);
+                ret = sendto(events[i].data.fd, (&array[0][0] + offset), sizeof(*(&array[0][0] + offset)) * UM_SEND_BATCH, 0,
+                             (struct sockaddr *)&client_address, client_address_len);
                 if(ret < 0){
                     std::cerr << "send error: " << strerror(errno) << std::endl;
                     if(errno != EAGAIN && errno != EWOULDBLOCK){
@@ -142,7 +145,7 @@ int main(int argc, char *argv[])
 
     std::thread recv_thread(simulate_recv);
 
-    if((server_fd = socket(AF_INET, SOCK_STREAM, 0)) < 0){
+    if((server_fd = socket(AF_INET, SOCK_DGRAM, 0)) < 0){
         std::cerr << "Socket creation failed" << std::endl;
         return -1;
     }
@@ -154,10 +157,6 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    if (listen(server_fd, 10) < 0) {
-        std::cerr << "listen" << std::endl;
-        return -1;
-    }
     setNonBlocking(server_fd);
     std::thread hander_connected(handle_listen_socket, server_fd);
 
