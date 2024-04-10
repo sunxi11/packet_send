@@ -16,7 +16,7 @@
 
 #define SQ_DEPTH 16
 
-void simple_server::setup_buffer() {
+void rdma_server::setup_buffer() {
     int ret;
     recv_mr = ibv_reg_mr(pd, &recv_buf, sizeof(struct rdma_info),
                          IBV_ACCESS_LOCAL_WRITE);
@@ -75,7 +75,7 @@ void simple_server::setup_buffer() {
     rdma_sq_wr.send_flags = IBV_SEND_SIGNALED;
 }
 
-void simple_server::cq_thread() {
+void rdma_server::cq_thread() {
     struct ibv_cq *ev_cq;
     void *ev_ctx;
     int ret;
@@ -127,7 +127,7 @@ void simple_server::cq_thread() {
     }
 }
 
-void simple_server::rdma_read() {
+void rdma_server::rdma_read() {
     if(!SERVER_GET_REMOTE_ADDR){
         std::cout << "error" << std::endl;
         exit(1);
@@ -158,7 +158,7 @@ void simple_server::rdma_read() {
     }
 }
 
-void simple_server::rdma_write() {
+void rdma_server::rdma_write() {
     struct ibv_send_wr *bad_wr;
     int ret;
 
@@ -184,7 +184,7 @@ void simple_server::rdma_write() {
     }
 }
 
-void simple_server::server_recv_handler(struct ibv_wc& wc) {
+void rdma_server::server_recv_handler(struct ibv_wc& wc) {
     if(wc.byte_len != sizeof(recv_buf)){
         std::cout << "接受错误" << std::endl;
         exit(1);
@@ -203,7 +203,7 @@ void simple_server::server_recv_handler(struct ibv_wc& wc) {
 
 }
 
-void simple_server::cm_thread(){
+void rdma_server::cm_thread(){
     struct rdma_cm_event *event;
     struct rdma_cm_id *id;
     while (true){
@@ -251,7 +251,7 @@ void simple_server::cm_thread(){
     }
 }
 
-void simple_server::bindaddr() {
+void rdma_server::bindaddr() {
     int ret;
     struct addrinfo *res;
     sin = (struct sockaddr_storage*)malloc(sizeof(struct sockaddr_storage));
@@ -296,7 +296,7 @@ void simple_server::bindaddr() {
     while (state != REQUEST_GET) {}
 }
 
-void simple_server::start() {
+void rdma_server::start() {
     int ret;
     struct ibv_recv_wr *bad_wr;
 

@@ -195,32 +195,6 @@ packet_send/fast:
 .PHONY : packet_send/fast
 
 #=============================================================================
-# Target rules for targets named simple_client
-
-# Build rule for target.
-simple_client: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 simple_client
-.PHONY : simple_client
-
-# fast build rule for target.
-simple_client/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/build
-.PHONY : simple_client/fast
-
-#=============================================================================
-# Target rules for targets named simple_server
-
-# Build rule for target.
-simple_server: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 simple_server
-.PHONY : simple_server
-
-# fast build rule for target.
-simple_server/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/build
-.PHONY : simple_server/fast
-
-#=============================================================================
 # Target rules for targets named ibinfo
 
 # Build rule for target.
@@ -406,7 +380,7 @@ simplest_client.o: simplest_client.cpp.o
 
 # target to build an object file
 simplest_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.o
 .PHONY : simplest_client.cpp.o
 
 simplest_client.i: simplest_client.cpp.i
@@ -414,7 +388,7 @@ simplest_client.i: simplest_client.cpp.i
 
 # target to preprocess a source file
 simplest_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.i
 .PHONY : simplest_client.cpp.i
 
 simplest_client.s: simplest_client.cpp.s
@@ -422,7 +396,7 @@ simplest_client.s: simplest_client.cpp.s
 
 # target to generate assembly for a file
 simplest_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.s
 .PHONY : simplest_client.cpp.s
 
 simplest_server.o: simplest_server.cpp.o
@@ -430,7 +404,7 @@ simplest_server.o: simplest_server.cpp.o
 
 # target to build an object file
 simplest_server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.o
 .PHONY : simplest_server.cpp.o
 
 simplest_server.i: simplest_server.cpp.i
@@ -438,7 +412,7 @@ simplest_server.i: simplest_server.cpp.i
 
 # target to preprocess a source file
 simplest_server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.i
 .PHONY : simplest_server.cpp.i
 
 simplest_server.s: simplest_server.cpp.s
@@ -446,7 +420,7 @@ simplest_server.s: simplest_server.cpp.s
 
 # target to generate assembly for a file
 simplest_server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.s
 .PHONY : simplest_server.cpp.s
 
 # Help Target
@@ -463,8 +437,6 @@ help:
 	@echo "... packet_send"
 	@echo "... packet_utils"
 	@echo "... rdmacm_tools"
-	@echo "... simple_client"
-	@echo "... simple_server"
 	@echo "... sketch_operations"
 	@echo "... Sketch_operations.o"
 	@echo "... Sketch_operations.i"

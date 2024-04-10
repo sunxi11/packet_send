@@ -83,7 +83,6 @@ static int packet_recv_process(int client_fd, struct sockaddr_in &address){
         }
 
         offset += ret / sizeof(int);
-//        std::cout << "recv data: " << offset << std::endl;
 
     }
 
@@ -110,17 +109,19 @@ int main(int argc, char *argv[])
     rdma_buf = (char *)malloc(1000);
 
     strcpy(start_buf, "hello world form client");
-    auto *client = new simple_client(server_ip, 1245, start_buf, 1000, rdma_buf, 1000);
+    auto *client = new rdma_client(server_ip, 1245, start_buf, 1000, recv_buf, sizeof(recv_buf));
     client->start();
-
-    client->rdma_read();
-
-    client->rdma_write();
-
-    client->rdma_read();
 
 
     std::thread test_thread(test_operation, nullptr);
+
+    while (1){
+//        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        client->rdma_read();
+        array_to_recv_data(recv_buf, ARRAY_NUM * ARRAY_SIZE, DataMap_array);
+    }
+
+
     test_thread.join();
 
 

@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/packet_send.dir/ow_packet_send.cpp.o"
+  "CMakeFiles/packet_send.dir/simplest_server.cpp.o"
   "packet_send"
   "packet_send.pdb"
 )

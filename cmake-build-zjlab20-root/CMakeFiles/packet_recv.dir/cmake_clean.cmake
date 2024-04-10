@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.o"
+  "CMakeFiles/packet_recv.dir/simplest_client.cpp.o"
   "packet_recv"
   "packet_recv.pdb"
 )

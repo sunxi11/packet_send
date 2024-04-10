@@ -1,4 +1,6 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/zju/sunxi/turbomon/packet_send -B /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root
+-- Checking for one of the modules 'librdmacm'
+-- Checking for one of the modules 'libibverbs'
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root

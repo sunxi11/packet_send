@@ -187,7 +187,7 @@ CMakeFiles/packet_utils.dir/packet_utils.cpp.o: \
  /usr/include/aarch64-linux-gnu/openssl/opensslconf.h \
  /usr/include/aarch64-linux-gnu/openssl/configuration.h \
  /usr/include/openssl/opensslv.h /usr/include/openssl/e_os2.h \
- /home/ubuntu/sunxi/packet_send/Sketch_operations.h \
+ /home/ubuntu/sunxi/packet_send/include/Sketch_operations.h \
  /usr/include/c++/11/unordered_map \
  /usr/include/c++/11/ext/aligned_buffer.h \
  /usr/include/c++/11/bits/hashtable.h \
@@ -221,4 +221,5 @@ CMakeFiles/packet_utils.dir/packet_utils.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /home/ubuntu/sunxi/packet_send/packet_utils.h
+ /home/ubuntu/sunxi/packet_send/include/packet_utils.h \
+ /home/ubuntu/sunxi/packet_send/include/packet_utils.h

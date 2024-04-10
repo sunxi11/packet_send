@@ -124,19 +124,6 @@ ibinfo/fast:
 .PHONY : ibinfo/fast
 
 #=============================================================================
-# Target rules for targets named simple_server
-
-# Build rule for target.
-simple_server: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 simple_server
-.PHONY : simple_server
-
-# fast build rule for target.
-simple_server/fast:
-	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/build
-.PHONY : simple_server/fast
-
-#=============================================================================
 # Target rules for targets named packet_send
 
 # Build rule for target.
@@ -187,19 +174,6 @@ rdmacm_tools: cmake_check_build_system
 rdmacm_tools/fast:
 	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/build
 .PHONY : rdmacm_tools/fast
-
-#=============================================================================
-# Target rules for targets named simple_client
-
-# Build rule for target.
-simple_client: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 simple_client
-.PHONY : simple_client
-
-# fast build rule for target.
-simple_client/fast:
-	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/build
-.PHONY : simple_client/fast
 
 #=============================================================================
 # Target rules for targets named sketch_operations
@@ -422,7 +396,7 @@ simplest_client.o: simplest_client.cpp.o
 
 # target to build an object file
 simplest_client.cpp.o:
-	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.o
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.o
 .PHONY : simplest_client.cpp.o
 
 simplest_client.i: simplest_client.cpp.i
@@ -431,7 +405,7 @@ simplest_client.i: simplest_client.cpp.i
 
 # target to preprocess a source file
 simplest_client.cpp.i:
-	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.i
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.i
 .PHONY : simplest_client.cpp.i
 
 simplest_client.s: simplest_client.cpp.s
@@ -440,7 +414,7 @@ simplest_client.s: simplest_client.cpp.s
 
 # target to generate assembly for a file
 simplest_client.cpp.s:
-	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.s
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.s
 .PHONY : simplest_client.cpp.s
 
 simplest_server.o: simplest_server.cpp.o
@@ -449,7 +423,7 @@ simplest_server.o: simplest_server.cpp.o
 
 # target to build an object file
 simplest_server.cpp.o:
-	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.o
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.o
 .PHONY : simplest_server.cpp.o
 
 simplest_server.i: simplest_server.cpp.i
@@ -458,7 +432,7 @@ simplest_server.i: simplest_server.cpp.i
 
 # target to preprocess a source file
 simplest_server.cpp.i:
-	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.i
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.i
 .PHONY : simplest_server.cpp.i
 
 simplest_server.s: simplest_server.cpp.s
@@ -467,7 +441,7 @@ simplest_server.s: simplest_server.cpp.s
 
 # target to generate assembly for a file
 simplest_server.cpp.s:
-	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.s
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.s
 .PHONY : simplest_server.cpp.s
 
 # Help Target
@@ -479,12 +453,10 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... ibinfo"
-	@echo "... simple_server"
 	@echo "... packet_send"
 	@echo "... packet_recv"
 	@echo "... main"
 	@echo "... rdmacm_tools"
-	@echo "... simple_client"
 	@echo "... sketch_operations"
 	@echo "... packet_utils"
 	@echo "... Sketch_operations.o"

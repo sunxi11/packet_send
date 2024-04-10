@@ -20,7 +20,7 @@
 
 
 
-simple_client::simple_client(const char *ip, int port, void *start_buf, int start_size, void *rdma_buf, int rdma_size) {
+rdma_client::rdma_client(const char *ip, int port, void *start_buf, int start_size, void *rdma_buf, int rdma_size) {
     this->ip = ip;
     this->port = htobe16(port);
     this->start_buf = (char *)start_buf;
@@ -29,7 +29,7 @@ simple_client::simple_client(const char *ip, int port, void *start_buf, int star
     this->rdma_size = rdma_size;
 }
 
-void simple_client::bindaddr(){
+void rdma_client::bindaddr(){
     struct addrinfo *res;
     int ret;
     this->sin = (struct sockaddr_storage *)malloc(sizeof(struct sockaddr_storage));
@@ -63,7 +63,7 @@ void simple_client::bindaddr(){
     while (state != ROUTE_RESOLVED){}
 }
 
-void simple_client::cm_thread(){
+void rdma_client::cm_thread(){
 
     struct rdma_cm_event *event;
     while (true){
@@ -104,7 +104,7 @@ void simple_client::cm_thread(){
 
 }
 
-void simple_client::recv_handler(struct ibv_wc &wc){
+void rdma_client::recv_handler(struct ibv_wc &wc){
     if(wc.byte_len != sizeof(recv_buf)){
         std::cout << "接受错误" << std::endl;
         exit(1);
@@ -136,7 +136,7 @@ void simple_client::recv_handler(struct ibv_wc &wc){
 
 }
 
-void simple_client::cq_thread() {
+void rdma_client::cq_thread() {
     struct ibv_cq *ev_cq;
     void *ev_ctx;
     int ret;
@@ -192,7 +192,7 @@ void simple_client::cq_thread() {
 
 }
 
-void simple_client::rdma_read() {
+void rdma_client::rdma_read() {
     if(!GET_RDMA_ADDR){
         std::cout << "error" << std::endl;
         exit(1);
@@ -225,7 +225,7 @@ void simple_client::rdma_read() {
     std::cout << "read data: " << rdma_buf << std::endl;
 }
 
-void simple_client::rdma_write() {
+void rdma_client::rdma_write() {
 
     RDMA_WRITE_COMPLETE = false;
     struct ibv_send_wr *bad_wr;
@@ -252,10 +252,10 @@ void simple_client::rdma_write() {
         exit(1);
     }
 
-    while (RDMA_WRITE_COMPLETE == false){}
+//    while (RDMA_WRITE_COMPLETE == false){}
 }
 
-void simple_client::setup_buffer() {
+void rdma_client::setup_buffer() {
     int ret;
     recv_mr = ibv_reg_mr(pd, &recv_buf, sizeof(struct rdma_info),
                                IBV_ACCESS_LOCAL_WRITE);
@@ -314,7 +314,7 @@ void simple_client::setup_buffer() {
     rdma_sq_wr.send_flags = IBV_SEND_SIGNALED;
 }
 
-void simple_client::start() {
+void rdma_client::start() {
     int ret;
     struct rdma_cm_id *id;
     cm_channel = create_first_event_channel();

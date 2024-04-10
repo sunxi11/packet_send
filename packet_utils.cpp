@@ -45,7 +45,6 @@ uint64_t rdtsc()
     return 0;
 }
 
-
 uint64_t get_time()
 {
     struct timespec time1 = {0, 0};

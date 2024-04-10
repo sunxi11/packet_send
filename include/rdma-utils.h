@@ -27,9 +27,9 @@ enum ClientState{
     CONNECTED,
 };
 
-class simple_client{
+class rdma_client{
 public:
-    simple_client(const char *ip, int port, void *start_buf, int start_size, void *rdma_buf, int rdma_size);
+    rdma_client(const char *ip, int port, void *start_buf, int start_size, void *rdma_buf, int rdma_size);
     void init();
     void start();
     void rdma_read();
@@ -98,9 +98,9 @@ enum ServerState{
 };
 
 
-class simple_server{
+class rdma_server{
 public:
-    simple_server(const char *ip, int port, void *start_buf, int start_size, void *rdma_buf, int rdma_size){
+    rdma_server(const char *ip, int port, void *start_buf, int start_size, void *rdma_buf, int rdma_size){
         this->ip = ip;
         this->port = htobe16(port);
         this->start_buf = (char *)start_buf;

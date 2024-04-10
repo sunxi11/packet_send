@@ -24,6 +24,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -50,6 +51,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -76,6 +78,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -102,6 +105,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -128,6 +132,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -154,6 +159,7 @@
 				<Option type="2"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -180,6 +186,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -206,6 +213,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -232,6 +240,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -258,6 +267,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -284,6 +294,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -310,6 +321,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -329,110 +341,6 @@
 					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="simple_client">
-				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
-					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/aarch64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_client"/>
-					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="simple_client/fast">
-				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_client" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
-					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/aarch64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_client/fast"/>
-					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="simple_server">
-				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_server" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
-					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/aarch64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_server"/>
-					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
-			<Target title="simple_server/fast">
-				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_server" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
-				<Option object_output="./"/>
-				<Option type="1"/>
-				<Option compiler="gcc"/>
-				<Compiler>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
-					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
-					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/usr/include/c++/11"/>
-					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
-					<Add directory="/usr/include/c++/11/backward"/>
-					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
-					<Add directory="/usr/local/include"/>
-					<Add directory="/usr/include/aarch64-linux-gnu"/>
-					<Add directory="/usr/include"/>
-				</Compiler>
-				<MakeCommands>
-					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_server/fast"/>
-					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
-				</MakeCommands>
-			</Target>
 			<Target title="ibinfo">
 				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/ibinfo" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
@@ -440,6 +348,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -466,6 +375,7 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
@@ -534,10 +444,10 @@
 			<Option target="packet_utils"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/simplest_client.cpp">
-			<Option target="simple_client"/>
+			<Option target="packet_recv"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/simplest_server.cpp">
-			<Option target="simple_server"/>
+			<Option target="packet_send"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

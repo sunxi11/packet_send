@@ -407,6 +407,12 @@ pkgcfg_lib_DPDK_rte_timer:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/libr
 pkgcfg_lib_DPDK_rte_vhost:FILEPATH=/opt/mellanox/dpdk/lib/aarch64-linux-gnu/librte_vhost.so
 
 //Path to a library.
+pkgcfg_lib_IBVERBS_ibverbs:FILEPATH=/home/ubuntu/rdma-core-49.0/build/lib/libibverbs.so
+
+//Path to a library.
+pkgcfg_lib_RDMA_rdmacm:FILEPATH=/home/ubuntu/rdma-core-49.0/build/lib/librdmacm.so
+
+//Path to a library.
 pkgcfg_lib__OPENSSL_crypto:FILEPATH=/usr/lib/aarch64-linux-gnu/libcrypto.so
 
 //Path to a library.
@@ -607,6 +613,41 @@ DPDK_libdpdk_VERSION:INTERNAL=
 FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[/usr/lib/aarch64-linux-gnu/libcrypto.so][/usr/include][c ][v3.0.2()]
 //Details about finding PkgConfig
 FIND_PACKAGE_MESSAGE_DETAILS_PkgConfig:INTERNAL=[/usr/bin/pkg-config][v0.29.2()]
+IBVERBS_CFLAGS:INTERNAL=-I/home/ubuntu/rdma-core-49.0/build/include
+IBVERBS_CFLAGS_I:INTERNAL=
+IBVERBS_CFLAGS_OTHER:INTERNAL=
+IBVERBS_FOUND:INTERNAL=1
+IBVERBS_INCLUDEDIR:INTERNAL=/home/ubuntu/rdma-core-49.0/build/include
+IBVERBS_INCLUDE_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/include
+IBVERBS_LDFLAGS:INTERNAL=-L/home/ubuntu/rdma-core-49.0/build/lib;-libverbs;-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+IBVERBS_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+IBVERBS_LIBDIR:INTERNAL=/home/ubuntu/rdma-core-49.0/build/lib
+IBVERBS_LIBRARIES:INTERNAL=ibverbs
+IBVERBS_LIBRARY_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/lib
+IBVERBS_LIBS:INTERNAL=
+IBVERBS_LIBS_L:INTERNAL=
+IBVERBS_LIBS_OTHER:INTERNAL=
+IBVERBS_LIBS_PATHS:INTERNAL=
+IBVERBS_MODULE_NAME:INTERNAL=libibverbs
+IBVERBS_PREFIX:INTERNAL=
+IBVERBS_STATIC_CFLAGS:INTERNAL=-I/home/ubuntu/rdma-core-49.0/build/include
+IBVERBS_STATIC_CFLAGS_I:INTERNAL=
+IBVERBS_STATIC_CFLAGS_OTHER:INTERNAL=
+IBVERBS_STATIC_INCLUDE_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/include
+IBVERBS_STATIC_LDFLAGS:INTERNAL=-L/home/ubuntu/rdma-core-49.0/build/lib;-libverbs;-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+IBVERBS_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+IBVERBS_STATIC_LIBDIR:INTERNAL=
+IBVERBS_STATIC_LIBRARIES:INTERNAL=ibverbs
+IBVERBS_STATIC_LIBRARY_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/lib
+IBVERBS_STATIC_LIBS:INTERNAL=
+IBVERBS_STATIC_LIBS_L:INTERNAL=
+IBVERBS_STATIC_LIBS_OTHER:INTERNAL=
+IBVERBS_STATIC_LIBS_PATHS:INTERNAL=
+IBVERBS_VERSION:INTERNAL=1.14.49.0
+IBVERBS_libibverbs_INCLUDEDIR:INTERNAL=
+IBVERBS_libibverbs_LIBDIR:INTERNAL=
+IBVERBS_libibverbs_PREFIX:INTERNAL=
+IBVERBS_libibverbs_VERSION:INTERNAL=
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
 OPENSSL_CRYPTO_LIBRARY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: OPENSSL_INCLUDE_DIR
@@ -621,6 +662,41 @@ PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 ProcessorCount_cmd_nproc-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_sysctl
 ProcessorCount_cmd_sysctl-ADVANCED:INTERNAL=1
+RDMA_CFLAGS:INTERNAL=-I/home/ubuntu/rdma-core-49.0/build/include
+RDMA_CFLAGS_I:INTERNAL=
+RDMA_CFLAGS_OTHER:INTERNAL=
+RDMA_FOUND:INTERNAL=1
+RDMA_INCLUDEDIR:INTERNAL=/home/ubuntu/rdma-core-49.0/build/include
+RDMA_INCLUDE_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/include
+RDMA_LDFLAGS:INTERNAL=-L/home/ubuntu/rdma-core-49.0/build/lib;-lrdmacm;-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+RDMA_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+RDMA_LIBDIR:INTERNAL=/home/ubuntu/rdma-core-49.0/build/lib
+RDMA_LIBRARIES:INTERNAL=rdmacm
+RDMA_LIBRARY_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/lib
+RDMA_LIBS:INTERNAL=
+RDMA_LIBS_L:INTERNAL=
+RDMA_LIBS_OTHER:INTERNAL=
+RDMA_LIBS_PATHS:INTERNAL=
+RDMA_MODULE_NAME:INTERNAL=librdmacm
+RDMA_PREFIX:INTERNAL=
+RDMA_STATIC_CFLAGS:INTERNAL=-I/home/ubuntu/rdma-core-49.0/build/include
+RDMA_STATIC_CFLAGS_I:INTERNAL=
+RDMA_STATIC_CFLAGS_OTHER:INTERNAL=
+RDMA_STATIC_INCLUDE_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/include
+RDMA_STATIC_LDFLAGS:INTERNAL=-L/home/ubuntu/rdma-core-49.0/build/lib;-lrdmacm;-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib;-libverbs;-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+RDMA_STATIC_LDFLAGS_OTHER:INTERNAL=-Wl,-rpath,/home/ubuntu/rdma-core-49.0/build/lib
+RDMA_STATIC_LIBDIR:INTERNAL=
+RDMA_STATIC_LIBRARIES:INTERNAL=rdmacm;ibverbs
+RDMA_STATIC_LIBRARY_DIRS:INTERNAL=/home/ubuntu/rdma-core-49.0/build/lib
+RDMA_STATIC_LIBS:INTERNAL=
+RDMA_STATIC_LIBS_L:INTERNAL=
+RDMA_STATIC_LIBS_OTHER:INTERNAL=
+RDMA_STATIC_LIBS_PATHS:INTERNAL=
+RDMA_VERSION:INTERNAL=1.3.49.0
+RDMA_librdmacm_INCLUDEDIR:INTERNAL=
+RDMA_librdmacm_LIBDIR:INTERNAL=
+RDMA_librdmacm_PREFIX:INTERNAL=
+RDMA_librdmacm_VERSION:INTERNAL=
 _OPENSSL_CFLAGS:INTERNAL=
 _OPENSSL_CFLAGS_I:INTERNAL=
 _OPENSSL_CFLAGS_OTHER:INTERNAL=
@@ -658,6 +734,8 @@ _OPENSSL_openssl_PREFIX:INTERNAL=
 _OPENSSL_openssl_VERSION:INTERNAL=
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
 __pkg_config_checked_DPDK:INTERNAL=1
+__pkg_config_checked_IBVERBS:INTERNAL=1
+__pkg_config_checked_RDMA:INTERNAL=1
 __pkg_config_checked__OPENSSL:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_DPDK_rte_acl
 pkgcfg_lib_DPDK_rte_acl-ADVANCED:INTERNAL=1
@@ -763,9 +841,13 @@ pkgcfg_lib_DPDK_rte_telemetry-ADVANCED:INTERNAL=1
 pkgcfg_lib_DPDK_rte_timer-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_DPDK_rte_vhost
 pkgcfg_lib_DPDK_rte_vhost-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_IBVERBS_ibverbs
+pkgcfg_lib_IBVERBS_ibverbs-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: pkgcfg_lib_RDMA_rdmacm
+pkgcfg_lib_RDMA_rdmacm-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto
 pkgcfg_lib__OPENSSL_crypto-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_ssl
 pkgcfg_lib__OPENSSL_ssl-ADVANCED:INTERNAL=1
-prefix_result:INTERNAL=/opt/mellanox/dpdk/lib/aarch64-linux-gnu
+prefix_result:INTERNAL=/home/ubuntu/rdma-core-49.0/build/lib
 

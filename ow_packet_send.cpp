@@ -20,26 +20,12 @@
 
 //-a 0000:5e:00.0 -l 0
 
-struct rte_mempool *mbuf_pool;
-
-
-
-uint32_t num_rx_queues;
-uint32_t num_tx_queues;
-uint32_t num_cores;
 
 
 uint32_t total_num[MAX_CORES] = {};
 uint32_t burst_num[MAX_CORES] = {};
 uint32_t send_offset[MAX_CORES] = {};
 
-// 设置非阻塞socket
-int setNonBlocking(int sockfd) {
-    int flags;
-    if ((flags = fcntl(sockfd, F_GETFL, 0)) == -1)
-        flags = 0;
-    return fcntl(sockfd, F_SETFL, flags | O_NONBLOCK);
-}
 
 void simulate_recv(){
     while (true){
@@ -62,10 +48,6 @@ void print_max(){
 
     }
 }
-
-
-
-
 
 
 int main(int argc, char *argv[])
@@ -92,7 +74,7 @@ int main(int argc, char *argv[])
     strcpy(start_buf, "hello world form server");
 
 
-    auto *server = new simple_server(server_ip, 1245, start_buf, 1000, rdma_buf, 1000);
+    auto *server = new rdma_server(server_ip, 1245, &array[0][0], sizeof(array), rdma_buf, 1000);
     server->start();
 
     recv_thread.join();
