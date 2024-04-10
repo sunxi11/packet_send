@@ -9,8 +9,8 @@
 #include <iostream>
 #include <openssl/sha.h>
 
-#include "Sketch_operations.h"
-#include "packet_utils.h"
+#include "include/Sketch_operations.h"
+#include "include/packet_utils.h"
 
 
 int array[ARRAY_NUM][ARRAY_SIZE];

@@ -12,8 +12,8 @@
 #include <thread>
 #include <list>
 
-#include "packet_utils.h"
-#include "Sketch_operations.h"
+#include "include/packet_utils.h"
+#include "include/Sketch_operations.h"
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024

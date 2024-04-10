@@ -121,6 +121,58 @@
 					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="rdmacm_tools">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/librdmacm_tools.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 rdmacm_tools"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rdmacm_tools/fast">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/librdmacm_tools.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 rdmacm_tools/fast"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="main">
 				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/main" prefix_auto="0" extension_auto="0"/>
 				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
@@ -277,6 +329,162 @@
 					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="simple_client">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_client"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simple_client/fast">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_client" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_client/fast"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simple_server">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_server"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="simple_server/fast">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/simple_server" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 simple_server/fast"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ibinfo">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/ibinfo" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 ibinfo"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="ibinfo/fast">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/ibinfo" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/usr/include/libnl3"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 ibinfo/fast"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
 				<Option type="4"/>
@@ -304,8 +512,20 @@
 		<Unit filename="/home/ubuntu/sunxi/packet_send/Sketch_operations.h">
 			<Option target="sketch_operations"/>
 		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/common.c">
+			<Option target="rdmacm_tools"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/get_ibinfo.cpp">
+			<Option target="ibinfo"/>
+		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/main.cpp">
 			<Option target="main"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/ow_packet_recv.cpp">
+			<Option target="packet_recv"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/ow_packet_send.cpp">
+			<Option target="packet_send"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/packet_utils.cpp">
 			<Option target="packet_utils"/>
@@ -313,11 +533,11 @@
 		<Unit filename="/home/ubuntu/sunxi/packet_send/packet_utils.h">
 			<Option target="packet_utils"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/sunxi/packet_send/um_packet_recv.cpp">
-			<Option target="packet_recv"/>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/simplest_client.cpp">
+			<Option target="simple_client"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/sunxi/packet_send/um_packet_send.cpp">
-			<Option target="packet_send"/>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/simplest_server.cpp">
+			<Option target="simple_server"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>

@@ -111,6 +111,32 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named ibinfo
+
+# Build rule for target.
+ibinfo: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 ibinfo
+.PHONY : ibinfo
+
+# fast build rule for target.
+ibinfo/fast:
+	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/build
+.PHONY : ibinfo/fast
+
+#=============================================================================
+# Target rules for targets named simple_server
+
+# Build rule for target.
+simple_server: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_server
+.PHONY : simple_server
+
+# fast build rule for target.
+simple_server/fast:
+	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/build
+.PHONY : simple_server/fast
+
+#=============================================================================
 # Target rules for targets named packet_send
 
 # Build rule for target.
@@ -148,6 +174,32 @@ main: cmake_check_build_system
 main/fast:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
 .PHONY : main/fast
+
+#=============================================================================
+# Target rules for targets named rdmacm_tools
+
+# Build rule for target.
+rdmacm_tools: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rdmacm_tools
+.PHONY : rdmacm_tools
+
+# fast build rule for target.
+rdmacm_tools/fast:
+	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/build
+.PHONY : rdmacm_tools/fast
+
+#=============================================================================
+# Target rules for targets named simple_client
+
+# Build rule for target.
+simple_client: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 simple_client
+.PHONY : simple_client
+
+# fast build rule for target.
+simple_client/fast:
+	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/build
+.PHONY : simple_client/fast
 
 #=============================================================================
 # Target rules for targets named sketch_operations
@@ -202,6 +254,60 @@ Sketch_operations.cpp.s:
 	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s
 .PHONY : Sketch_operations.cpp.s
 
+common.o: common.c.o
+
+.PHONY : common.o
+
+# target to build an object file
+common.c.o:
+	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/common.c.o
+.PHONY : common.c.o
+
+common.i: common.c.i
+
+.PHONY : common.i
+
+# target to preprocess a source file
+common.c.i:
+	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/common.c.i
+.PHONY : common.c.i
+
+common.s: common.c.s
+
+.PHONY : common.s
+
+# target to generate assembly for a file
+common.c.s:
+	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/common.c.s
+.PHONY : common.c.s
+
+get_ibinfo.o: get_ibinfo.cpp.o
+
+.PHONY : get_ibinfo.o
+
+# target to build an object file
+get_ibinfo.cpp.o:
+	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/get_ibinfo.cpp.o
+.PHONY : get_ibinfo.cpp.o
+
+get_ibinfo.i: get_ibinfo.cpp.i
+
+.PHONY : get_ibinfo.i
+
+# target to preprocess a source file
+get_ibinfo.cpp.i:
+	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/get_ibinfo.cpp.i
+.PHONY : get_ibinfo.cpp.i
+
+get_ibinfo.s: get_ibinfo.cpp.s
+
+.PHONY : get_ibinfo.s
+
+# target to generate assembly for a file
+get_ibinfo.cpp.s:
+	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/get_ibinfo.cpp.s
+.PHONY : get_ibinfo.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -228,6 +334,60 @@ main.s: main.cpp.s
 main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
+
+ow_packet_recv.o: ow_packet_recv.cpp.o
+
+.PHONY : ow_packet_recv.o
+
+# target to build an object file
+ow_packet_recv.cpp.o:
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.o
+.PHONY : ow_packet_recv.cpp.o
+
+ow_packet_recv.i: ow_packet_recv.cpp.i
+
+.PHONY : ow_packet_recv.i
+
+# target to preprocess a source file
+ow_packet_recv.cpp.i:
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.i
+.PHONY : ow_packet_recv.cpp.i
+
+ow_packet_recv.s: ow_packet_recv.cpp.s
+
+.PHONY : ow_packet_recv.s
+
+# target to generate assembly for a file
+ow_packet_recv.cpp.s:
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.s
+.PHONY : ow_packet_recv.cpp.s
+
+ow_packet_send.o: ow_packet_send.cpp.o
+
+.PHONY : ow_packet_send.o
+
+# target to build an object file
+ow_packet_send.cpp.o:
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/ow_packet_send.cpp.o
+.PHONY : ow_packet_send.cpp.o
+
+ow_packet_send.i: ow_packet_send.cpp.i
+
+.PHONY : ow_packet_send.i
+
+# target to preprocess a source file
+ow_packet_send.cpp.i:
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/ow_packet_send.cpp.i
+.PHONY : ow_packet_send.cpp.i
+
+ow_packet_send.s: ow_packet_send.cpp.s
+
+.PHONY : ow_packet_send.s
+
+# target to generate assembly for a file
+ow_packet_send.cpp.s:
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/ow_packet_send.cpp.s
+.PHONY : ow_packet_send.cpp.s
 
 packet_utils.o: packet_utils.cpp.o
 
@@ -256,59 +416,59 @@ packet_utils.cpp.s:
 	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.s
 .PHONY : packet_utils.cpp.s
 
-um_packet_recv.o: um_packet_recv.cpp.o
+simplest_client.o: simplest_client.cpp.o
 
-.PHONY : um_packet_recv.o
-
-# target to build an object file
-um_packet_recv.cpp.o:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/um_packet_recv.cpp.o
-.PHONY : um_packet_recv.cpp.o
-
-um_packet_recv.i: um_packet_recv.cpp.i
-
-.PHONY : um_packet_recv.i
-
-# target to preprocess a source file
-um_packet_recv.cpp.i:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/um_packet_recv.cpp.i
-.PHONY : um_packet_recv.cpp.i
-
-um_packet_recv.s: um_packet_recv.cpp.s
-
-.PHONY : um_packet_recv.s
-
-# target to generate assembly for a file
-um_packet_recv.cpp.s:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/um_packet_recv.cpp.s
-.PHONY : um_packet_recv.cpp.s
-
-um_packet_send.o: um_packet_send.cpp.o
-
-.PHONY : um_packet_send.o
+.PHONY : simplest_client.o
 
 # target to build an object file
-um_packet_send.cpp.o:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/um_packet_send.cpp.o
-.PHONY : um_packet_send.cpp.o
+simplest_client.cpp.o:
+	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.o
+.PHONY : simplest_client.cpp.o
 
-um_packet_send.i: um_packet_send.cpp.i
+simplest_client.i: simplest_client.cpp.i
 
-.PHONY : um_packet_send.i
+.PHONY : simplest_client.i
 
 # target to preprocess a source file
-um_packet_send.cpp.i:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/um_packet_send.cpp.i
-.PHONY : um_packet_send.cpp.i
+simplest_client.cpp.i:
+	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.i
+.PHONY : simplest_client.cpp.i
 
-um_packet_send.s: um_packet_send.cpp.s
+simplest_client.s: simplest_client.cpp.s
 
-.PHONY : um_packet_send.s
+.PHONY : simplest_client.s
 
 # target to generate assembly for a file
-um_packet_send.cpp.s:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/um_packet_send.cpp.s
-.PHONY : um_packet_send.cpp.s
+simplest_client.cpp.s:
+	$(MAKE) -f CMakeFiles/simple_client.dir/build.make CMakeFiles/simple_client.dir/simplest_client.cpp.s
+.PHONY : simplest_client.cpp.s
+
+simplest_server.o: simplest_server.cpp.o
+
+.PHONY : simplest_server.o
+
+# target to build an object file
+simplest_server.cpp.o:
+	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.o
+.PHONY : simplest_server.cpp.o
+
+simplest_server.i: simplest_server.cpp.i
+
+.PHONY : simplest_server.i
+
+# target to preprocess a source file
+simplest_server.cpp.i:
+	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.i
+.PHONY : simplest_server.cpp.i
+
+simplest_server.s: simplest_server.cpp.s
+
+.PHONY : simplest_server.s
+
+# target to generate assembly for a file
+simplest_server.cpp.s:
+	$(MAKE) -f CMakeFiles/simple_server.dir/build.make CMakeFiles/simple_server.dir/simplest_server.cpp.s
+.PHONY : simplest_server.cpp.s
 
 # Help Target
 help:
@@ -318,26 +478,42 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... ibinfo"
+	@echo "... simple_server"
 	@echo "... packet_send"
 	@echo "... packet_recv"
 	@echo "... main"
+	@echo "... rdmacm_tools"
+	@echo "... simple_client"
 	@echo "... sketch_operations"
 	@echo "... packet_utils"
 	@echo "... Sketch_operations.o"
 	@echo "... Sketch_operations.i"
 	@echo "... Sketch_operations.s"
+	@echo "... common.o"
+	@echo "... common.i"
+	@echo "... common.s"
+	@echo "... get_ibinfo.o"
+	@echo "... get_ibinfo.i"
+	@echo "... get_ibinfo.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... ow_packet_recv.o"
+	@echo "... ow_packet_recv.i"
+	@echo "... ow_packet_recv.s"
+	@echo "... ow_packet_send.o"
+	@echo "... ow_packet_send.i"
+	@echo "... ow_packet_send.s"
 	@echo "... packet_utils.o"
 	@echo "... packet_utils.i"
 	@echo "... packet_utils.s"
-	@echo "... um_packet_recv.o"
-	@echo "... um_packet_recv.i"
-	@echo "... um_packet_recv.s"
-	@echo "... um_packet_send.o"
-	@echo "... um_packet_send.i"
-	@echo "... um_packet_send.s"
+	@echo "... simplest_client.o"
+	@echo "... simplest_client.i"
+	@echo "... simplest_client.s"
+	@echo "... simplest_server.o"
+	@echo "... simplest_server.i"
+	@echo "... simplest_server.s"
 .PHONY : help
 
 

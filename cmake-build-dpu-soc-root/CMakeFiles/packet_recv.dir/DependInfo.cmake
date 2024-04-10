@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ubuntu/sunxi/packet_send/um_packet_recv.cpp" "CMakeFiles/packet_recv.dir/um_packet_recv.cpp.o" "gcc" "CMakeFiles/packet_recv.dir/um_packet_recv.cpp.o.d"
+  "/home/ubuntu/sunxi/packet_send/ow_packet_recv.cpp" "CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.o" "gcc" "CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.o.d"
   )
 
 # Targets to which this target links.
