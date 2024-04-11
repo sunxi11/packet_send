@@ -249,7 +249,7 @@ static int packet_recv_process(void *arg){
             continue;
         }
 
-//        std::cout << "received " << num_recv << " packets" << std::endl;
+        std::cout << "received " << num_recv << " packets" << std::endl;
         total_num[core_id] += num_recv;
 
         for (int i = 0; i < num_recv; i++)
