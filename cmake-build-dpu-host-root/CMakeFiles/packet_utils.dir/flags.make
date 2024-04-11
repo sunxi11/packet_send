@@ -6,5 +6,5 @@ CXX_FLAGS =  -mssse3 -g -g   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/zju/rdma-core-49.0/build-sx/include -I/opt/mellanox/dpdk/include/dpdk -I/opt/mellanox/dpdk/include/dpdk/../x86_64-linux-gnu/dpdk -I/opt/mellanox/grpc/include 
+CXX_INCLUDES = -I/opt/mellanox/dpdk/include/dpdk -I/opt/mellanox/dpdk/include/dpdk/../x86_64-linux-gnu/dpdk -I/home/zju/rdma-core-49.0/build-sx/include -I/opt/mellanox/grpc/include 
 

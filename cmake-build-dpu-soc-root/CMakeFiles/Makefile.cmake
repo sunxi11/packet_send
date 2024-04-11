@@ -55,4 +55,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/main.dir/DependInfo.cmake"
   "CMakeFiles/packet_recv.dir/DependInfo.cmake"
   "CMakeFiles/packet_send.dir/DependInfo.cmake"
+  "CMakeFiles/fr.dir/DependInfo.cmake"
   )

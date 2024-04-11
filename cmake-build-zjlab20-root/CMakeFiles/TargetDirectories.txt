@@ -1,5 +1,6 @@
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/rebuild_cache.dir
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/edit_cache.dir
+/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/fr.dir
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/packet_send.dir
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/packet_recv.dir
 /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/main.dir

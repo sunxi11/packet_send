@@ -52,6 +52,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/fr.dir/DependInfo.cmake"
   "CMakeFiles/packet_send.dir/DependInfo.cmake"
   "CMakeFiles/packet_recv.dir/DependInfo.cmake"
   "CMakeFiles/main.dir/DependInfo.cmake"

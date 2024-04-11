@@ -1,14 +1,7 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <errno.h>
-#include <getopt.h>
-#include <signal.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
-#include <arpa/inet.h>
-#include <time.h>
-
+#include <cstdio>
+#include <csignal>
+#include <cstdlib>
+#include <cstring>
 
 #include <rte_common.h>
 #include <rte_vect.h>
@@ -262,7 +255,7 @@ int main(int argc, char *argv[])
      mbuf_pool = rte_pktmbuf_pool_create(
             "mbuf pool", NUM_MBUFS, MBUF_CACHE_SIZE, 0, RTE_MBUF_DEFAULT_BUF_SIZE, rte_socket_id());
 
-    if (mbuf_pool == NULL)
+    if (mbuf_pool == nullptr)
     {
         rte_exit(EXIT_FAILURE, "Could not create mbuf pool\n");
     }

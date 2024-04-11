@@ -354,8 +354,6 @@ CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o: \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/list.tcc \
- /home/ubuntu/sunxi/packet_send/packet_utils.h \
- /usr/include/c++/11/cstring \
  /home/ubuntu/sunxi/packet_send/Sketch_operations.h \
  /usr/include/c++/11/memory \
  /usr/include/c++/11/bits/stl_raw_storage_iter.h \
@@ -367,4 +365,6 @@ CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o: \
  /usr/include/c++/11/bits/atomic_base.h \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
- /usr/include/c++/11/pstl/glue_memory_defs.h
+ /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /home/ubuntu/sunxi/packet_send/packet_utils.h \
+ /usr/include/c++/11/cstring

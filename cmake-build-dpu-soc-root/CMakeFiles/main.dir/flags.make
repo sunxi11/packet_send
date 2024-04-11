@@ -6,5 +6,5 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -I/opt/mellanox/dpdk/include/dpdk -I/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk -I/opt/mellanox/grpc/include -I/usr/include/libnl3
 
-CXX_FLAGS =  -mssse3 -g -g
+CXX_FLAGS =  -g -g
 

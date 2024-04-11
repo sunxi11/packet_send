@@ -1,7 +1,8 @@
-/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/rebuild_cache.dir
-/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/edit_cache.dir
-/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/packet_send.dir
-/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir
-/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/main.dir
-/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/sketch_operations.dir
-/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/packet_utils.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/rebuild_cache.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/edit_cache.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/fr.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/packet_send.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/main.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/sketch_operations.dir
+/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/packet_utils.dir

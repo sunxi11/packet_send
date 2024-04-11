@@ -1,0 +1,1 @@
+/usr/bin/c++   -g -g   CMakeFiles/ibinfo.dir/get_ibinfo.cpp.o  -o ibinfo   -L/home/zju/rdma-core-49.0/build-sx/lib  -L/usr/local/lib/x86_64-linux-gnu  -Wl,-rpath,/home/zju/rdma-core-49.0/build-sx/lib:/usr/local/lib/x86_64-linux-gnu -lpthread -libverbs -lrdmacm librdmacm_tools.a 

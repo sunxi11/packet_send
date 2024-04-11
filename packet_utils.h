@@ -1,7 +1,3 @@
-//
-// Created by SunX on 2024/4/1.
-//
-
 #ifndef PACKET_SEND_PACKET_UTILS_H
 #define PACKET_SEND_PACKET_UTILS_H
 

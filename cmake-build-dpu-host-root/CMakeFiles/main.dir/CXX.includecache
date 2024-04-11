@@ -1,0 +1,28 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/zju/sunxi-workspace/packet_send/main.cpp
+iostream
+-
+vector
+-
+packet_utils.h
+/home/zju/sunxi-workspace/packet_send/packet_utils.h
+
+/home/zju/sunxi-workspace/packet_send/packet_utils.h
+cstdint
+-
+algorithm
+-
+vector
+-
+cstring
+-
+array
+-
+

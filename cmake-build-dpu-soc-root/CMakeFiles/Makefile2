@@ -68,6 +68,7 @@ all: CMakeFiles/sketch_operations.dir/all
 all: CMakeFiles/main.dir/all
 all: CMakeFiles/packet_recv.dir/all
 all: CMakeFiles/packet_send.dir/all
+all: CMakeFiles/fr.dir/all
 .PHONY : all
 
 # The main recursive "preinstall" target.
@@ -80,6 +81,7 @@ clean: CMakeFiles/sketch_operations.dir/clean
 clean: CMakeFiles/main.dir/clean
 clean: CMakeFiles/packet_recv.dir/clean
 clean: CMakeFiles/packet_send.dir/clean
+clean: CMakeFiles/fr.dir/clean
 .PHONY : clean
 
 #=============================================================================
@@ -89,7 +91,7 @@ clean: CMakeFiles/packet_send.dir/clean
 CMakeFiles/packet_utils.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=7,8 "Built target packet_utils"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=9,10 "Built target packet_utils"
 .PHONY : CMakeFiles/packet_utils.dir/all
 
 # Build rule for subdir invocation for target.
@@ -115,7 +117,7 @@ CMakeFiles/packet_utils.dir/clean:
 CMakeFiles/sketch_operations.dir/all: CMakeFiles/packet_utils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=9,10 "Built target sketch_operations"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=11,12 "Built target sketch_operations"
 .PHONY : CMakeFiles/sketch_operations.dir/all
 
 # Build rule for subdir invocation for target.
@@ -141,7 +143,7 @@ CMakeFiles/sketch_operations.dir/clean:
 CMakeFiles/main.dir/all: CMakeFiles/packet_utils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=1,2 "Built target main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=3,4 "Built target main"
 .PHONY : CMakeFiles/main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -168,7 +170,7 @@ CMakeFiles/packet_recv.dir/all: CMakeFiles/sketch_operations.dir/all
 CMakeFiles/packet_recv.dir/all: CMakeFiles/packet_utils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=3,4 "Built target packet_recv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=5,6 "Built target packet_recv"
 .PHONY : CMakeFiles/packet_recv.dir/all
 
 # Build rule for subdir invocation for target.
@@ -194,7 +196,7 @@ CMakeFiles/packet_recv.dir/clean:
 CMakeFiles/packet_send.dir/all: CMakeFiles/packet_utils.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=5,6 "Built target packet_send"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=7,8 "Built target packet_send"
 .PHONY : CMakeFiles/packet_send.dir/all
 
 # Build rule for subdir invocation for target.
@@ -212,6 +214,33 @@ packet_send: CMakeFiles/packet_send.dir/rule
 CMakeFiles/packet_send.dir/clean:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/clean
 .PHONY : CMakeFiles/packet_send.dir/clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/fr.dir
+
+# All Build rule for target.
+CMakeFiles/fr.dir/all: CMakeFiles/sketch_operations.dir/all
+CMakeFiles/fr.dir/all: CMakeFiles/packet_utils.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fr.dir/build.make CMakeFiles/fr.dir/depend
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fr.dir/build.make CMakeFiles/fr.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=1,2 "Built target fr"
+.PHONY : CMakeFiles/fr.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/fr.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles 6
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/fr.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles 0
+.PHONY : CMakeFiles/fr.dir/rule
+
+# Convenience name for target.
+fr: CMakeFiles/fr.dir/rule
+.PHONY : fr
+
+# clean rule for target.
+CMakeFiles/fr.dir/clean:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fr.dir/build.make CMakeFiles/fr.dir/clean
+.PHONY : CMakeFiles/fr.dir/clean
 
 #=============================================================================
 # Special targets to cleanup operation of make.

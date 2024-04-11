@@ -1,14 +1,7 @@
-#include <stdio.h>
-#include <stdarg.h>
-#include <errno.h>
-#include <getopt.h>
-#include <signal.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <string.h>
-#include <arpa/inet.h>
-#include <time.h>
-// #include <time>
+#include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <ctime>
 
 
 #include <rte_common.h>
@@ -37,8 +30,8 @@
 #include <rte_udp.h>
 #include <rte_string_fns.h>
 #include <rte_cpuflags.h>
-#include <stdint.h>
-#include <inttypes.h>
+#include <cstdint>
+#include <cinttypes>
 #include <rte_ethdev.h>
 #include <rte_cycles.h>
 #include <rte_lcore.h>
@@ -51,8 +44,8 @@
 #include <thread>
 #include <list>
 
-#include "packet_utils.h"
 #include "Sketch_operations.h"
+#include "packet_utils.h"
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
@@ -65,7 +58,6 @@
 #define ARRAY_SIZE 65536
 
 //-a auxiliary/mlx5_core.sf.2 -l 0-1
-
 static const struct rte_eth_conf port_conf_default = {
     .rxmode = {
         .mq_mode = RTE_ETH_MQ_RX_RSS,
@@ -103,6 +95,7 @@ void show_ip(uint32_t ip)
     printf("%" PRIu8 "\n", p[0]);
 }
 
+
 static inline int
 init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint32_t tx_queues)
 {
@@ -126,9 +119,9 @@ init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint
         return retval;
     }
 
-    if (dev_info.tx_offload_capa & RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE)
-        port_conf.txmode.offloads |=
-                RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE;
+//    if (dev_info.tx_offload_capa & RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE)
+//        port_conf.txmode.offloads |=
+//                RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE;
 
     /* Configure the Ethernet device. */
     retval = rte_eth_dev_configure(port, rx_rings, tx_rings, &port_conf);
@@ -161,8 +154,12 @@ init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint
 
     /* Start the Ethernet port. */
     retval = rte_eth_dev_start(port);
-    if (retval < 0)
+    if (retval < 0){
+        printf("Error during starting device (port %u): %s\n",
+               port, strerror(-retval));
         return retval;
+    }
+
 
     /* Display the port MAC address. */
     struct rte_ether_addr addr;
@@ -249,7 +246,7 @@ static int packet_recv_process(void *arg){
             continue;
         }
 
-        std::cout << "received " << num_recv << " packets" << std::endl;
+//        std::cout << "received " << num_recv << " packets" << std::endl;
         total_num[core_id] += num_recv;
 
         for (int i = 0; i < num_recv; i++)
@@ -264,7 +261,6 @@ static int packet_recv_process(void *arg){
             DataMap_array[col][colum] = pkt->value;
 
 //            sketch_data[pkt->idx] = pkt->value;
-
 //                pkt->idx = pkt->idx);
 //                pkt->value = ntohl(pkt->value);
 

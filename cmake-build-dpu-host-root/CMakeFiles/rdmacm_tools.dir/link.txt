@@ -1,0 +1,2 @@
+/usr/bin/ar qc librdmacm_tools.a  CMakeFiles/rdmacm_tools.dir/common.c.o
+/usr/bin/ranlib librdmacm_tools.a

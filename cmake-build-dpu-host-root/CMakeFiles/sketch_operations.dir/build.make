@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /tmp/tmp.qWBl9kwZRq
+CMAKE_SOURCE_DIR = /home/zju/sunxi-workspace/packet_send
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root
+CMAKE_BINARY_DIR = /home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sketch_operations.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/sketch_operations.dir/flags.make
 
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: CMakeFiles/sketch_operations.dir/flags.make
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: ../Sketch_operations.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o -c /tmp/tmp.qWBl9kwZRq/Sketch_operations.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o -c /home/zju/sunxi-workspace/packet_send/Sketch_operations.cpp
 
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.qWBl9kwZRq/Sketch_operations.cpp > CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/zju/sunxi-workspace/packet_send/Sketch_operations.cpp > CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.i
 
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.qWBl9kwZRq/Sketch_operations.cpp -o CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/zju/sunxi-workspace/packet_send/Sketch_operations.cpp -o CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s
 
 # Object files for target sketch_operations
 sketch_operations_OBJECTS = \
@@ -80,7 +80,7 @@ sketch_operations_EXTERNAL_OBJECTS =
 libsketch_operations.a: CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o
 libsketch_operations.a: CMakeFiles/sketch_operations.dir/build.make
 libsketch_operations.a: CMakeFiles/sketch_operations.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libsketch_operations.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libsketch_operations.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/sketch_operations.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sketch_operations.dir/link.txt --verbose=$(VERBOSE)
 
@@ -94,6 +94,6 @@ CMakeFiles/sketch_operations.dir/clean:
 .PHONY : CMakeFiles/sketch_operations.dir/clean
 
 CMakeFiles/sketch_operations.dir/depend:
-	cd /tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /tmp/tmp.qWBl9kwZRq /tmp/tmp.qWBl9kwZRq /tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root /tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root /tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/sketch_operations.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/zju/sunxi-workspace/packet_send /home/zju/sunxi-workspace/packet_send /home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root /home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root /home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/sketch_operations.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sketch_operations.dir/depend
 

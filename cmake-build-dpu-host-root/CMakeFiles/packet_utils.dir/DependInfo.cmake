@@ -4,15 +4,15 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/tmp/tmp.qWBl9kwZRq/packet_utils.cpp" "/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/CMakeFiles/packet_utils.dir/packet_utils.cpp.o"
+  "/home/zju/sunxi-workspace/packet_send/packet_utils.cpp" "/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/CMakeFiles/packet_utils.dir/packet_utils.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/zju/rdma-core-49.0/build-sx/include"
   "/opt/mellanox/dpdk/include/dpdk"
   "/opt/mellanox/dpdk/include/dpdk/../x86_64-linux-gnu/dpdk"
+  "/home/zju/rdma-core-49.0/build-sx/include"
   "/opt/mellanox/grpc/include"
   )
 

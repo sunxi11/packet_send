@@ -1,4 +1,4 @@
-# Install script for directory: /tmp/tmp.qWBl9kwZRq
+# Install script for directory: /home/zju/sunxi-workspace/packet_send
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/tmp/tmp.qWBl9kwZRq/cmake-build-dpu-host-root/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/zju/sunxi-workspace/packet_send/cmake-build-dpu-host-root/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

@@ -181,6 +181,19 @@ packet_send/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/build
 .PHONY : packet_send/fast
 
+#=============================================================================
+# Target rules for targets named fr
+
+# Build rule for target.
+fr: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 fr
+.PHONY : fr
+
+# fast build rule for target.
+fr/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fr.dir/build.make CMakeFiles/fr.dir/build
+.PHONY : fr/fast
+
 Sketch_operations.o: Sketch_operations.cpp.o
 .PHONY : Sketch_operations.o
 
@@ -204,6 +217,30 @@ Sketch_operations.s: Sketch_operations.cpp.s
 Sketch_operations.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s
 .PHONY : Sketch_operations.cpp.s
+
+fr.o: fr.cpp.o
+.PHONY : fr.o
+
+# target to build an object file
+fr.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fr.dir/build.make CMakeFiles/fr.dir/fr.cpp.o
+.PHONY : fr.cpp.o
+
+fr.i: fr.cpp.i
+.PHONY : fr.i
+
+# target to preprocess a source file
+fr.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fr.dir/build.make CMakeFiles/fr.dir/fr.cpp.i
+.PHONY : fr.cpp.i
+
+fr.s: fr.cpp.s
+.PHONY : fr.s
+
+# target to generate assembly for a file
+fr.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/fr.dir/build.make CMakeFiles/fr.dir/fr.cpp.s
+.PHONY : fr.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -309,6 +346,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... fr"
 	@echo "... main"
 	@echo "... packet_recv"
 	@echo "... packet_send"
@@ -317,6 +355,9 @@ help:
 	@echo "... Sketch_operations.o"
 	@echo "... Sketch_operations.i"
 	@echo "... Sketch_operations.s"
+	@echo "... fr.o"
+	@echo "... fr.i"
+	@echo "... fr.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
