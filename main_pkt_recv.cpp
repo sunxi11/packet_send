@@ -57,7 +57,7 @@
 #define _WRS_PACK_ALIGN(x) __attribute__((packed, aligned(x)))
 #define ARRAY_SIZE 65536
 
-//-a auxiliary/mlx5_core.sf.2 -l 0-1
+//-a 0000:3b:00.3 -l 0-1
 static const struct rte_eth_conf port_conf_default = {
     .rxmode = {
         .mq_mode = RTE_ETH_MQ_RX_RSS,

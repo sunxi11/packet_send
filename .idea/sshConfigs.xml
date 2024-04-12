@@ -9,6 +9,7 @@
       <sshConfig authType="PASSWORD" host="47.97.81.43" id="9d4ae972-6d30-41b8-86c2-b20482b52254" port="6001" customName="dpu-soc-root" nameFormat="CUSTOM" username="root" useOpenSSHConfig="false">
         <option name="customName" value="dpu-soc-root" />
       </sshConfig>
+      <sshConfig authType="PASSWORD" host="47.97.81.43" id="aa075e45-6c00-4fb5-b7c2-2f36e48c0a2b" port="6001" nameFormat="DESCRIPTIVE" username="root" useOpenSSHConfig="true" />
     </configs>
   </component>
 </project>
