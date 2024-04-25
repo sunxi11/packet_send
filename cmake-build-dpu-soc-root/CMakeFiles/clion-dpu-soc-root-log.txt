@@ -1,6 +1,4 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/ubuntu/sunxi/packet_send -B /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root
--- Checking for one of the modules 'librdmacm'
--- Checking for one of the modules 'libibverbs'
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root

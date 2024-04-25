@@ -13,8 +13,8 @@
 #include <list>
 
 #include "include/packet_utils.h"
-#include "include/Sketch_operations.h"
 #include "include/rdma-utils.h"
+#include "include/Sketch_operations.h"
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
@@ -24,7 +24,6 @@
 #define BURST_SIZE 64
 
 #define _WRS_PACK_ALIGN(x) __attribute__((packed, aligned(x)))
-#define ARRAY_SIZE 65536
 
 uint32_t num_rx_queues;
 uint32_t num_tx_queues;
@@ -35,7 +34,7 @@ uint64_t total_num[MAX_CORES] = {};
 uint64_t burst_num[MAX_CORES] = {};
 
 uint32_t total_array_num[MAX_CORES] = {};
-int recv_buf[ARRAY_NUM * ARRAY_SIZE + 1000] = {0};
+int recv_buf[ARRAY_SIZE] = {0};
 
 recv_data DataMap_array;
 
@@ -58,14 +57,14 @@ int test_operation(void *){
 }
 
 
-static int packet_recv_process(int client_fd, struct sockaddr_in &address){
+int packet_recv_process(int client_fd, struct sockaddr_in &address){
     uint32_t offset = 0;
     ssize_t ret;
     socklen_t client_address_len = sizeof(address);
     while (true){
         if(offset >= ARRAY_NUM * ARRAY_SIZE){
             offset = 0;
-            std::thread array2recvdata(array_to_recv_data,recv_buf, ARRAY_NUM * ARRAY_SIZE, std::ref(DataMap_array));
+            std::thread array2recvdata(array_to_recv_data, recv_buf, ARRAY_NUM * ARRAY_SIZE, std::ref(DataMap_array));
             array2recvdata.join();
             std::cout << "update array" << std::endl;
         }
@@ -116,7 +115,7 @@ int main(int argc, char *argv[])
     std::thread test_thread(test_operation, nullptr);
 
     while (1){
-//        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         client->rdma_read();
         array_to_recv_data(recv_buf, ARRAY_NUM * ARRAY_SIZE, DataMap_array);
     }

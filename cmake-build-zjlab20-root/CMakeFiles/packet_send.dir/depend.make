@@ -6,7 +6,7 @@ CMakeFiles/packet_send.dir/ow_packet_send.cpp.o: ../include/packet_utils.h
 CMakeFiles/packet_send.dir/ow_packet_send.cpp.o: ../include/rdma-utils.h
 CMakeFiles/packet_send.dir/ow_packet_send.cpp.o: ../ow_packet_send.cpp
 
-CMakeFiles/packet_send.dir/simplest_server.cpp.o: ../include/common.h
-CMakeFiles/packet_send.dir/simplest_server.cpp.o: ../include/rdma-utils.h
-CMakeFiles/packet_send.dir/simplest_server.cpp.o: ../simplest_server.cpp
+CMakeFiles/packet_send.dir/rdma_server.cpp.o: ../include/common.h
+CMakeFiles/packet_send.dir/rdma_server.cpp.o: ../include/rdma-utils.h
+CMakeFiles/packet_send.dir/rdma_server.cpp.o: ../rdma_server.cpp
 

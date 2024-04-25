@@ -8,12 +8,84 @@
 #include <random>
 #include <iostream>
 #include <openssl/sha.h>
+#include <set>
 
 #include "include/Sketch_operations.h"
-#include "include/packet_utils.h"
+#include <ideal.h>
+#include <countmin.h>
+#include <elasticsketch.h>
+#include <flowradar.h>
+#include <mvsketch.h>
+#include <hashpipe.h>
+#include <univmon.h>
+#include <countsketch.h>
+#include <countbloomfilter.h>
+#include <sketchvisor.h>
+//#include "sketchlearn.h"
+
+#include <cinttypes>
+#include <twotuple.h> // which includes "Pktextract.h"
+#include <parameter.h>
+#include <MurmurHash3.h>
 
 
-int array[ARRAY_NUM][ARRAY_SIZE];
+
+
+fiveTuple_t Pktbuf_fivetpl[MAX_PKT_CNT];
+twoTuple_t Pktbuf_twotpl[MAX_PKT_CNT];
+int Pktcnt = -1;
+
+
+CountMin *load_cm(){
+    uint32_t cnt;
+    std::set<uint32_t> ip_addresses;
+
+    if (method == 0) {
+        Pktextracter pe;
+        pe.extract_form_file(pcap_file_path, Pktbuf_fivetpl, Pktcnt);
+
+        for (int i = 0; i < pe.pktCounter; i++) {
+            twoTuple_t* twotpl_p = convert_fivetpl_to_twotpl(&Pktbuf_fivetpl[i]);
+            Pktbuf_twotpl[i] = *twotpl_p;
+            ip_addresses.insert(Pktbuf_twotpl[i].srcIP);
+            ip_addresses.insert(Pktbuf_twotpl[i].dstIP);
+            //printf("%" PRIu32 "=>%" PRIu32 "\n", Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+        }
+
+        cnt = pe.pktCounter;
+
+    } else if (method == 1) {
+        vector<twoTuple_t> arr;
+        cnt = extract_twotpl_from_file(twotpl_file_path, arr);
+        printf("Packet number: %d\n", cnt);
+        for (int i = 0; i < cnt; i++) {
+            Pktbuf_twotpl[i] = arr[i];
+            ip_addresses.insert(Pktbuf_twotpl[i].srcIP);
+            ip_addresses.insert(Pktbuf_twotpl[i].dstIP);
+        }
+    }
+
+    // CountMin Sketch with 12 rows
+    CountMin *cm = new CountMin(8, TOTAL_MEM);
+
+    //TODO Update sketch
+    for (int i = 0; i < cnt; i ++) {
+//        ideal.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
+        cm->update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
+//        hp.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+//        es.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+//        mv.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
+//        um.insert(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+    }
+
+
+    return cm;
+}
+
+
+
+
+int Array[ARRAY_NUM][ARRAY_SIZE];
 //int vote[ARRAY_SIZE];
 
 std::random_device rd;
@@ -24,13 +96,6 @@ std::uniform_int_distribution<uint32_t> disIP(0, UINT32_MAX);
 std::uniform_int_distribution<uint16_t> disPort(1024, UINT16_MAX); // 通常使用1024以上的端口号
 std::uniform_int_distribution<uint8_t> disProtocol(6, 17); // TCP(6) 或 UDP(17)
 
-/**
- * @brief 将数组转换为recv_data
- * @param raw_array
- * @param totol_num
- * @param Recv_data
- * @return void
- */
 void array_to_recv_data(int *raw_array, uint32_t totol_num, recv_data &Recv_data){
     uint32_t col, colum;
     for(int i = 0; i < totol_num; i++){
@@ -88,9 +153,10 @@ void update_flow(){
     five_tuble ft = get_random_flow();
     auto hash_res = hashNetworkFlowTuple(ft);
     for (int i = 0; i < ARRAY_NUM; ++i) {
-        array[i][hash_res[i] % ARRAY_SIZE] += 1;
+        Array[i][hash_res[i] % ARRAY_SIZE] += 1;
     }
 }
+
 
 
 

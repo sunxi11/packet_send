@@ -18,6 +18,7 @@
 #include "include/Sketch_operations.h"
 #include "include/rdma-utils.h"
 
+
 //-a 0000:5e:00.0 -l 0
 
 
@@ -39,8 +40,8 @@ void print_max(){
         uint32_t max_num = 0;
         for(int i = 0; i < ARRAY_NUM; ++i){
             for(int j = 0; j < ARRAY_SIZE; ++j){
-                if (array[i][j] > max_num){
-                    max_num = array[i][j];
+                if (Array[i][j] > max_num){
+                    max_num = Array[i][j];
                 }
             }
             std::cout << "array: " << i << " max num: " << max_num << std::endl;
@@ -48,6 +49,8 @@ void print_max(){
 
     }
 }
+
+
 
 
 int main(int argc, char *argv[])
@@ -63,8 +66,12 @@ int main(int argc, char *argv[])
         return -1;
     }
     const char* server_ip = argv[1];
-    std::thread recv_thread(simulate_recv);
+//    std::thread recv_thread(simulate_recv);
 
+    CountMin *cm = load_cm();
+    int data_size = sizeof(uint32_t) * cm->counters[0].size();
+
+    std::cout << "load data success, " << "data size = " << data_size << std::endl;
 
     char *start_buf, *rdma_buf;
 
@@ -74,11 +81,10 @@ int main(int argc, char *argv[])
     strcpy(start_buf, "hello world form server");
 
 
-    auto *server = new rdma_server(server_ip, 1245, &array[0][0], sizeof(array), rdma_buf, 1000);
+    auto *server = new rdma_server(server_ip, 1245, &cm->counters[0][0], data_size, rdma_buf, 1000);
     server->start();
 
-    recv_thread.join();
-
+    while (1){}
 
     return 0;
 }

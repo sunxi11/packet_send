@@ -28,7 +28,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -55,7 +54,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -82,7 +80,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -109,7 +106,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -136,7 +132,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -163,7 +158,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -190,7 +184,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -217,7 +210,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -244,7 +236,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -271,7 +262,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -298,7 +288,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -325,7 +314,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -352,7 +340,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -379,7 +366,6 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
-					<Add directory="/usr/include/libnl3"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -443,10 +429,10 @@
 		<Unit filename="/home/ubuntu/sunxi/packet_send/packet_utils.h">
 			<Option target="packet_utils"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/sunxi/packet_send/simplest_client.cpp">
+		<Unit filename="/home/ubuntu/sunxi/packet_send/rdma_client.cpp">
 			<Option target="packet_recv"/>
 		</Unit>
-		<Unit filename="/home/ubuntu/sunxi/packet_send/simplest_server.cpp">
+		<Unit filename="/home/ubuntu/sunxi/packet_send/rdma_server.cpp">
 			<Option target="packet_send"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/CMakeLists.txt">

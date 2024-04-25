@@ -6,5 +6,5 @@ CXX_FLAGS =  -g -g   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/libnl3 
+CXX_INCLUDES = -I/usr/include/libnl3 -I/home/zju/sunxi/turbomon/sketches/include 
 

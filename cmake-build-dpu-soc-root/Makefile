@@ -375,53 +375,53 @@ packet_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.s
 .PHONY : packet_utils.cpp.s
 
-simplest_client.o: simplest_client.cpp.o
-.PHONY : simplest_client.o
+rdma_client.o: rdma_client.cpp.o
+.PHONY : rdma_client.o
 
 # target to build an object file
-simplest_client.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.o
-.PHONY : simplest_client.cpp.o
+rdma_client.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/rdma_client.cpp.o
+.PHONY : rdma_client.cpp.o
 
-simplest_client.i: simplest_client.cpp.i
-.PHONY : simplest_client.i
+rdma_client.i: rdma_client.cpp.i
+.PHONY : rdma_client.i
 
 # target to preprocess a source file
-simplest_client.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.i
-.PHONY : simplest_client.cpp.i
+rdma_client.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/rdma_client.cpp.i
+.PHONY : rdma_client.cpp.i
 
-simplest_client.s: simplest_client.cpp.s
-.PHONY : simplest_client.s
+rdma_client.s: rdma_client.cpp.s
+.PHONY : rdma_client.s
 
 # target to generate assembly for a file
-simplest_client.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/simplest_client.cpp.s
-.PHONY : simplest_client.cpp.s
+rdma_client.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/rdma_client.cpp.s
+.PHONY : rdma_client.cpp.s
 
-simplest_server.o: simplest_server.cpp.o
-.PHONY : simplest_server.o
+rdma_server.o: rdma_server.cpp.o
+.PHONY : rdma_server.o
 
 # target to build an object file
-simplest_server.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.o
-.PHONY : simplest_server.cpp.o
+rdma_server.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/rdma_server.cpp.o
+.PHONY : rdma_server.cpp.o
 
-simplest_server.i: simplest_server.cpp.i
-.PHONY : simplest_server.i
+rdma_server.i: rdma_server.cpp.i
+.PHONY : rdma_server.i
 
 # target to preprocess a source file
-simplest_server.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.i
-.PHONY : simplest_server.cpp.i
+rdma_server.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/rdma_server.cpp.i
+.PHONY : rdma_server.cpp.i
 
-simplest_server.s: simplest_server.cpp.s
-.PHONY : simplest_server.s
+rdma_server.s: rdma_server.cpp.s
+.PHONY : rdma_server.s
 
 # target to generate assembly for a file
-simplest_server.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/simplest_server.cpp.s
-.PHONY : simplest_server.cpp.s
+rdma_server.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/rdma_server.cpp.s
+.PHONY : rdma_server.cpp.s
 
 # Help Target
 help:
@@ -459,12 +459,12 @@ help:
 	@echo "... packet_utils.o"
 	@echo "... packet_utils.i"
 	@echo "... packet_utils.s"
-	@echo "... simplest_client.o"
-	@echo "... simplest_client.i"
-	@echo "... simplest_client.s"
-	@echo "... simplest_server.o"
-	@echo "... simplest_server.i"
-	@echo "... simplest_server.s"
+	@echo "... rdma_client.o"
+	@echo "... rdma_client.i"
+	@echo "... rdma_client.s"
+	@echo "... rdma_server.o"
+	@echo "... rdma_server.i"
+	@echo "... rdma_server.s"
 .PHONY : help
 
 

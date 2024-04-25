@@ -7,6 +7,12 @@
 #include <sys/socket.h>
 #include <arpa/inet.h>
 #include <netdb.h>
+#include <sys/mman.h>  // 包含 mmap() 和 munmap()
+#include <fcntl.h>     // 包含 shm_open() 和 O_* 常量
+#include <sys/stat.h>  // 包含模式常量
+#include <unistd.h>    // 包含 ftruncate() 和 close()
+
+
 #include "include/common.h"
 
 
@@ -75,6 +81,31 @@ int main(int argc, char *argv[]){
     rdma_destroy_id(id);
     rdma_destroy_event_channel(channel);
 
+//    struct ibv_device *device;
+//    device = ibv_get_device_index()
+
+    const char *memname = "sample_shm";
+    const size_t region_size = sysconf(_SC_PAGE_SIZE);
+    int fd = shm_open(memname, O_CREAT | O_RDONLY, 0666);
+    if (fd == -1) {
+        perror("shm_open");
+        return 1;
+    }
+
+    void *ptr = mmap(0, region_size, PROT_READ, MAP_SHARED, fd, 0);
+    if (ptr == MAP_FAILED) {
+        perror("mmap");
+        return 1;
+    }
+
+    // 读数据从共享内存
+    printf("Data read from shared memory: %d\n", *((char*)ptr));
+
+
+    // 解除映射
+    munmap(ptr, region_size);
+
+//    while (1){}
 
 
     return 0;

@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include <map>
 #include <random>
-#include <stdint.h>
+#include <cstdint>
 
 #include "include/packet_utils.h"
 #include "include/Sketch_operations.h"

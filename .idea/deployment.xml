@@ -3,16 +3,17 @@
   <component name="PublishConfigData" autoUpload="Always" serverName="dpu-soc-root" remoteFilesAllowedToDisappearOnAutoupload="false" confirmBeforeUploading="false" compareModeInSync="TEXT">
     <option name="confirmBeforeUploading" value="false" />
     <serverData>
-      <paths name="Remote dpu Host (60200640-2f24-409c-8ea3-fe9d67ad9049)">
+      <paths name="Remote dpu host (60200640-2f24-409c-8ea3-fe9d67ad9049)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.X1iUZGfgDu" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/tmp.x9554k2uHO" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20-root" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-host-root" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc-root" />
           </excludedPaths>
         </serverdata>
@@ -41,6 +42,7 @@
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20-root" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-host-root" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc-root" />
           </excludedPaths>
         </serverdata>
@@ -55,6 +57,7 @@
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20-root" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-host-root" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc-root" />
           </excludedPaths>
         </serverdata>
@@ -72,6 +75,13 @@
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-zjlab20" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-dpu-soc-root" />
           </excludedPaths>
+        </serverdata>
+      </paths>
+      <paths name="dpu-host">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/home/zju/sunxi-workspace/packet_send" local="$PROJECT_DIR$" web="/" />
+          </mappings>
         </serverdata>
       </paths>
       <paths name="dpu-soc-root">

@@ -221,5 +221,4 @@ CMakeFiles/packet_utils.dir/packet_utils.cpp.o: \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
  /usr/include/c++/11/pstl/glue_memory_defs.h \
- /home/ubuntu/sunxi/packet_send/include/packet_utils.h \
  /home/ubuntu/sunxi/packet_send/include/packet_utils.h

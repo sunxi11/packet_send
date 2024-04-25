@@ -11,7 +11,7 @@
 #include <unordered_map>
 #include <map>
 #include <list>
-#include <stdint.h>
+#include <cstdint>
 #include <algorithm>
 #include <memory>
 

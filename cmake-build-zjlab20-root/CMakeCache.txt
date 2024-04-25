@@ -238,6 +238,9 @@ ProcessorCount_cmd_nproc:FILEPATH=/usr/bin/nproc
 //Path to a program.
 ProcessorCount_cmd_sysctl:FILEPATH=/usr/sbin/sysctl
 
+//Path to a library.
+Sketch_LIB:FILEPATH=/home/zju/sunxi/turbomon/sketches/cmake-build-remote-zjlab20/libsketches-lhy.so
+
 //Value Computed by CMake
 packet_send_BINARY_DIR:STATIC=/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root
 
@@ -408,9 +411,6 @@ pkgcfg_lib_DPDK_rte_vhost:FILEPATH=/usr/local/lib/x86_64-linux-gnu/librte_vhost.
 
 //Path to a library.
 pkgcfg_lib_IBVERBS_ibverbs:FILEPATH=/usr/lib/x86_64-linux-gnu/libibverbs.so
-
-//Path to a library.
-pkgcfg_lib_OPENSSL_ssl:FILEPATH=/usr/lib/x86_64-linux-gnu/libssl.so
 
 //Path to a library.
 pkgcfg_lib_RDMA_rdmacm:FILEPATH=/usr/lib/x86_64-linux-gnu/librdmacm.so
@@ -651,49 +651,12 @@ IBVERBS_libibverbs_INCLUDEDIR:INTERNAL=
 IBVERBS_libibverbs_LIBDIR:INTERNAL=
 IBVERBS_libibverbs_PREFIX:INTERNAL=
 IBVERBS_libibverbs_VERSION:INTERNAL=
-OPENSSL_CFLAGS:INTERNAL=
-OPENSSL_CFLAGS_I:INTERNAL=
-OPENSSL_CFLAGS_OTHER:INTERNAL=
 //ADVANCED property for variable: OPENSSL_CRYPTO_LIBRARY
 OPENSSL_CRYPTO_LIBRARY-ADVANCED:INTERNAL=1
-OPENSSL_FOUND:INTERNAL=1
-OPENSSL_INCLUDEDIR:INTERNAL=/usr/include
 //ADVANCED property for variable: OPENSSL_INCLUDE_DIR
 OPENSSL_INCLUDE_DIR-ADVANCED:INTERNAL=1
-OPENSSL_INCLUDE_DIRS:INTERNAL=
-OPENSSL_LDFLAGS:INTERNAL=-lssl
-OPENSSL_LDFLAGS_OTHER:INTERNAL=
-OPENSSL_LIBDIR:INTERNAL=/usr/lib/x86_64-linux-gnu
-//ADVANCED property for variable: OPENSSL_LIBRARIES
-OPENSSL_LIBRARIES-ADVANCED:INTERNAL=1
-OPENSSL_LIBRARIES:INTERNAL=ssl
-OPENSSL_LIBRARY_DIRS:INTERNAL=
-OPENSSL_LIBS:INTERNAL=
-OPENSSL_LIBS_L:INTERNAL=
-OPENSSL_LIBS_OTHER:INTERNAL=
-OPENSSL_LIBS_PATHS:INTERNAL=
-OPENSSL_MODULE_NAME:INTERNAL=libssl
-OPENSSL_PREFIX:INTERNAL=/usr
 //ADVANCED property for variable: OPENSSL_SSL_LIBRARY
 OPENSSL_SSL_LIBRARY-ADVANCED:INTERNAL=1
-OPENSSL_STATIC_CFLAGS:INTERNAL=
-OPENSSL_STATIC_CFLAGS_I:INTERNAL=
-OPENSSL_STATIC_CFLAGS_OTHER:INTERNAL=
-OPENSSL_STATIC_INCLUDE_DIRS:INTERNAL=
-OPENSSL_STATIC_LDFLAGS:INTERNAL=-lssl;-lcrypto;-ldl;-pthread
-OPENSSL_STATIC_LDFLAGS_OTHER:INTERNAL=-pthread
-OPENSSL_STATIC_LIBDIR:INTERNAL=
-OPENSSL_STATIC_LIBRARIES:INTERNAL=ssl;crypto;dl
-OPENSSL_STATIC_LIBRARY_DIRS:INTERNAL=
-OPENSSL_STATIC_LIBS:INTERNAL=
-OPENSSL_STATIC_LIBS_L:INTERNAL=
-OPENSSL_STATIC_LIBS_OTHER:INTERNAL=
-OPENSSL_STATIC_LIBS_PATHS:INTERNAL=
-OPENSSL_VERSION:INTERNAL=1.1.1f
-OPENSSL_libssl_INCLUDEDIR:INTERNAL=
-OPENSSL_libssl_LIBDIR:INTERNAL=
-OPENSSL_libssl_PREFIX:INTERNAL=
-OPENSSL_libssl_VERSION:INTERNAL=
 //ADVANCED property for variable: PKG_CONFIG_EXECUTABLE
 PKG_CONFIG_EXECUTABLE-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: ProcessorCount_cmd_nproc
@@ -773,7 +736,6 @@ _OPENSSL_openssl_VERSION:INTERNAL=
 __pkg_config_arguments__OPENSSL:INTERNAL=QUIET;openssl
 __pkg_config_checked_DPDK:INTERNAL=1
 __pkg_config_checked_IBVERBS:INTERNAL=1
-__pkg_config_checked_OPENSSL:INTERNAL=1
 __pkg_config_checked_RDMA:INTERNAL=1
 __pkg_config_checked__OPENSSL:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_DPDK_rte_acl
@@ -886,8 +848,6 @@ pkgcfg_lib_DPDK_rte_timer-ADVANCED:INTERNAL=1
 pkgcfg_lib_DPDK_rte_vhost-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_IBVERBS_ibverbs
 pkgcfg_lib_IBVERBS_ibverbs-ADVANCED:INTERNAL=1
-//ADVANCED property for variable: pkgcfg_lib_OPENSSL_ssl
-pkgcfg_lib_OPENSSL_ssl-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib_RDMA_rdmacm
 pkgcfg_lib_RDMA_rdmacm-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: pkgcfg_lib__OPENSSL_crypto

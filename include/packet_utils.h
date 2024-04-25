@@ -12,6 +12,8 @@
 #include <array>
 #include <map>
 
+#include <countmin.h>
+
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
 
@@ -20,14 +22,20 @@
 #define BURST_SIZE 64
 
 #define _WRS_PACK_ALIGN(x) __attribute__((packed, aligned(x)))
-#define ARRAY_SIZE 65536
-#define ARRAY_NUM 4
+//#define ARRAY_SIZE 65536
+//#define ARRAY_NUM 4
+
+#define ARRAY_SIZE 312500
+#define ARRAY_NUM 1
+
+
 #define MAX_ARRAY_NUM 8
 #define MAX_CORES 40
 #define UM_SEND_BATCH 256
 
+//typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
 typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
-extern int array[ARRAY_NUM][ARRAY_SIZE];
+extern int Array[ARRAY_NUM][ARRAY_SIZE];
 
 typedef struct
 {
@@ -56,7 +64,7 @@ five_tuble get_random_flow();
 std::array<uint32_t, MAX_ARRAY_NUM> hashNetworkFlowTuple(const five_tuble & flow);
 void update_flow();
 void array_to_recv_data(int *, uint32_t totol_num, recv_data &Recv_data);
-
+CountMin *load_cm();
 
 
 
