@@ -3,4 +3,5 @@ cmake-build-dpu-soc
 cmake-build-dpu-soc-root
 cmake-build-zjlab20
 cmake-build-zjlab20-root
+cmake-build-dpu-host-root
 

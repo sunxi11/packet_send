@@ -1,4 +1,8 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /tmp/tmp.x9554k2uHO -B /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root
--- Configuring done
--- Generating done
--- Build files have been written to: /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+Sketch_LIB
+    linked by target "packet_send" in directory /tmp/tmp.x9554k2uHO
+
+-- Configuring incomplete, errors occurred!
+See also "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/CMakeOutput.log".

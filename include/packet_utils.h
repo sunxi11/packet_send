@@ -64,8 +64,9 @@ five_tuble get_random_flow();
 std::array<uint32_t, MAX_ARRAY_NUM> hashNetworkFlowTuple(const five_tuble & flow);
 void update_flow();
 void array_to_recv_data(int *, uint32_t totol_num, recv_data &Recv_data);
-CountMin *load_cm();
+//CountMin *load_cm();
 
-
+void from_file(std::string file_path, std::vector<std::vector<int>> &res);
+void cm_from_file(std::string path, std::vector<std::vector<int>> &res);
 
 #endif //PACKET_SEND_PACKET_UTILS_H

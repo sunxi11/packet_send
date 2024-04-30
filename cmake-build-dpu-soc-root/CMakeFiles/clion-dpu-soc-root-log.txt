@@ -1,4 +1,9 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /home/ubuntu/sunxi/packet_send -B /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root
 -- Configuring done
+CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
+Please set them or make sure they are set and tested correctly in the CMake files:
+Sketch_LIB
+    linked by target "packet_send" in directory /home/ubuntu/sunxi/packet_send
+
 -- Generating done
--- Build files have been written to: /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root
+CMake Generate step failed.  Build files cannot be regenerated correctly.

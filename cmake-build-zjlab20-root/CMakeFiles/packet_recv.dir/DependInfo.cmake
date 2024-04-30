@@ -13,6 +13,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/usr/include/libnl3"
   "/home/zju/sunxi/turbomon/sketches/include"
+  "../{CMAKE_SOURCE_DIR}/include"
   )
 
 # Targets to which this target links.

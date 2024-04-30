@@ -68,23 +68,35 @@ int main(int argc, char *argv[])
     const char* server_ip = argv[1];
 //    std::thread recv_thread(simulate_recv);
 
-    CountMin *cm = load_cm();
-    int data_size = sizeof(uint32_t) * cm->counters[0].size();
+//
+//    std::cout << "load data success, " << "data size = " << data_size << std::endl;
+//    auto cm = from_file("../sketch_res/CountMin.txt");
+//    int data_size = cm[0].size() * sizeof(int);
+//    std::cout << "load data success, " << "data size = " << data_size << std::endl;
 
+//    std::vector<std::vector<int>> cm;
+//    auto cm = from_file("../sketch_res/CountMin.txt");
+    std::vector<std::vector<int>> cm(8, std::vector<int>(312500, 100)); // 8 * 312500 * 4 = 10MB (MAX)
+
+//    std::vector<std::vector<int>> cm2;
+//    cm_from_file("../sketch_res/CountMin.txt", cm);
+
+    int data_size = cm[0].size() * sizeof(int);
     std::cout << "load data success, " << "data size = " << data_size << std::endl;
 
     char *start_buf, *rdma_buf;
 
+
     start_buf = (char *)malloc(1000);
     rdma_buf = (char *)malloc(1000);
-
     strcpy(start_buf, "hello world form server");
 
 
-    auto *server = new rdma_server(server_ip, 1245, &cm->counters[0][0], data_size, rdma_buf, 1000);
+    auto *server = new rdma_server(server_ip, 1245, &cm[0][0], data_size, rdma_buf, 1000);
     server->start();
 
     while (1){}
+
 
     return 0;
 }

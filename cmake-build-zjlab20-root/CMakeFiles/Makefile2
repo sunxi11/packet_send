@@ -110,9 +110,9 @@ CMakeFiles/ibinfo.dir/clean:
 # Target rules for target CMakeFiles/packet_send.dir
 
 # All Build rule for target.
-CMakeFiles/packet_send.dir/all: CMakeFiles/rdmacm_tools.dir/all
 CMakeFiles/packet_send.dir/all: CMakeFiles/sketch_operations.dir/all
 CMakeFiles/packet_send.dir/all: CMakeFiles/packet_utils.dir/all
+CMakeFiles/packet_send.dir/all: CMakeFiles/rdmacm_tools.dir/all
 	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/depend
 	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles --progress-num=8,9,10 "Built target packet_send"
@@ -139,9 +139,9 @@ CMakeFiles/packet_send.dir/clean:
 # Target rules for target CMakeFiles/packet_recv.dir
 
 # All Build rule for target.
-CMakeFiles/packet_recv.dir/all: CMakeFiles/rdmacm_tools.dir/all
 CMakeFiles/packet_recv.dir/all: CMakeFiles/sketch_operations.dir/all
 CMakeFiles/packet_recv.dir/all: CMakeFiles/packet_utils.dir/all
+CMakeFiles/packet_recv.dir/all: CMakeFiles/rdmacm_tools.dir/all
 	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/depend
 	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/build
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles --progress-num=5,6,7 "Built target packet_recv"

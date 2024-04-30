@@ -3,5 +3,8 @@
 
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o
  /home/zju/sunxi/turbomon/packet_send/Sketch_operations.cpp
- /home/zju/sunxi/turbomon/packet_send/Sketch_operations.h
- /home/zju/sunxi/turbomon/packet_send/packet_utils.h
+ /home/zju/sunxi/turbomon/packet_send/include/Sketch_operations.h
+ /home/zju/sunxi/turbomon/packet_send/include/packet_utils.h
+ /home/zju/sunxi/turbomon/sketches/include/MurmurHash3.h
+ /home/zju/sunxi/turbomon/sketches/include/countmin.h
+ /home/zju/sunxi/turbomon/sketches/include/hash.h

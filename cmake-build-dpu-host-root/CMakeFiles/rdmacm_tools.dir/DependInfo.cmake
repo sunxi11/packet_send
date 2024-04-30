@@ -14,6 +14,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
   "/opt/mellanox/dpdk/include/dpdk"
   "/opt/mellanox/dpdk/include/dpdk/../x86_64-linux-gnu/dpdk"
   "/opt/mellanox/grpc/include"
+  "../{CMAKE_SOURCE_DIR}/include"
   )
 
 # Targets to which this target links.

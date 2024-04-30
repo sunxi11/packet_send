@@ -77,6 +77,8 @@ int main(int argc, char *argv[]){
     std::cout << "Device: " << id->verbs->device->name << std::endl;
     std::cout << "Max WR: " << dev_attr.max_qp_wr << std::endl;
     std::cout << "Max SGE: " << dev_attr.max_sge << std::endl;
+    std::cout << "Max Mr: " << dev_attr.max_mr << std::endl;
+    std::cout << "Max Mr size: " << dev_attr.max_mr_size << std::endl;
 
     rdma_destroy_id(id);
     rdma_destroy_event_channel(channel);
@@ -84,26 +86,26 @@ int main(int argc, char *argv[]){
 //    struct ibv_device *device;
 //    device = ibv_get_device_index()
 
-    const char *memname = "sample_shm";
-    const size_t region_size = sysconf(_SC_PAGE_SIZE);
-    int fd = shm_open(memname, O_CREAT | O_RDONLY, 0666);
-    if (fd == -1) {
-        perror("shm_open");
-        return 1;
-    }
-
-    void *ptr = mmap(0, region_size, PROT_READ, MAP_SHARED, fd, 0);
-    if (ptr == MAP_FAILED) {
-        perror("mmap");
-        return 1;
-    }
-
-    // 读数据从共享内存
-    printf("Data read from shared memory: %d\n", *((char*)ptr));
-
-
-    // 解除映射
-    munmap(ptr, region_size);
+//    const char *memname = "sample_shm";
+//    const size_t region_size = sysconf(_SC_PAGE_SIZE);
+//    int fd = shm_open(memname, O_CREAT | O_RDONLY, 0666);
+//    if (fd == -1) {
+//        perror("shm_open");
+//        return 1;
+//    }
+//
+//    void *ptr = mmap(0, region_size, PROT_READ, MAP_SHARED, fd, 0);
+//    if (ptr == MAP_FAILED) {
+//        perror("mmap");
+//        return 1;
+//    }
+//
+//    // 读数据从共享内存
+//    printf("Data read from shared memory: %d\n", *((char*)ptr));
+//
+//
+//    // 解除映射
+//    munmap(ptr, region_size);
 
 //    while (1){}
 

@@ -23,7 +23,6 @@
 #include <sketchvisor.h>
 //#include "sketchlearn.h"
 
-#include <cinttypes>
 #include <twotuple.h> // which includes "Pktextract.h"
 #include <parameter.h>
 #include <MurmurHash3.h>
@@ -36,53 +35,53 @@ twoTuple_t Pktbuf_twotpl[MAX_PKT_CNT];
 int Pktcnt = -1;
 
 
-CountMin *load_cm(){
-    uint32_t cnt;
-    std::set<uint32_t> ip_addresses;
 
-    if (method == 0) {
-        Pktextracter pe;
-        pe.extract_form_file(pcap_file_path, Pktbuf_fivetpl, Pktcnt);
-
-        for (int i = 0; i < pe.pktCounter; i++) {
-            twoTuple_t* twotpl_p = convert_fivetpl_to_twotpl(&Pktbuf_fivetpl[i]);
-            Pktbuf_twotpl[i] = *twotpl_p;
-            ip_addresses.insert(Pktbuf_twotpl[i].srcIP);
-            ip_addresses.insert(Pktbuf_twotpl[i].dstIP);
-            //printf("%" PRIu32 "=>%" PRIu32 "\n", Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
-        }
-
-        cnt = pe.pktCounter;
-
-    } else if (method == 1) {
-        vector<twoTuple_t> arr;
-        cnt = extract_twotpl_from_file(twotpl_file_path, arr);
-        printf("Packet number: %d\n", cnt);
-        for (int i = 0; i < cnt; i++) {
-            Pktbuf_twotpl[i] = arr[i];
-            ip_addresses.insert(Pktbuf_twotpl[i].srcIP);
-            ip_addresses.insert(Pktbuf_twotpl[i].dstIP);
-        }
-    }
-
-    // CountMin Sketch with 12 rows
-    CountMin *cm = new CountMin(8, TOTAL_MEM);
-
-    //TODO Update sketch
-    for (int i = 0; i < cnt; i ++) {
-//        ideal.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
-        cm->update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
-//        hp.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
-//        es.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
-//        mv.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
-//        um.insert(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
-    }
-
-
-    return cm;
-}
-
-
+//CountMin *load_cm(){
+//    uint32_t cnt;
+//    std::set<uint32_t> ip_addresses;
+//
+//    if (method == 0) {
+//        Pktextracter pe;
+//        pe.extract_form_file(pcap_file_path, Pktbuf_fivetpl, Pktcnt);
+//
+//        for (int i = 0; i < pe.pktCounter; i++) {
+//            twoTuple_t* twotpl_p = convert_fivetpl_to_twotpl(&Pktbuf_fivetpl[i]);
+//            Pktbuf_twotpl[i] = *twotpl_p;
+//            ip_addresses.insert(Pktbuf_twotpl[i].srcIP);
+//            ip_addresses.insert(Pktbuf_twotpl[i].dstIP);
+//            //printf("%" PRIu32 "=>%" PRIu32 "\n", Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+//        }
+//
+//        cnt = pe.pktCounter;
+//
+//    } else if (method == 1) {
+//        vector<twoTuple_t> arr;
+//        cnt = extract_twotpl_from_file(twotpl_file_path, arr);
+//        printf("Packet number: %d\n", cnt);
+//        for (int i = 0; i < cnt; i++) {
+//            Pktbuf_twotpl[i] = arr[i];
+//            ip_addresses.insert(Pktbuf_twotpl[i].srcIP);
+//            ip_addresses.insert(Pktbuf_twotpl[i].dstIP);
+//        }
+//    }
+//
+//    // CountMin Sketch with 12 rows
+//    CountMin *cm = new CountMin(8, TOTAL_MEM);
+//
+//    //TODO Update sketch
+//    for (int i = 0; i < cnt; i ++) {
+////        ideal.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
+//        cm->update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
+////        hp.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+////        es.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+////        mv.update(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP, 1);
+////        um.insert(Pktbuf_twotpl[i].srcIP, Pktbuf_twotpl[i].dstIP);
+//    }
+//
+//
+//
+//    return cm;
+//}
 
 
 int Array[ARRAY_NUM][ARRAY_SIZE];
@@ -143,9 +142,6 @@ std::array<uint32_t, MAX_ARRAY_NUM> hashNetworkFlowTuple(const five_tuble & flow
         hash_res[i] = ((uint32_t *)hash)[i];
     }
 
-//    for (int i = 0; i < 8; ++i) {
-//        std::cout << hash_res[i] << std::endl;
-//    }
     return hash_res;
 }
 
@@ -158,6 +154,56 @@ void update_flow(){
 }
 
 
+void from_file(std::string file_path, std::vector<std::vector<int>> &res) {
+//    std::vector<std::vector<int>> cm_data;
+    std::string line;
+    std::ifstream in(file_path);
+    if (!in) {
+        std::cerr << "Open file failed" << std::endl;
+    }
+    // 设置自定义缓冲区
+
+    const size_t buffer_size = 1024 * 1024 * 20; // 20 MB buffer
+    std::unique_ptr<char[]> buffer(new char[buffer_size]);
+    in.rdbuf()->pubsetbuf(buffer.get(), buffer_size);
+
+
+    try {
+        while (getline(in, line)) {
+            std::vector<int> res1;
+            res1.reserve(312500);
+            std::stringstream ss(line);
+            std::string single_input;
+            while (getline(ss, single_input, ' ')) {
+                try {
+                    int num = std::stoi(single_input);
+                    res1.push_back(num);
+                } catch (std::invalid_argument const &e) {
+                    std::cerr << "Invalid number found in file: " << single_input << std::endl;
+                } catch (std::out_of_range const &e) {
+                    std::cerr << "Number out of range in file: " << single_input << std::endl;
+                }
+            }
+            res.push_back(res1);
+            ss.clear();
+        }
+    } catch (std::exception &e) {
+        std::cerr << "Error while reading the file: " << e.what() << std::endl;
+    }
+
+    in.close();
+
+}
+
+
+void cm_from_file(std::string path, std::vector<std::vector<int>> &res){
+//    std::vector<std::vector<int>> cm_data;
+    from_file(path, res);
+//    for(int i = 0; i < cm_data.size(); i++){
+//        std::cout << "cm_id: " << i << " size: " << cm_data[i].size() << std::endl;
+//    }
+
+}
 
 
 
