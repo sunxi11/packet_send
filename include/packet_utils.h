@@ -24,7 +24,8 @@
 //#define ARRAY_SIZE 65536
 //#define ARRAY_NUM 4
 
-#define ARRAY_SIZE 312500
+//#define ARRAY_SIZE 312500
+#define ARRAY_SIZE 31250000
 #define ARRAY_NUM 1
 #define BUF_SIZE 125000000
 

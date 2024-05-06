@@ -29,6 +29,22 @@ uint32_t total_num[MAX_CORES] = {};
 uint32_t burst_num[MAX_CORES] = {};
 uint32_t send_offset[MAX_CORES] = {};
 
+struct FR_bucket{
+    uint32_t FlowCount;
+    uint32_t FlowXOR;
+    uint32_t PacketCount;
+    FR_bucket(){
+        FlowCount = 0;
+        FlowXOR = 0;
+        PacketCount = 0;
+    }
+    FR_bucket(std::vector<uint32_t> data){
+        FlowCount = data[0];
+        FlowXOR = data[1];
+        PacketCount = data[2];
+    }
+};
+
 
 void simulate_recv(){
     while (true){
@@ -100,11 +116,17 @@ int main(int argc, char *argv[])
 
     int *int_buf = (int *)start_buf;
 
+
     for(int i = 0; i < bitArray.size(); i++){
         int_buf[i] = static_cast<int>(bitArray[i % bitArray.size()]);
     }
-//    strcpy(start_buf, "hello world form server");
 
+    struct FR_bucket *fr_bucket = (struct FR_bucket*)(start_buf + bitArray.size());
+//    strcpy(start_buf, "hello world form server");
+    for (int i = 0; i < countingtable_data.size(); ++i) {
+        fr_bucket[i] = FR_bucket(countingtable_data[i]);
+//        fr_bucket[i] = FR_bucket({11, 4, 514});
+    }
 
     auto *server = new rdma_server(server_ip, 1245, start_buf, BUF_SIZE, rdma_buf, 1000);
     server->start();

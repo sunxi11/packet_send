@@ -42,7 +42,7 @@ int test_operation(void *){
     uint32_t tem_max = 0, tem_max2 = 0;
     std::cout << "start to process data" << std::endl;
     while (true){
-        std::this_thread::sleep_for(std::chrono::milliseconds(10000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         for (int i = 0; i < ARRAY_SIZE; ++i) {
             tem_max2 = operator_max(DataMap_array, i);
             if (tem_max2 > tem_max){
@@ -89,7 +89,6 @@ int packet_recv_process(int client_fd, struct sockaddr_in &address){
 
 
 
-
 int main(int argc, char *argv[])
 {
     int ret;
@@ -117,15 +116,12 @@ int main(int argc, char *argv[])
     while (1){
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         client->rdma_read();
+//        array_to_recv_data(recv_buf, ARRAY_NUM * ARRAY_SIZE, DataMap_array);
         array_to_recv_data(recv_buf, ARRAY_NUM * ARRAY_SIZE, DataMap_array);
     }
 
 
     test_thread.join();
-
-
-
-
     return 0;
 
 
