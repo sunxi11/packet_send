@@ -13,6 +13,8 @@
 #include <arpa/inet.h>
 #include <sys/epoll.h>
 #include <unistd.h>
+#include <nlohmann/json.hpp>
+#include <fstream>
 
 #include "include/packet_utils.h"
 #include "include/Sketch_operations.h"
@@ -75,14 +77,21 @@ int main(int argc, char *argv[])
 //    std::cout << "load data success, " << "data size = " << data_size << std::endl;
 
 //    std::vector<std::vector<int>> cm;
-//    auto cm = from_file("../sketch_res/CountMin.txt");
-    std::vector<std::vector<int>> cm(8, std::vector<int>(312500, 100)); // 8 * 312500 * 4 = 10MB (MAX)
+////    auto cm = from_file("../sketch_res/CountMin.txt");
+//    std::vector<std::vector<int>> cm(8, std::vector<int>(312500, 100)); // 8 * 312500 * 4 = 10MB (MAX)
+//
+////    std::vector<std::vector<int>> cm2;
+////    cm_from_file("../sketch_res/CountMin.txt", cm);
+//
+//    int data_size = cm[0].size() * sizeof(int);
+//    std::cout << "load data success, " << "data size = " << data_size << std::endl;
 
-//    std::vector<std::vector<int>> cm2;
-//    cm_from_file("../sketch_res/CountMin.txt", cm);
-
-    int data_size = cm[0].size() * sizeof(int);
-    std::cout << "load data success, " << "data size = " << data_size << std::endl;
+    std::ifstream cm_json("../sketch_res/CountMin.json");
+    nlohmann::json cm_json_data;
+    cm_json >> cm_json_data;
+    std::vector<std::vector<int>> cm;
+    cm = cm_json_data.get<vector<std::vector<int>>>();
+    int data_size = sizeof(uint32_t) * cm[0].size();
 
     char *start_buf, *rdma_buf;
 

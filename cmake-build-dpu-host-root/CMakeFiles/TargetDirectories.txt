@@ -1,5 +1,6 @@
 /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/rebuild_cache.dir
 /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/edit_cache.dir
+/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/sketch_res_get.dir
 /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/ibinfo.dir
 /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_send.dir
 /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir

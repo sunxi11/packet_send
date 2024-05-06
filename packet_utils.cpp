@@ -202,7 +202,6 @@ void cm_from_file(std::string path, std::vector<std::vector<int>> &res){
 //    for(int i = 0; i < cm_data.size(); i++){
 //        std::cout << "cm_id: " << i << " size: " << cm_data[i].size() << std::endl;
 //    }
-
 }
 
 

@@ -28,6 +28,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -54,6 +55,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -80,6 +82,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -106,6 +109,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -132,6 +136,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -158,6 +163,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -184,6 +190,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -210,6 +217,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -236,6 +244,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -262,6 +271,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -288,6 +298,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -314,6 +325,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -340,6 +352,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
@@ -366,6 +379,7 @@
 					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
 					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
 					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/11"/>
 					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
 					<Add directory="/usr/include/c++/11/backward"/>
