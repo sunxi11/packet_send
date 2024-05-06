@@ -305,7 +305,7 @@ std::vector<std::pair<std::vector<int>, std::vector<int>>> um_from_file(std::str
 }
 
 
-int main1(){
+int main(){
     auto cm_data = cm_from_file("../sketch_res/CountMin.txt");
     auto cs_data = cs_from_file("../sketch_res/CountSketch.txt");
     auto es_data = es_from_file("../sketch_res/ElasticSketch.txt");
@@ -315,11 +315,23 @@ int main1(){
 
 //    std::vector<int> tem_cm;
 
-    std::ofstream out("../sketch_res/CountMin.json");
-//    std::copy(cm_data[0].begin(), cm_data[0].end(), std::back_inserter(tem_cm));
-    nlohmann::json json_matrix = cm_data;
+    std::ofstream out("../sketch_res/FlowRadar.json");
+    nlohmann::json json_matrix;
+
+    std::vector<std::vector<uint32_t>> countingtable_data;
+
+    json_matrix["bitArray"] = fr_data.first;
+
+    for(auto &frb : fr_data.second){
+        countingtable_data.push_back({frb.FlowCount, (uint32_t )frb.FlowXOR, frb.PacketCount});
+    }
+
+    json_matrix["countingtable"] = countingtable_data;
+
     out << json_matrix.dump() << std::endl;
     out.close();
+
+
 
 
 
