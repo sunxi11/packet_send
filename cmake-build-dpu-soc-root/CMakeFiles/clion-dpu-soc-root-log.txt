@@ -3,6 +3,7 @@
 CMake Error: The following variables are used in this project, but they are set to NOTFOUND.
 Please set them or make sure they are set and tested correctly in the CMake files:
 Sketch_LIB
+    linked by target "get_sk_res" in directory /home/ubuntu/sunxi/packet_send
     linked by target "packet_send" in directory /home/ubuntu/sunxi/packet_send
 
 -- Generating done

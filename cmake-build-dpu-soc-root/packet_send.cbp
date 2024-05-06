@@ -395,6 +395,60 @@
 					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="get_sk_res">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/get_sk_res" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 get_sk_res"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="get_sk_res/fast">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/get_sk_res" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 get_sk_res/fast"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
 				<Option type="4"/>
@@ -439,9 +493,11 @@
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/packet_utils.cpp">
 			<Option target="packet_utils"/>
+			<Option target="get_sk_res"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/packet_utils.h">
 			<Option target="packet_utils"/>
+			<Option target="get_sk_res"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/rdma_client.cpp">
 			<Option target="packet_recv"/>

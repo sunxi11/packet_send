@@ -18,6 +18,21 @@
 
 void rdma_server::setup_buffer() {
     int ret;
+    struct ibv_device_attr dev_attr;
+
+    ret = ibv_query_device(child_cm_id->verbs, &dev_attr);
+    if (ret){
+        std::cerr << "ibv_query_device error: " << strerror(errno) << std::endl;
+        exit(1);
+    }
+
+    std::cout << "Device: " << child_cm_id->verbs->device->name << std::endl;
+    std::cout << "Max WR: " << dev_attr.max_qp_wr << std::endl;
+    std::cout << "Max SGE: " << dev_attr.max_sge << std::endl;
+    std::cout << "Max Mr: " << dev_attr.max_mr << std::endl;
+    std::cout << "Max Mr size: " << dev_attr.max_mr_size << std::endl;
+
+
     recv_mr = ibv_reg_mr(pd, &recv_buf, sizeof(struct rdma_info),
                          IBV_ACCESS_LOCAL_WRITE);
     if (!this->recv_mr){

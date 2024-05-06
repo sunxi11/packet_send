@@ -70,38 +70,43 @@ int main(int argc, char *argv[])
     const char* server_ip = argv[1];
 //    std::thread recv_thread(simulate_recv);
 
-//
-//    std::cout << "load data success, " << "data size = " << data_size << std::endl;
-//    auto cm = from_file("../sketch_res/CountMin.txt");
-//    int data_size = cm[0].size() * sizeof(int);
-//    std::cout << "load data success, " << "data size = " << data_size << std::endl;
 
+//    std::ifstream cm_json("../sketch_res/ElasticSketch.json");
+//    nlohmann::json cm_json_data;
+//    cm_json >> cm_json_data;
 //    std::vector<std::vector<int>> cm;
-////    auto cm = from_file("../sketch_res/CountMin.txt");
-//    std::vector<std::vector<int>> cm(8, std::vector<int>(312500, 100)); // 8 * 312500 * 4 = 10MB (MAX)
-//
-////    std::vector<std::vector<int>> cm2;
-////    cm_from_file("../sketch_res/CountMin.txt", cm);
-//
-//    int data_size = cm[0].size() * sizeof(int);
-//    std::cout << "load data success, " << "data size = " << data_size << std::endl;
+//    cm = cm_json_data.get<vector<std::vector<int>>>();
+//    int data_size = sizeof(uint32_t) * cm[0].size();
+////    cm_json.close();      这里不能关闭这个文件，关闭会导致 RDMA bus error 暂时不知道原因
 
-    std::ifstream cm_json("../sketch_res/CountMin.json");
-    nlohmann::json cm_json_data;
-    cm_json >> cm_json_data;
-    std::vector<std::vector<int>> cm;
-    cm = cm_json_data.get<vector<std::vector<int>>>();
-    int data_size = sizeof(uint32_t) * cm[0].size();
+    std::ifstream fr_json("/home/zju/sunxi/turbomon/sketch_res/FlowRadar.json");
+    nlohmann::json fr_json_data;
+    fr_json >> fr_json_data;
+    std::vector<uint8_t> bitArray;
+    std::vector<std::vector<uint32_t>> countingtable_data;
+
+    bitArray = fr_json_data["bitArray"].get<std::vector<uint8_t>>();
+    countingtable_data = fr_json_data["countingtable"].get<std::vector<std::vector<uint32_t>>>();
+
+
+    std::cout << bitArray.size() << std::endl;
+    int data_size = sizeof(uint8_t) * bitArray.size();
+
+    std::cout << "load data from json, data size = " << data_size << std::endl;
 
     char *start_buf, *rdma_buf;
-
-
-    start_buf = (char *)malloc(1000);
+    start_buf = (char *)malloc(BUF_SIZE);
     rdma_buf = (char *)malloc(1000);
-    strcpy(start_buf, "hello world form server");
+
+    int *int_buf = (int *)start_buf;
+
+    for(int i = 0; i < bitArray.size(); i++){
+        int_buf[i] = static_cast<int>(bitArray[i % bitArray.size()]);
+    }
+//    strcpy(start_buf, "hello world form server");
 
 
-    auto *server = new rdma_server(server_ip, 1245, &cm[0][0], data_size, rdma_buf, 1000);
+    auto *server = new rdma_server(server_ip, 1245, start_buf, BUF_SIZE, rdma_buf, 1000);
     server->start();
 
     while (1){}

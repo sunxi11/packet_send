@@ -34,7 +34,7 @@ uint64_t total_num[MAX_CORES] = {};
 uint64_t burst_num[MAX_CORES] = {};
 
 uint32_t total_array_num[MAX_CORES] = {};
-int recv_buf[ARRAY_SIZE] = {0};
+int recv_buf[BUF_SIZE / 4] = {0};
 
 recv_data DataMap_array;
 
@@ -108,7 +108,7 @@ int main(int argc, char *argv[])
     rdma_buf = (char *)malloc(1000);
 
     strcpy(start_buf, "hello world form client");
-    auto *client = new rdma_client(server_ip, 1245, start_buf, 1000, recv_buf, sizeof(recv_buf));
+    auto *client = new rdma_client(server_ip, 1245, start_buf, 1000, recv_buf, BUF_SIZE);
     client->start();
 
 

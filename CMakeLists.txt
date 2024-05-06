@@ -31,11 +31,11 @@ target_link_libraries(packet_utils ${OPENSSL_LIBRARIES})
 add_library(sketch_operations Sketch_operations.cpp)
 target_link_libraries(sketch_operations packet_utils)
 
-#添加 sketch 库
-find_library(Sketch_LIB sketches-lhy PATHS /home/zju/sunxi/turbomon/sketches/cmake-build-remote-zjlab20)
-if(Sketch_LIB)
-    include_directories(/home/zju/sunxi/turbomon/sketches/include)
-endif ()
+##添加 sketch 库
+#find_library(Sketch_LIB sketches-lhy PATHS /home/zju/sunxi/turbomon/sketches/cmake-build-remote-zjlab20)
+#if(Sketch_LIB)
+#    include_directories(/home/zju/sunxi/turbomon/sketches/include)
+#endif ()
 
 include_directories({CMAKE_SOURCE_DIR}/include)
 
@@ -60,7 +60,7 @@ add_executable(packet_recv ow_packet_recv.cpp rdma_client.cpp)
 target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
 add_executable(packet_send ow_packet_send.cpp rdma_server.cpp)
-target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs} ${Sketch_LIB})
+target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
 add_executable(ibinfo get_ibinfo.cpp)
 target_link_libraries(ibinfo pthread ${rdma_libs} rt)

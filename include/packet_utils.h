@@ -12,7 +12,6 @@
 #include <array>
 #include <map>
 
-#include <countmin.h>
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
@@ -27,6 +26,7 @@
 
 #define ARRAY_SIZE 312500
 #define ARRAY_NUM 1
+#define BUF_SIZE 125000000
 
 
 #define MAX_ARRAY_NUM 8

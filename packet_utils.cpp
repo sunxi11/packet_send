@@ -9,30 +9,22 @@
 #include <iostream>
 #include <openssl/sha.h>
 #include <set>
+#include <fstream>
+#include <sstream>
 
 #include "include/Sketch_operations.h"
-#include <ideal.h>
-#include <countmin.h>
-#include <elasticsketch.h>
-#include <flowradar.h>
-#include <mvsketch.h>
-#include <hashpipe.h>
-#include <univmon.h>
-#include <countsketch.h>
-#include <countbloomfilter.h>
-#include <sketchvisor.h>
 //#include "sketchlearn.h"
 
-#include <twotuple.h> // which includes "Pktextract.h"
-#include <parameter.h>
-#include <MurmurHash3.h>
+//#include <twotuple.h> // which includes "Pktextract.h"
+//#include <parameter.h>
+//#include <MurmurHash3.h>
 
 
 
 
-fiveTuple_t Pktbuf_fivetpl[MAX_PKT_CNT];
-twoTuple_t Pktbuf_twotpl[MAX_PKT_CNT];
-int Pktcnt = -1;
+//fiveTuple_t Pktbuf_fivetpl[MAX_PKT_CNT];
+//twoTuple_t Pktbuf_twotpl[MAX_PKT_CNT];
+//int Pktcnt = -1;
 
 
 
@@ -152,8 +144,6 @@ void update_flow(){
         Array[i][hash_res[i] % ARRAY_SIZE] += 1;
     }
 }
-
-
 void from_file(std::string file_path, std::vector<std::vector<int>> &res) {
 //    std::vector<std::vector<int>> cm_data;
     std::string line;
