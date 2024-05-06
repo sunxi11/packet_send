@@ -6,6 +6,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 
+include_directories("/usr/include")
 
 # 查找 pkg-config DPDK
 find_package(PkgConfig REQUIRED)
@@ -48,9 +49,6 @@ set(rdma_libs
         rdmacm_tools
 )
 
-
-
-
 # 添加可执行文件
 add_executable(main main.cpp)
 target_link_libraries(main packet_utils)
@@ -63,3 +61,6 @@ target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operatio
 
 add_executable(ibinfo get_ibinfo.cpp)
 target_link_libraries(ibinfo pthread ${rdma_libs} rt)
+
+add_executable(get_sk_res packet_utils.cpp)
+target_link_libraries(get_sk_res packet_utils ${Sketch_LIB})

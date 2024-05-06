@@ -193,7 +193,7 @@ CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: \
  /usr/include/c++/11/bits/stl_numeric.h /usr/include/c++/11/bit \
  /usr/include/c++/11/pstl/glue_numeric_defs.h \
  /usr/include/c++/11/pstl/execution_defs.h \
- /home/ubuntu/sunxi/packet_send/packet_utils.h \
+ /home/ubuntu/sunxi/packet_send/include/packet_utils.h \
  /usr/include/c++/11/algorithm /usr/include/c++/11/bits/stl_algo.h \
  /usr/include/c++/11/bits/algorithmfwd.h \
  /usr/include/c++/11/bits/stl_heap.h \
@@ -202,7 +202,7 @@ CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: \
  /usr/include/c++/11/functional /usr/include/c++/11/bits/refwrap.h \
  /usr/include/c++/11/bits/std_function.h /usr/include/c++/11/cstring \
  /usr/include/string.h /usr/include/strings.h \
- /home/ubuntu/sunxi/packet_send/Sketch_operations.h \
+ /home/ubuntu/sunxi/packet_send/include/Sketch_operations.h \
  /usr/include/c++/11/list /usr/include/c++/11/bits/stl_list.h \
  /usr/include/c++/11/bits/allocated_ptr.h \
  /usr/include/c++/11/bits/list.tcc /usr/include/c++/11/memory \
@@ -215,4 +215,5 @@ CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: \
  /usr/include/c++/11/bits/atomic_base.h \
  /usr/include/c++/11/bits/atomic_lockfree_defines.h \
  /usr/include/c++/11/backward/auto_ptr.h \
- /usr/include/c++/11/pstl/glue_memory_defs.h
+ /usr/include/c++/11/pstl/glue_memory_defs.h \
+ /home/ubuntu/sunxi/packet_send/include/packet_utils.h

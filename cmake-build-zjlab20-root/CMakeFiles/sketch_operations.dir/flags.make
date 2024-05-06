@@ -6,5 +6,5 @@ CXX_FLAGS =  -g -g   -std=gnu++17
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/usr/include/libnl3 -I/home/zju/sunxi/turbomon/sketches/include 
+CXX_INCLUDES = -I/usr/include/libnl3 -I/home/zju/sunxi/turbomon/sketches/include -I/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include 
 

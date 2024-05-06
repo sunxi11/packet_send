@@ -16,7 +16,7 @@
 #include <elasticsketch.h>
 #include <flowradar.h>
 #include <mvsketch.h>
-#include <hashpipe.h>
+//#include <hashpipe.h>
 #include <univmon.h>
 #include <countsketch.h>
 #include <countbloomfilter.h>
@@ -27,7 +27,7 @@
 #include <twotuple.h> // which includes "Pktextract.h"
 #include <parameter.h>
 #include <MurmurHash3.h>
-
+#include <nlohmann/json.hpp>
 
 
 
@@ -305,13 +305,23 @@ std::vector<std::pair<std::vector<int>, std::vector<int>>> um_from_file(std::str
 }
 
 
-int test(){
+int main1(){
     auto cm_data = cm_from_file("../sketch_res/CountMin.txt");
     auto cs_data = cs_from_file("../sketch_res/CountSketch.txt");
     auto es_data = es_from_file("../sketch_res/ElasticSketch.txt");
     auto hp_data = hp_from_file("../sketch_res/HashPipe.txt");
     auto fr_data = fr_from_file("../sketch_res/FlowRadar.txt");
     auto um_data = um_from_file("../sketch_res/UnivMon.txt");
+
+//    std::vector<int> tem_cm;
+
+    std::ofstream out("../sketch_res/CountMin.json");
+//    std::copy(cm_data[0].begin(), cm_data[0].end(), std::back_inserter(tem_cm));
+    nlohmann::json json_matrix = cm_data;
+    out << json_matrix.dump() << std::endl;
+    out.close();
+
+
     return 0;
 }
 

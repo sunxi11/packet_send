@@ -53,6 +53,7 @@ CMAKE_BINARY_DIR = /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
+all: CMakeFiles/sketch_res_get.dir/all
 all: CMakeFiles/ibinfo.dir/all
 all: CMakeFiles/packet_send.dir/all
 all: CMakeFiles/packet_recv.dir/all
@@ -69,6 +70,7 @@ preinstall:
 .PHONY : preinstall
 
 # The main recursive "clean" target.
+clean: CMakeFiles/sketch_res_get.dir/clean
 clean: CMakeFiles/ibinfo.dir/clean
 clean: CMakeFiles/packet_send.dir/clean
 clean: CMakeFiles/packet_recv.dir/clean
@@ -78,6 +80,33 @@ clean: CMakeFiles/sketch_operations.dir/clean
 clean: CMakeFiles/packet_utils.dir/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Target rules for target CMakeFiles/sketch_res_get.dir
+
+# All Build rule for target.
+CMakeFiles/sketch_res_get.dir/all:
+	$(MAKE) -f CMakeFiles/sketch_res_get.dir/build.make CMakeFiles/sketch_res_get.dir/depend
+	$(MAKE) -f CMakeFiles/sketch_res_get.dir/build.make CMakeFiles/sketch_res_get.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles --progress-num=17,18 "Built target sketch_res_get"
+.PHONY : CMakeFiles/sketch_res_get.dir/all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/sketch_res_get.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/sketch_res_get.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles 0
+.PHONY : CMakeFiles/sketch_res_get.dir/rule
+
+# Convenience name for target.
+sketch_res_get: CMakeFiles/sketch_res_get.dir/rule
+
+.PHONY : sketch_res_get
+
+# clean rule for target.
+CMakeFiles/sketch_res_get.dir/clean:
+	$(MAKE) -f CMakeFiles/sketch_res_get.dir/build.make CMakeFiles/sketch_res_get.dir/clean
+.PHONY : CMakeFiles/sketch_res_get.dir/clean
 
 #=============================================================================
 # Target rules for target CMakeFiles/ibinfo.dir

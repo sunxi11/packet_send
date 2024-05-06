@@ -13,6 +13,8 @@
 #include <arpa/inet.h>
 #include <sys/epoll.h>
 #include <unistd.h>
+#include <nlohmann/json.hpp>
+#include <fstream>
 
 #include "include/packet_utils.h"
 #include "include/Sketch_operations.h"
@@ -68,20 +70,33 @@ int main(int argc, char *argv[])
     const char* server_ip = argv[1];
 //    std::thread recv_thread(simulate_recv);
 
-    CountMin *cm = load_cm();
-    int data_size = sizeof(uint32_t) * cm->counters[0].size();
 
+////一个可行的方案
+//    auto cm = cm_from_file("../sketch_res/CountMin.txt");
+//    int data_size = sizeof(uint32_t) * cm[0].size();
+
+
+
+    std::ifstream cm_json("../sketch_res/CountMin.json");
+    nlohmann::json cm_json_data;
+    cm_json >> cm_json_data;
+    std::vector<std::vector<int>> cm;
+    cm = cm_json_data.get<vector<std::vector<int>>>();
+    int data_size = sizeof(uint32_t) * cm[0].size();
+//
+//
     std::cout << "load data success, " << "data size = " << data_size << std::endl;
 
     char *start_buf, *rdma_buf;
 
-    start_buf = (char *)malloc(1000);
+    start_buf = (char *)malloc(1250000);
     rdma_buf = (char *)malloc(1000);
 
     strcpy(start_buf, "hello world form server");
 
 
-    auto *server = new rdma_server(server_ip, 1245, &cm->counters[0][0], data_size, rdma_buf, 1000);
+    auto *server = new rdma_server(server_ip, 1245, &cm[0][0], data_size, rdma_buf, 1000);
+//    auto *server = new rdma_server(server_ip, 1245, start_buf, 312500, rdma_buf, 1000);
     server->start();
 
     while (1){}

@@ -5,5 +5,6 @@
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/packet_recv.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/packet_send.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/ibinfo.dir
+/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/get_sk_res.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/edit_cache.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/rebuild_cache.dir
