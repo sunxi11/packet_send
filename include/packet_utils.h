@@ -64,7 +64,27 @@ five_tuble get_random_flow();
 std::array<uint32_t, MAX_ARRAY_NUM> hashNetworkFlowTuple(const five_tuble & flow);
 void update_flow();
 void array_to_recv_data(int *, uint32_t totol_num, recv_data &Recv_data);
-CountMin *load_cm();
+
+struct FRBucket_1
+{
+    u_int64_t FlowXOR;
+    u_int32_t FlowCount;
+    u_int32_t PacketCount;
+    FRBucket_1()
+    {
+        FlowXOR = 0;
+        FlowCount = 0;
+        PacketCount = 0;
+    }
+};
+
+std::vector<std::vector<int>> from_file(std::string file_path);
+std::vector<std::vector<int>> cm_from_file(std::string path);
+std::vector<std::vector<int>> cs_from_file(std::string path);
+std::vector<std::vector<int>> es_from_file(std::string path);
+std::vector<std::vector<int>> hp_from_file(std::string path);
+std::pair<std::vector<uint8_t>, std::vector<FRBucket_1>> fr_from_file(std::string path);
+std::vector<std::pair<std::vector<int>, std::vector<int>>> um_from_file(std::string path);
 
 
 

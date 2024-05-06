@@ -157,7 +157,163 @@ void update_flow(){
     }
 }
 
+std::vector<std::vector<int>> from_file(std::string file_path){
+    std::vector<std::vector<int>> cm_data;
+    std::string line;
+    std::ifstream in(file_path);
+    if(!in){
+        std::cerr << "open file failed" << std::endl;
+        return cm_data;
+    }
 
+    while (getline(in, line)){
+        std::vector<int> res;
+        std::stringstream ss(line);
+        std::string single_input;
+        while(getline(ss, single_input, ' ')){
+            res.push_back(std::stoi(single_input));
+        }
+        cm_data.push_back(res);
+    }
+
+    return cm_data;
+}
+std::vector<std::vector<int>> cm_from_file(std::string path){
+    std::vector<std::vector<int>> cm_data;
+    cm_data = from_file(path);
+//    for(int i = 0; i < cm_data.size(); i++){
+//        std::cout << "cm_id: " << i << " size: " << cm_data[i].size() << std::endl;
+//    }
+    return cm_data;
+}
+std::vector<std::vector<int>> cs_from_file(std::string path){
+    std::vector<std::vector<int>> cs_data;
+    cs_data = from_file(path);
+    for(int i = 0; i < cs_data.size(); i++){
+        std::cout << "es_id: " << i << " size: " << cs_data[i].size() << std::endl;
+    }
+    return cs_data;
+}
+std::vector<std::vector<int>> es_from_file(std::string path){
+    std::vector<std::vector<int>> es_data;
+    std::ifstream in(path);
+    std::string key, line;
+    int value;
+
+    getline(in, line);
+    istringstream ostring1(line);
+    ostring1 >> key >> value;
+    std::cout << key << " " << value << std::endl;
+
+    getline(in, line);
+    istringstream ostring2(line);
+    ostring2 >> key >> value;
+    std::cout << key << " " << value << std::endl;
+
+    while (getline(in, line)){
+        std::vector<int> res;
+        std::stringstream ss(line);
+        std::string single_input;
+        while(getline(ss, single_input, ' ')){
+            res.push_back(std::stoi(single_input));
+        }
+        es_data.push_back(res);
+    }
+
+    for(int i = 0; i < es_data.size(); i++){
+        std::cout << "es_id: " << i << " size: " << es_data[i].size() << std::endl;
+    }
+
+    return es_data;
+
+}
+std::vector<std::vector<int>> hp_from_file(std::string path){
+
+    std::ifstream in(path);
+    string line;
+    std::vector<std::vector<int>> hp_data;
+
+    while (getline(in, line)){
+        std::stringstream ss(line);
+        std::string single_input;
+        std::vector<int> res;
+        while (getline(ss, single_input, ' ')){
+            res.push_back(stoi(single_input));
+        }
+        hp_data.push_back(res);
+    }
+
+    for(int i = 0; i < hp_data.size(); i++){
+        std::cout << "idx: " << i << " size: " << hp_data[i].size() << std::endl;
+    }
+
+    return hp_data;
+};
+std::pair<std::vector<uint8_t>, std::vector<FRBucket_1>> fr_from_file(std::string path) {
+    std::ifstream in(path);
+    string line, tem, tem2;
+    std::vector<uint8_t> bitArray;
+    std::vector<FRBucket_1> countingtable;
+    int flowcount, packetcount, flowxor, count_size;
+    uint8_t bit;
+    struct FRBucket_1 frb;
+
+    getline(in, line);
+    std::istringstream bitstring(line);
+    while (bitstring >> bit){
+        bitArray.push_back(bit);
+    }
+
+
+    getline(in, line);
+    std::istringstream continfo(line);
+    continfo >> tem >> tem2 >> count_size;
+
+    while (getline(in, line)){
+        std::istringstream ss(line);
+        ss >> flowcount >> flowxor >> packetcount;
+        frb.FlowXOR = flowxor;
+        frb.FlowCount = flowcount;
+        frb.PacketCount = packetcount;
+        countingtable.push_back(frb);
+    }
+
+    return std::make_pair(bitArray, countingtable);
+
+}
+std::vector<std::pair<std::vector<int>, std::vector<int>>> um_from_file(std::string path){
+    std::ifstream in(path);
+    string line;
+    std::vector<std::pair<std::vector<int>, std::vector<int>>> um_data;
+    while (getline(in, line)){
+        std::stringstream ss(line);
+        std::string single_input;
+        std::vector<int> res1, res2;
+        while (getline(ss, single_input, ' ')){
+            res1.push_back(stoi(single_input));
+            if(res1.size() >= 12){
+                break;
+            }
+        }
+        while (getline(ss, single_input, ' ')){
+            res2.push_back(stoi(single_input));
+        }
+        um_data.push_back(std::make_pair(res1, res2));
+    }
+
+    return um_data;
+}
+
+
+int test(){
+    auto cm_data = cm_from_file("../sketch_res/CountMin.txt");
+    auto cs_data = cs_from_file("../sketch_res/CountSketch.txt");
+    auto es_data = es_from_file("../sketch_res/ElasticSketch.txt");
+    auto hp_data = hp_from_file("../sketch_res/HashPipe.txt");
+    auto fr_data = fr_from_file("../sketch_res/FlowRadar.txt");
+    auto um_data = um_from_file("../sketch_res/UnivMon.txt");
+    return 0;
+}
 
 
 
