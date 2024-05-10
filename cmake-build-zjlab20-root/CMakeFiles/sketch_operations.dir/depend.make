@@ -4,7 +4,4 @@
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: ../Sketch_operations.cpp
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: ../include/Sketch_operations.h
 CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: ../include/packet_utils.h
-CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: /home/zju/sunxi/turbomon/sketches/include/MurmurHash3.h
-CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: /home/zju/sunxi/turbomon/sketches/include/countmin.h
-CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o: /home/zju/sunxi/turbomon/sketches/include/hash.h
 

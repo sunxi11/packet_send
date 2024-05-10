@@ -45,7 +45,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -70,7 +69,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -95,7 +93,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -120,7 +117,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -145,7 +141,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -170,7 +165,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -195,7 +189,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -220,7 +213,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -245,7 +237,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -270,7 +261,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -295,7 +285,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -320,7 +309,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -345,7 +333,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
@@ -370,7 +357,6 @@
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/libnl3"/>
-					<Add directory="/home/zju/sunxi/turbomon/sketches/include"/>
 					<Add directory="/home/zju/sunxi/turbomon/packet_send/{CMAKE_SOURCE_DIR}/include"/>
 					<Add directory="/usr/include/c++/9"/>
 					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>

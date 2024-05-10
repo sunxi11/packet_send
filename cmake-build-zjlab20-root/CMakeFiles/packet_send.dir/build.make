@@ -97,7 +97,6 @@ packet_send: CMakeFiles/packet_send.dir/build.make
 packet_send: libpacket_utils.a
 packet_send: libsketch_operations.a
 packet_send: librdmacm_tools.a
-packet_send: /home/zju/sunxi/turbomon/sketches/cmake-build-remote-zjlab20/libsketches-lhy.so
 packet_send: libpacket_utils.a
 packet_send: /usr/lib/x86_64-linux-gnu/libssl.so
 packet_send: /usr/lib/x86_64-linux-gnu/libcrypto.so

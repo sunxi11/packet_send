@@ -207,19 +207,6 @@ ibinfo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/build
 .PHONY : ibinfo/fast
 
-#=============================================================================
-# Target rules for targets named get_sk_res
-
-# Build rule for target.
-get_sk_res: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 get_sk_res
-.PHONY : get_sk_res
-
-# fast build rule for target.
-get_sk_res/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/get_sk_res.dir/build.make CMakeFiles/get_sk_res.dir/build
-.PHONY : get_sk_res/fast
-
 Sketch_operations.o: Sketch_operations.cpp.o
 .PHONY : Sketch_operations.o
 
@@ -370,7 +357,6 @@ packet_utils.o: packet_utils.cpp.o
 # target to build an object file
 packet_utils.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/get_sk_res.dir/build.make CMakeFiles/get_sk_res.dir/packet_utils.cpp.o
 .PHONY : packet_utils.cpp.o
 
 packet_utils.i: packet_utils.cpp.i
@@ -379,7 +365,6 @@ packet_utils.i: packet_utils.cpp.i
 # target to preprocess a source file
 packet_utils.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/get_sk_res.dir/build.make CMakeFiles/get_sk_res.dir/packet_utils.cpp.i
 .PHONY : packet_utils.cpp.i
 
 packet_utils.s: packet_utils.cpp.s
@@ -388,7 +373,6 @@ packet_utils.s: packet_utils.cpp.s
 # target to generate assembly for a file
 packet_utils.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/get_sk_res.dir/build.make CMakeFiles/get_sk_res.dir/packet_utils.cpp.s
 .PHONY : packet_utils.cpp.s
 
 rdma_client.o: rdma_client.cpp.o
@@ -447,7 +431,6 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... get_sk_res"
 	@echo "... ibinfo"
 	@echo "... main"
 	@echo "... packet_recv"

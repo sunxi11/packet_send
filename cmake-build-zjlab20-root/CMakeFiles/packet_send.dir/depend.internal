@@ -6,9 +6,6 @@ CMakeFiles/packet_send.dir/ow_packet_send.cpp.o
  /home/zju/sunxi/turbomon/packet_send/include/packet_utils.h
  /home/zju/sunxi/turbomon/packet_send/include/rdma-utils.h
  /home/zju/sunxi/turbomon/packet_send/ow_packet_send.cpp
- /home/zju/sunxi/turbomon/sketches/include/MurmurHash3.h
- /home/zju/sunxi/turbomon/sketches/include/countmin.h
- /home/zju/sunxi/turbomon/sketches/include/hash.h
 CMakeFiles/packet_send.dir/rdma_server.cpp.o
  /home/zju/sunxi/turbomon/packet_send/include/common.h
  /home/zju/sunxi/turbomon/packet_send/include/rdma-utils.h

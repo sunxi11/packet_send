@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named sketch_res_get
-
-# Build rule for target.
-sketch_res_get: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sketch_res_get
-.PHONY : sketch_res_get
-
-# fast build rule for target.
-sketch_res_get/fast:
-	$(MAKE) -f CMakeFiles/sketch_res_get.dir/build.make CMakeFiles/sketch_res_get.dir/build
-.PHONY : sketch_res_get/fast
-
-#=============================================================================
 # Target rules for targets named ibinfo
 
 # Build rule for target.
@@ -382,7 +369,6 @@ packet_utils.o: packet_utils.cpp.o
 
 # target to build an object file
 packet_utils.cpp.o:
-	$(MAKE) -f CMakeFiles/sketch_res_get.dir/build.make CMakeFiles/sketch_res_get.dir/packet_utils.cpp.o
 	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.o
 .PHONY : packet_utils.cpp.o
 
@@ -392,7 +378,6 @@ packet_utils.i: packet_utils.cpp.i
 
 # target to preprocess a source file
 packet_utils.cpp.i:
-	$(MAKE) -f CMakeFiles/sketch_res_get.dir/build.make CMakeFiles/sketch_res_get.dir/packet_utils.cpp.i
 	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.i
 .PHONY : packet_utils.cpp.i
 
@@ -402,7 +387,6 @@ packet_utils.s: packet_utils.cpp.s
 
 # target to generate assembly for a file
 packet_utils.cpp.s:
-	$(MAKE) -f CMakeFiles/sketch_res_get.dir/build.make CMakeFiles/sketch_res_get.dir/packet_utils.cpp.s
 	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.s
 .PHONY : packet_utils.cpp.s
 
@@ -468,7 +452,6 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... sketch_res_get"
 	@echo "... ibinfo"
 	@echo "... packet_send"
 	@echo "... packet_recv"
