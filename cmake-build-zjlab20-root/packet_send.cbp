@@ -398,6 +398,9 @@
 		<Unit filename="/home/zju/sunxi/turbomon/packet_send/packet_utils.cpp">
 			<Option target="packet_utils"/>
 		</Unit>
+		<Unit filename="/home/zju/sunxi/turbomon/packet_send/packet_utils.h">
+			<Option target="packet_utils"/>
+		</Unit>
 		<Unit filename="/home/zju/sunxi/turbomon/packet_send/rdma_client.cpp">
 			<Option target="packet_recv"/>
 		</Unit>

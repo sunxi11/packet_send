@@ -1,4 +1,8 @@
 /usr/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" -S /tmp/tmp.x9554k2uHO -B /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root
+-- DPDK_INCLUDE_DIR: /home/zju/rdma-core-49.0/build-sx/include;/opt/mellanox/dpdk/include/dpdk;/opt/mellanox/dpdk/include/dpdk/../x86_64-linux-gnu/dpdk;/opt/mellanox/dpdk/include/dpdk;/opt/mellanox/grpc/include
+-- DPDK_LIB_DIR: /opt/mellanox/dpdk/lib/x86_64-linux-gnu
+-- OPENSSL:  /usr/lib/x86_64-linux-gnu/libssl.so;/usr/lib/x86_64-linux-gnu/libcrypto.so
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root
+Cannot resolve path '/Users/sun/CLionProjects/packet_send/cmake-build-dpu-host-root'
