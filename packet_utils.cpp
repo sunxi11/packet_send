@@ -7,9 +7,7 @@
 #include <cstring>
 #include <random>
 #include <iostream>
-
 #include <openssl/sha.h>
-
 #include "packet_utils.h"
 
 

@@ -10,6 +10,9 @@
 #include <vector>
 #include <cstring>
 #include <array>
+#include <rte_ether.h>
+#include <rte_ip.h>
+#include <rte_udp.h>
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
@@ -29,10 +32,21 @@ extern int array[ARRAY_NUM][ARRAY_SIZE];
 
 typedef struct
 {
+
     uint32_t idx;
     uint32_t value;
     // int32_t time;
 } __attribute__((__packed__)) my_pkt;
+
+
+struct my_pkt2 {
+    struct rte_ether_hdr eth_hdr;
+    struct rte_ipv4_hdr ip_hdr;
+    struct rte_udp_hdr udp_hdr;
+    uint32_t idx;
+    uint32_t value;
+    char payload[1024];
+} __rte_cache_aligned;
 
 typedef struct {
     uint32_t sip;

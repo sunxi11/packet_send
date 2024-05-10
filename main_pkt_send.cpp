@@ -74,7 +74,7 @@ static const struct rte_eth_conf port_conf_default = {
 static inline int init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint32_t tx_queues)
 {
     struct rte_eth_conf port_conf = port_conf_default;
-    const uint16_t rx_rings = rx_queues, tx_rings = tx_queues; // 接收队列和发送队列数量
+//    const uint16_t rx_rings = rx_queues, tx_rings = tx_queues; // 接收队列和发送队列数量
     uint16_t nb_rxd = RX_RING_SIZE;
     uint16_t nb_txd = TX_RING_SIZE;
     int retval;
@@ -92,6 +92,9 @@ static inline int init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32
                port, strerror(-retval));
         return retval;
     }
+
+    const uint16_t rx_rings = std::min((uint16_t)rx_queues, dev_info.max_rx_queues);
+    const uint16_t tx_rings = std::min((uint16_t)tx_queues, dev_info.max_tx_queues);
 
     if (dev_info.tx_offload_capa & RTE_ETH_TX_OFFLOAD_MBUF_FAST_FREE)
         port_conf.txmode.offloads |=
@@ -159,7 +162,8 @@ static int packet_send_process(void *arg){
 
     auto config = new struct send_config;
     config = (struct send_config *)arg;
-    queue_id = config->queues[core_id];
+    queue_id = config->queues[core_id] % num_rx_queues;
+
     std::cout << "core_id: " << core_id << " queue id: " << queue_id << std::endl;
 
     uint32_t send_index = 0, update_times = 0;
@@ -171,7 +175,7 @@ static int packet_send_process(void *arg){
         if(send_index > pre_core_works){
             send_index = send_index % pre_core_works;
             update_times++;
-            std::cout << "core: " << core_id << " update times: " << update_times << std::endl;
+//            std::cout << "core: " << core_id << " update times: " << update_times << std::endl;
         }
 
         for (int i = 0; i < BURST_SIZE; i++){
@@ -180,11 +184,42 @@ static int packet_send_process(void *arg){
                 printf("rte_pktmbuf_alloc failed\n");
                 continue;
             }
-            my_pkt *pkt = rte_pktmbuf_mtod(bufs[i], my_pkt *);
+            struct my_pkt2 *pkt = rte_pktmbuf_mtod(bufs[i], struct my_pkt2*);
+
+            // 填充以太网报头
+            rte_eth_macaddr_get(config->port_id, &pkt->eth_hdr.src_addr);
+            pkt->eth_hdr.dst_addr = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06}; // 设置目的 MAC 地址
+            pkt->eth_hdr.ether_type = rte_cpu_to_be_16(RTE_ETHER_TYPE_IPV4);
+
+
+            // 填充 IP 报头
+            pkt->ip_hdr.version_ihl = RTE_IPV4_VHL_DEF;
+            pkt->ip_hdr.type_of_service = 0;
+            pkt->ip_hdr.total_length = rte_cpu_to_be_16(sizeof(my_pkt2) - sizeof(struct rte_ether_hdr));
+            pkt->ip_hdr.packet_id = 0;
+            pkt->ip_hdr.fragment_offset = 0;
+            pkt->ip_hdr.time_to_live = 64;
+            pkt->ip_hdr.next_proto_id = IPPROTO_UDP;
+            pkt->ip_hdr.src_addr = rte_cpu_to_be_32(RTE_IPV4(192, 168, core_id+1, send_index % 254 + 1)); // 根据 core_id 和 send_index 设置源 IP
+            pkt->ip_hdr.dst_addr = rte_cpu_to_be_32(RTE_IPV4(192, 168, 1, 2)); // 设置目的 IP 地址
+
+            // 填充 UDP 报头
+            pkt->udp_hdr.src_port = rte_cpu_to_be_16(1234 + queue_id); // 根据 queue_id 设置源端口
+            pkt->udp_hdr.dst_port = rte_cpu_to_be_16(5678);
+            uint16_t udp_len = sizeof(my_pkt2) - sizeof(struct rte_ether_hdr) - sizeof(struct rte_ipv4_hdr);
+            pkt->udp_hdr.dgram_len = rte_cpu_to_be_16(udp_len);
+            pkt->udp_hdr.dgram_cksum = 0;
+
+            //fill kv
             pkt->idx = send_index + offset;
             pkt->value = *(&array[0][0] + pkt->idx);
+
+            // 填充payload
+            memset(pkt->payload, 0xFF, sizeof(pkt->payload));
+
+
             send_index++;
-            bufs[i]->pkt_len = bufs[i]->data_len = sizeof(my_pkt);
+            bufs[i]->pkt_len = bufs[i]->data_len = sizeof(my_pkt2);
 
         }
         uint16_t nb_tx = rte_eth_tx_burst(config->port_id, queue_id, bufs, BURST_SIZE);
