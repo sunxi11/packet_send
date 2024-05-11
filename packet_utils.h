@@ -46,7 +46,7 @@ struct my_pkt2 {
     struct rte_udp_hdr udp_hdr;
     uint32_t idx;
     uint32_t value;
-    char payload[1024];
+    char payload[2048];
 } __rte_cache_aligned;
 
 typedef struct {
