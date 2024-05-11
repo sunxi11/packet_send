@@ -67,9 +67,9 @@ void signal_handler(int sig) {
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
 
-#define NUM_MBUFS 8191
+#define NUM_MBUFS 81919
 #define MBUF_CACHE_SIZE 250
-#define BURST_SIZE 64
+#define BURST_SIZE 128
 
 #define _WRS_PACK_ALIGN(x) __attribute__((packed, aligned(x)))
 #define ARRAY_SIZE 65536
@@ -140,8 +140,11 @@ init_port(uint16_t port, struct rte_mempool *mbuf_pool, uint32_t rx_queues, uint
 
 //    const uint16_t rx_rings = rx_queues, tx_rings = tx_queues;
 
-    const uint16_t rx_rings = std::min((uint16_t)num_rx_queues, dev_info.max_rx_queues);
-    const uint16_t tx_rings = std::min((uint16_t)num_tx_queues, dev_info.max_tx_queues);
+    const uint16_t rx_rings = std::min((uint16_t)rx_queues, dev_info.max_rx_queues);
+    const uint16_t tx_rings = std::min((uint16_t)tx_queues, dev_info.max_rx_queues);
+
+    std::cout << "max rx queues: " << dev_info.max_rx_queues << " max tx queues: " << dev_info.max_tx_queues << std::endl;
+
 
 
 
@@ -217,7 +220,7 @@ uint64_t get_time()
 
 static int packet_recv_process(void *arg){
     uint32_t core_id = rte_lcore_id();
-    uint32_t queue_id = core_id % num_tx_queues;
+    uint32_t queue_id = (core_id - 1) % num_rx_queues;
     uint16_t portid = 0;
 
     std::cout << "core_id: " << core_id << " recv from queue: " << queue_id << std::endl;
@@ -313,8 +316,8 @@ int main(int argc, char *argv[])
     std::cout << "used cores: " << used_cores << std::endl;
 
     num_cores = used_cores;
-    num_rx_queues = used_cores;
-    num_tx_queues = used_cores;
+    num_rx_queues = used_cores - 1;
+    num_tx_queues = used_cores - 1;
 
 
     // 启动dpdk
@@ -332,7 +335,6 @@ int main(int argc, char *argv[])
     signal(SIGINT, signal_handler);
 //    start_time = get_time();
     auto start = std::chrono::high_resolution_clock::now();
-
     rte_eal_mp_remote_launch(packet_recv_process, nullptr, SKIP_MAIN);
 
     std::cout << "start to process data" << std::endl;
@@ -347,6 +349,7 @@ int main(int argc, char *argv[])
     std::chrono::duration<double> elapsed = end - start;
     double total_time_s = elapsed.count();
 
+    std::cout << "total time: " << total_time_s << " s" << std::endl;
 
 //    uint64_t end_time = get_time();
 //    uint64_t total_time_ns = end_time - start_time;

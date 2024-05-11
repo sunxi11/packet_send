@@ -13,11 +13,12 @@
 #include <rte_ether.h>
 #include <rte_ip.h>
 #include <rte_udp.h>
+#include <map>
 
 #define RX_RING_SIZE 1024
 #define TX_RING_SIZE 1024
 
-#define NUM_MBUFS 32767
+#define NUM_MBUFS 81919
 #define MBUF_CACHE_SIZE 250
 #define BURST_SIZE 64
 
@@ -58,8 +59,9 @@ typedef struct {
 
 struct send_config{
     uint32_t port_id;
-    std::vector<uint32_t> queues;
-    std::vector<uint32_t> cores;
+    std::map<uint32_t , uint32_t> core_queues;
+//    std::vector<uint32_t> queues;
+//    std::vector<uint32_t> cores;
 };
 
 uint64_t get_time();

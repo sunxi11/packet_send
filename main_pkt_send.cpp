@@ -52,9 +52,18 @@
 #include "packet_utils.h"
 
 
+volatile bool force_quit = false;  // 标志变量,用于指示是否强制退出
+
+void signal_handler(int sig) {
+    if (sig == SIGINT) {
+        printf("Caught signal %d, exiting...\n", sig);
+        force_quit = true;  // 设置标志变量为 true,表示需要强制退出
+    }
+}
+
 
 struct rte_mempool *mbuf_pool;
-
+uint64_t total_bytes[MAX_CORES] = {0};  // 每个内核接收到的字节数
 
 uint32_t num_rx_queues;
 uint32_t num_tx_queues;
@@ -162,7 +171,7 @@ static int packet_send_process(void *arg){
 
     auto config = new struct send_config;
     config = (struct send_config *)arg;
-    queue_id = config->queues[core_id] % num_rx_queues;
+    queue_id = (config->core_queues)[core_id];
 
     std::cout << "core_id: " << core_id << " queue id: " << queue_id << std::endl;
 
@@ -170,7 +179,21 @@ static int packet_send_process(void *arg){
     uint32_t pre_core_works = (ARRAY_NUM * ARRAY_SIZE) / num_cores;
     uint32_t offset = pre_core_works * core_id;
 
-    while (1){
+    // 在循环之前预先分配内存
+    for (int i = 0; i < BURST_SIZE; i++) {
+        bufs[i] = rte_pktmbuf_alloc(mbuf_pool);
+        if (bufs[i] == NULL) {
+            printf("rte_pktmbuf_alloc failed\n");
+            // 处理内存分配失败的情况
+            return -1;
+        }
+    }
+
+    struct rte_ether_addr src_addr;
+    rte_eth_macaddr_get(config->port_id, &src_addr);
+    uint16_t ether_type = rte_cpu_to_be_16(RTE_ETHER_TYPE_IPV4);
+
+    while (!force_quit){
 
         if(send_index > pre_core_works){
             send_index = send_index % pre_core_works;
@@ -179,17 +202,17 @@ static int packet_send_process(void *arg){
         }
 
         for (int i = 0; i < BURST_SIZE; i++){
-            bufs[i] = rte_pktmbuf_alloc(mbuf_pool);
-            if (bufs[i] == NULL){
-                printf("rte_pktmbuf_alloc failed\n");
-                continue;
-            }
+//            bufs[i] = rte_pktmbuf_alloc(mbuf_pool);
+//            if (bufs[i] == NULL){
+//                printf("rte_pktmbuf_alloc failed\n");
+//                continue;
+//            }
             struct my_pkt2 *pkt = rte_pktmbuf_mtod(bufs[i], struct my_pkt2*);
 
             // 填充以太网报头
-            rte_eth_macaddr_get(config->port_id, &pkt->eth_hdr.src_addr);
+            pkt->eth_hdr.src_addr = src_addr;
             pkt->eth_hdr.dst_addr = {0x01, 0x02, 0x03, 0x04, 0x05, 0x06}; // 设置目的 MAC 地址
-            pkt->eth_hdr.ether_type = rte_cpu_to_be_16(RTE_ETHER_TYPE_IPV4);
+            pkt->eth_hdr.ether_type = ether_type;
 
 
             // 填充 IP 报头
@@ -220,6 +243,7 @@ static int packet_send_process(void *arg){
 
             send_index++;
             bufs[i]->pkt_len = bufs[i]->data_len = sizeof(my_pkt2);
+//            total_bytes[core_id] += bufs[i]->pkt_len;
 
         }
         uint16_t nb_tx = rte_eth_tx_burst(config->port_id, queue_id, bufs, BURST_SIZE);
@@ -230,8 +254,11 @@ static int packet_send_process(void *arg){
         }
         total_num[core_id] += nb_tx;
         burst_num[core_id]++;
+        total_bytes[core_id] += sizeof(my_pkt2) * nb_tx;
 //        std::cout << "total send num: " << total_num[core_id] << " from core: " << core_id << std::endl;
     }
+
+    printf("Core %d send %lu bytes\n", core_id, total_bytes[core_id]);
 
     return 0;
 }
@@ -303,8 +330,8 @@ int main(int argc, char *argv[])
     std::cout << "used cores: " << used_cores << std::endl;
 
     num_cores = used_cores;
-    num_rx_queues = used_cores;
-    num_tx_queues = used_cores;
+    num_rx_queues = used_cores - 1;
+    num_tx_queues = used_cores - 1;
 
     // 启动dpdk
     uint16_t portid = 0;
@@ -314,17 +341,39 @@ int main(int argc, char *argv[])
         printf("port init error!\n");
     }
 
-    for (int i = 0; i < num_cores; ++i) {
-        config.cores.push_back(i);
-    }
-
-    for(int i = 0; i < num_tx_queues; ++i){
-        config.queues.push_back(i % num_tx_queues);
+    for(int i = 1; i <= num_tx_queues; i++){
+         config.core_queues[i] = i - 1;
     }
 
     config.port_id = portid;
 
-    rte_eal_mp_remote_launch(packet_send_process, &config, CALL_MAIN);
+    signal(SIGINT, signal_handler);
+    auto start = std::chrono::high_resolution_clock::now();
+    rte_eal_mp_remote_launch(packet_send_process, &config, SKIP_MAIN);
+
+    std::cout << "start to send data" << std::endl;
+
+    // 等待,直到 force_quit 变为 true
+    while (!force_quit) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+
+    auto end = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double> elapsed = end - start;
+    double total_time_s = elapsed.count();
+
+    std::cout << "total time: " << total_time_s << " s" << std::endl;
+
+
+    uint64_t total_bytes_all = 0;
+    for (int i = 0; i < MAX_CORES; i++) {
+        total_bytes_all += total_bytes[i];  // 计算所有内核接收到的总字节数
+    }
+
+//    double throughput_gbps = (double)total_bytes_all * 8 / total_time_s / 1000000000.0;
+    double throughput_gbps = (double)total_bytes_all / total_time_s * 8 / 1000000000.0;
+
+    printf("Total Throughput: %.2f Gbps\n", throughput_gbps);
 
     uint32_t lcore_id;
     RTE_LCORE_FOREACH(lcore_id){
