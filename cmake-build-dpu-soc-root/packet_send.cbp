@@ -395,6 +395,60 @@
 					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
+			<Target title="test_json_load">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/test_json_load" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 test_json_load"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="test_json_load/fast">
+				<Option output="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/test_json_load" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/ubuntu/rdma-core-49.0/build/include"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk"/>
+					<Add directory="/opt/mellanox/dpdk/include/dpdk/../aarch64-linux-gnu/dpdk"/>
+					<Add directory="/opt/mellanox/grpc/include"/>
+					<Add directory="/home/ubuntu/sunxi/packet_send/{CMAKE_SOURCE_DIR}/include"/>
+					<Add directory="/usr/include/c++/11"/>
+					<Add directory="/usr/include/aarch64-linux-gnu/c++/11"/>
+					<Add directory="/usr/include/c++/11/backward"/>
+					<Add directory="/usr/lib/gcc/aarch64-linux-gnu/11/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/aarch64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 test_json_load/fast"/>
+					<CompileFile command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j16 -f &quot;/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
 			<Target title="edit_cache">
 				<Option working_dir="/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root"/>
 				<Option type="4"/>
@@ -424,6 +478,12 @@
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/common.c">
 			<Option target="rdmacm_tools"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/data_load.cpp">
+			<Option target="test_json_load"/>
+		</Unit>
+		<Unit filename="/home/ubuntu/sunxi/packet_send/data_load.h">
+			<Option target="test_json_load"/>
 		</Unit>
 		<Unit filename="/home/ubuntu/sunxi/packet_send/get_ibinfo.cpp">
 			<Option target="ibinfo"/>

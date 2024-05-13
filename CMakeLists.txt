@@ -7,6 +7,7 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g")
 
 
 
+
 # 查找 pkg-config DPDK
 find_package(PkgConfig REQUIRED)
 pkg_search_module(DPDK REQUIRED libdpdk)
@@ -64,3 +65,5 @@ target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operatio
 
 add_executable(ibinfo get_ibinfo.cpp)
 target_link_libraries(ibinfo pthread ${rdma_libs} rt)
+
+add_executable(test_json_load data_load.cpp)

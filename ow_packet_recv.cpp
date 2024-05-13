@@ -44,6 +44,7 @@ int test_operation(void *){
     while (true){
         std::this_thread::sleep_for(std::chrono::milliseconds(1000));
         for (int i = 0; i < ARRAY_SIZE; ++i) {
+
             tem_max2 = operator_max(DataMap_array, i);
             if (tem_max2 > tem_max){
                 tem_max = tem_max2;

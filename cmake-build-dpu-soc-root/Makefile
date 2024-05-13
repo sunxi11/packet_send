@@ -207,6 +207,19 @@ ibinfo/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/build
 .PHONY : ibinfo/fast
 
+#=============================================================================
+# Target rules for targets named test_json_load
+
+# Build rule for target.
+test_json_load: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test_json_load
+.PHONY : test_json_load
+
+# fast build rule for target.
+test_json_load/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_json_load.dir/build.make CMakeFiles/test_json_load.dir/build
+.PHONY : test_json_load/fast
+
 Sketch_operations.o: Sketch_operations.cpp.o
 .PHONY : Sketch_operations.o
 
@@ -254,6 +267,30 @@ common.s: common.c.s
 common.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/common.c.s
 .PHONY : common.c.s
+
+data_load.o: data_load.cpp.o
+.PHONY : data_load.o
+
+# target to build an object file
+data_load.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_json_load.dir/build.make CMakeFiles/test_json_load.dir/data_load.cpp.o
+.PHONY : data_load.cpp.o
+
+data_load.i: data_load.cpp.i
+.PHONY : data_load.i
+
+# target to preprocess a source file
+data_load.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_json_load.dir/build.make CMakeFiles/test_json_load.dir/data_load.cpp.i
+.PHONY : data_load.cpp.i
+
+data_load.s: data_load.cpp.s
+.PHONY : data_load.s
+
+# target to generate assembly for a file
+data_load.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test_json_load.dir/build.make CMakeFiles/test_json_load.dir/data_load.cpp.s
+.PHONY : data_load.cpp.s
 
 get_ibinfo.o: get_ibinfo.cpp.o
 .PHONY : get_ibinfo.o
@@ -438,12 +475,16 @@ help:
 	@echo "... packet_utils"
 	@echo "... rdmacm_tools"
 	@echo "... sketch_operations"
+	@echo "... test_json_load"
 	@echo "... Sketch_operations.o"
 	@echo "... Sketch_operations.i"
 	@echo "... Sketch_operations.s"
 	@echo "... common.o"
 	@echo "... common.i"
 	@echo "... common.s"
+	@echo "... data_load.o"
+	@echo "... data_load.i"
+	@echo "... data_load.s"
 	@echo "... get_ibinfo.o"
 	@echo "... get_ibinfo.i"
 	@echo "... get_ibinfo.s"

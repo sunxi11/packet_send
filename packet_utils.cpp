@@ -76,6 +76,7 @@
 //}
 
 
+
 int Array[ARRAY_NUM][ARRAY_SIZE];
 //int vote[ARRAY_SIZE];
 
