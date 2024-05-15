@@ -11,6 +11,8 @@
 #include <map>
 #include <thread>
 #include <list>
+#include <chrono>
+#include <numeric>
 
 #include "include/packet_utils.h"
 #include "include/rdma-utils.h"
@@ -112,17 +114,65 @@ int main(int argc, char *argv[])
     client->start();
 
 
-    std::thread test_thread(test_operation, nullptr);
+//    std::thread test_thread(test_operation, nullptr);
 
-    while (1){
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+    int cm_rows = 8, cm_cols = 0;
+    uint32_t data_len = 0;
+    std::vector<std::vector<int>> cm_recv_data(cm_rows);
+
+    int test_times = 50; // 测试次数
+    std::vector<double> latencies; // 存储每次迭代的延迟时间
+    uint64_t total_data_size = 0; // 存储总的数据量
+
+    client->print_flag = false;
+
+    while (test_times--){
+        auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
+//        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
+////STEP 1 读取数据
         client->rdma_read();
-//        array_to_recv_data(recv_buf, ARRAY_NUM * ARRAY_SIZE, DataMap_array);
-        array_to_recv_data(recv_buf, ARRAY_NUM * ARRAY_SIZE, DataMap_array);
+        char *rdma_read_res = client->get_rdma_buf();
+        data_len = client->get_rdma_size() / sizeof(int);
+
+
+        int max_elem = *std::max_element((int *)rdma_read_res, (int *)rdma_read_res + data_len);
+
+
+//////DECODE
+//        cm_cols = data_len / cm_rows;
+//        for(int i = 0; i < cm_rows; i++){
+//            cm_recv_data[i].resize(cm_cols);
+//            std::memcpy(cm_recv_data[i].data(), rdma_read_res + i * cm_cols * sizeof(int), cm_cols * sizeof(int));
+//        }
+////
+////////Operation （MAX）
+////
+//        int Max = 0;
+//        for(int i = 0; i < cm_rows; i++){
+//            int max_col;
+//            max_col = *std::max_element(cm_recv_data[i].begin(), cm_recv_data[i].end());
+//            if (max_col > Max){
+//                Max = max_col;
+//            }
+//        }
+
+////记录结果
+        auto end = std::chrono::high_resolution_clock::now(); // 记录结束时间
+        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start); // 计算延迟时间
+        latencies.push_back(duration.count() / 1000.0); // 将延迟时间转换为毫秒并存储
+        total_data_size += data_len * sizeof(int) * 8; // 累加处理的数据量
+
     }
 
+    double avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size(); // 计算平均延迟
+    double throughput = total_data_size / 1024 / 1024 / 1024 / (avg_latency / 1000.0) ; // 计算吞吐量(MB/s)
 
-    test_thread.join();
+    std::cout << "Average latency: " << (avg_latency / data_len) * 1000 * 1000  << " ns" << std::endl;
+    std::cout << "Throughput: " << throughput << " Gbps" << std::endl;
+
+
+//    test_thread.join();
     return 0;
 
 

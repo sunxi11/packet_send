@@ -12,14 +12,22 @@
 
 using std::vector;
 
+std::vector<std::vector<int>> load_cm_from_json(std::ifstream& cm_json) {
+    nlohmann::json cm_json_data;
+    cm_json >> cm_json_data;
+    return cm_json_data.get<std::vector<std::vector<int>>>();
+}
+
 std::vector<std::vector<int>> load_cm_from_json(){
     std::ifstream cm_json(cm_json_path);
     nlohmann::json cm_json_data;
     cm_json >> cm_json_data;
     std::vector<std::vector<int>> cm;
     cm = cm_json_data.get<vector<std::vector<int>>>();
+
     return cm;
 };
+
 std::vector<std::vector<int>> load_cs_from_json(){
     std::ifstream cs_json(cs_json_path);
     nlohmann::json cs_json_data;
@@ -96,7 +104,7 @@ std::vector<std::pair<std::vector<int>, std::vector<int>>> load_um_from_json(){
 
 
 int test(){
-    auto cm_data = load_cm_from_json();
+//    auto cm_data = load_cm_from_json();
     auto cs_data = load_cs_from_json();
     auto es_data = load_es_from_json();
     auto hp_data = load_hp_from_json();

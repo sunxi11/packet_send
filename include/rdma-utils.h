@@ -39,6 +39,14 @@ public:
     void cq_thread();
     void setup_buffer();
     void recv_handler(struct ibv_wc &wc);
+    char *get_rdma_buf() const{
+        return rdma_buf;
+    }
+    uint32_t get_rdma_size() const{
+        return be32toh(recv_buf.size);
+    }
+
+    bool print_flag = true;
 
 private:
     const char *ip;

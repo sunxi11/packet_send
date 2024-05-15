@@ -18,6 +18,8 @@
 #define um_json_path "/home/zju/sunxi/turbomon/sketch_res/UnivMon.json"
 
 std::vector<std::vector<int>> load_cm_from_json();
+//uint32_t load_cm_from_json(char *);
+std::vector<std::vector<int>> load_cm_from_json(std::ifstream& cm_json);
 std::vector<std::vector<int>> load_cs_from_json();
 std::vector<std::vector<int>> load_es_from_json();
 std::vector<std::vector<int>> load_hp_from_json();

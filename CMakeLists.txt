@@ -67,4 +67,5 @@ target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operatio
 add_executable(ibinfo get_ibinfo.cpp)
 target_link_libraries(ibinfo pthread ${rdma_libs} rt)
 
-add_executable(test_json_load data_load.cpp)
+
+#add_executable(test_json_load data_load.cpp)

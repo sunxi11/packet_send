@@ -87,19 +87,37 @@ int main(int argc, char *argv[])
 
 
     // load cm
+//    auto cm_data = load_cm_from_json();
+//    std::ifstream cm_json(cm_json_path);
+//    nlohmann::json cm_json_data;
+//    cm_json >> cm_json_data;
+//
+//    std::vector<std::vector<int>> cm_data;
+//    cm_data = cm_json_data.get<std::vector<std::vector<int>>>();
+//    uint32_t offset = 0;
+//    for(int i = 0; i < cm_data.size(); i++){
+//        uint32_t cols = cm_data[i].size();
+//        std::memcpy(start_buf + offset, cm_data[i].data(), cols * sizeof(int));
+//        offset += cols;
+//    }
+
+
     std::ifstream cm_json(cm_json_path);
-    nlohmann::json cm_json_data;
-    cm_json >> cm_json_data;
-    std::vector<std::vector<int>> cm_data;
-    cm_data = cm_json_data.get<std::vector<std::vector<int>>>();
+    auto cm_data = load_cm_from_json(cm_json);
+//    nlohmann::json cm_json_data;
+//    cm_json >> cm_json_data;
+//    std::vector<std::vector<int>> cm_data;
+//    cm_data = cm_json_data.get<std::vector<std::vector<int>>>();
 
     uint32_t offset = 0;
-
     for(int i = 0; i < cm_data.size(); i++){
         uint32_t cols = cm_data[i].size();
         std::memcpy(start_buf + offset, cm_data[i].data(), cols * sizeof(int));
         offset += cols;
     }
+
+// 在这里,cm_json 对象仍然有效,文件仍然处于打开状态
+
 
 
     std::cout << "data load complete, data size = " << offset << std::endl;

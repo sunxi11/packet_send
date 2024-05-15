@@ -162,17 +162,21 @@ void rdma_client::cq_thread() {
             ret = 0;
             switch (wc.opcode) {
                 case IBV_WC_SEND:
-                    std::cout << "send complete" << std::endl;
+                    if(print_flag){
+                        std::cout << "send complete" << std::endl;
+                    }
                     break;
                 case IBV_WC_RECV:
-                    std::cout << "recv complete" << std::endl;
+                    if(print_flag)
+                        std::cout << "recv complete" << std::endl;
                     recv_handler(wc);
                     break;
                 case IBV_WC_RECV_RDMA_WITH_IMM:
                     std::cout << "recv rdma with imm" << std::endl;;
                     break;
                 case IBV_WC_RDMA_READ:
-                    std::cout << "rdma read complete" << std::endl;
+                    if(print_flag)
+                        std::cout << "rdma read complete" << std::endl;
                     RDMA_READ_COMPLETE = true;
 //                    std::cout << "read data: " << rdma_buf << std::endl;
                     break;
@@ -221,8 +225,8 @@ void rdma_client::rdma_read() {
     }
 
     while (RDMA_READ_COMPLETE == false){}
-
-    std::cout << "read data: " << rdma_buf << std::endl;
+    if(print_flag)
+        std::cout << "read data: " << rdma_buf << std::endl;
 }
 
 void rdma_client::rdma_write() {
