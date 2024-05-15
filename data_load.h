@@ -21,10 +21,11 @@ std::vector<std::vector<int>> load_cm_from_json();
 //uint32_t load_cm_from_json(char *);
 std::vector<std::vector<int>> load_cm_from_json(std::ifstream& cm_json);
 std::vector<std::vector<int>> load_cs_from_json();
-std::vector<std::vector<int>> load_es_from_json();
-std::vector<std::vector<int>> load_hp_from_json();
-std::pair<std::vector<uint8_t>, std::vector<std::vector<uint32_t>>> load_fr_from_json();
-std::vector<std::pair<std::vector<int>, std::vector<int>>> load_um_from_json();
+std::vector<std::vector<int>> load_cs_from_json(std::ifstream& cs_json);
+std::vector<std::vector<int>> load_es_from_json(std::ifstream& json_file);
+std::vector<std::vector<int>> load_hp_from_json(std::ifstream& json_file);
+std::pair<std::vector<uint8_t>, std::vector<std::vector<uint32_t>>> load_fr_from_json(std::ifstream& json_file);
+std::vector<std::pair<std::vector<int>, std::vector<int>>> load_um_from_json(std::ifstream& json_file);
 
 
 

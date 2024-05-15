@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <map>
+#include <tuple>
 #include <thread>
 #include <list>
 #include <chrono>
@@ -38,56 +39,161 @@ uint64_t burst_num[MAX_CORES] = {};
 uint32_t total_array_num[MAX_CORES] = {};
 int recv_buf[BUF_SIZE / 4] = {0};
 
-recv_data DataMap_array;
+//recv_data DataMap_array;
 
-int test_operation(void *){
-    uint32_t tem_max = 0, tem_max2 = 0;
-    std::cout << "start to process data" << std::endl;
-    while (true){
-        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
-        for (int i = 0; i < ARRAY_SIZE; ++i) {
-
-            tem_max2 = operator_max(DataMap_array, i);
-            if (tem_max2 > tem_max){
-                tem_max = tem_max2;
-            }
-        }
-
-        std::cout << "max value: " << tem_max << std::endl;
-
+struct FR_bucket{
+    uint32_t FlowCount;
+    uint32_t FlowXOR;
+    uint32_t PacketCount;
+    FR_bucket(){
+        FlowCount = 0;
+        FlowXOR = 0;
+        PacketCount = 0;
     }
-    return 0;
+    FR_bucket(std::vector<uint32_t> data){
+        FlowCount = data[0];
+        FlowXOR = data[1];
+        PacketCount = data[2];
+    }
+};
+
+//int test_operation(void *){
+//    uint32_t tem_max = 0, tem_max2 = 0;
+//    std::cout << "start to process data" << std::endl;
+//    while (true){
+//        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+//        for (int i = 0; i < ARRAY_SIZE; ++i) {
+//
+//            tem_max2 = operator_max(DataMap_array, i);
+//            if (tem_max2 > tem_max){
+//                tem_max = tem_max2;
+//            }
+//        }
+//
+//        std::cout << "max value: " << tem_max << std::endl;
+//
+//    }
+//    return 0;
+//}
+
+
+//int packet_recv_process(int client_fd, struct sockaddr_in &address){
+//    uint32_t offset = 0;
+//    ssize_t ret;
+//    socklen_t client_address_len = sizeof(address);
+//    while (true){
+//        if(offset >= ARRAY_NUM * ARRAY_SIZE){
+//            offset = 0;
+//            std::thread array2recvdata(array_to_recv_data, recv_buf, ARRAY_NUM * ARRAY_SIZE, std::ref(DataMap_array));
+//            array2recvdata.join();
+//            std::cout << "update array" << std::endl;
+//        }
+//
+//        ret = sendto(client_fd, &offset, sizeof(offset), 0, (struct sockaddr *)&address, client_address_len);
+//        if(ret < 0){
+//            std::cerr << "send error: " << strerror(errno) << std::endl;
+//            return -1;
+//        }
+//
+//        ret = recvfrom(client_fd, recv_buf + offset, sizeof(recv_buf), 0, (struct sockaddr *)&address, &client_address_len);
+//        if(ret < 0){
+//            std::cerr << "recv error: " << strerror(errno) << std::endl;
+//            return -1;
+//        }
+//
+//        offset += ret / sizeof(int);
+//
+//    }
+//
+//}
+
+
+
+std::vector<std::vector<int>> filter(char *data_buf, int data_len, int row){
+    std::vector<std::vector<int>> filter_res(row);
+    int *data[8] = {};
+    for (int i = 0; i < row; ++i) {
+        data[i] = (int *)data_buf + i * data_len / row;
+    }
+
+    for(int i = 0; i < row; ++i) {
+        std::copy_if(data[i], data[i] + data_len / row, std::back_inserter(filter_res[i]), [](int x){return x > 0;});
+    }
+
+    return filter_res;
+
+}
+
+int get_max(char *data_buf, int data_len){
+    int *data = (int *)data_buf;
+    return *std::max_element(data, data + data_len);
 }
 
 
-int packet_recv_process(int client_fd, struct sockaddr_in &address){
-    uint32_t offset = 0;
-    ssize_t ret;
-    socklen_t client_address_len = sizeof(address);
-    while (true){
-        if(offset >= ARRAY_NUM * ARRAY_SIZE){
-            offset = 0;
-            std::thread array2recvdata(array_to_recv_data, recv_buf, ARRAY_NUM * ARRAY_SIZE, std::ref(DataMap_array));
-            array2recvdata.join();
-            std::cout << "update array" << std::endl;
-        }
+std::vector<std::vector<int>> get_heavy_part(char *data_buf, int data_len, int row){
+    std::vector<std::vector<int>> heavy_part(row);
 
-        ret = sendto(client_fd, &offset, sizeof(offset), 0, (struct sockaddr *)&address, client_address_len);
-        if(ret < 0){
-            std::cerr << "send error: " << strerror(errno) << std::endl;
-            return -1;
-        }
+    int *data[8] = {};
+    for (int i = 0; i < row; ++i) {
+        data[i] = (int *)data_buf + i * data_len / row;
+    }
+    //posvote
+    //negvote
+    //flag
+    for(int i = 0; i < row; i++){
+        std::copy(data[i], data[i] + data_len / row, std::back_inserter(heavy_part[i]));
+    }
+    return heavy_part;
 
-        ret = recvfrom(client_fd, recv_buf + offset, sizeof(recv_buf), 0, (struct sockaddr *)&address, &client_address_len);
-        if(ret < 0){
-            std::cerr << "recv error: " << strerror(errno) << std::endl;
-            return -1;
-        }
 
-        offset += ret / sizeof(int);
+}
 
+std::pair<std::vector<uint8_t>, std::vector<std::vector<uint32_t>>> fr_decode(char *data_buf, int data_len){
+    int bitarray_len = 40000000;
+    std::vector<uint8_t> bitarray(bitarray_len);
+    std::transform(data_buf, data_buf + bitarray_len, bitarray.begin(), [](char x){return static_cast<uint8_t>(x);});
+
+    std::vector<std::vector<uint32_t>> countingtable_data;
+    struct FR_bucket *fr_bucket = (struct FR_bucket*)(data_buf + bitarray.size());
+
+    for (int i = 0; i < (data_len - bitarray_len) / sizeof(struct FR_bucket); ++i) {
+        countingtable_data.push_back({fr_bucket[i].FlowCount, fr_bucket[i].FlowXOR, fr_bucket[i].PacketCount});
     }
 
+    return std::make_pair(bitarray, countingtable_data);
+
+}
+
+std::vector<std::pair<std::vector<int>, std::vector<int>>> decode_um(char *data_buf, int data_len, int row){
+    std::vector<std::pair<std::vector<int>, std::vector<int>>> res;
+    int *data[12] = {};
+
+    for (int i = 0; i < row; ++i) {
+        data[i] = (int *)data_buf + i * data_len / row;
+    }
+
+    for(int i = 0; i < row; i++){
+        std::vector<int> first(data[i], data[i] + data_len / row / 2);
+        std::vector<int> second(data[i] + data_len / row / 2, data[i] + data_len / row);
+        res.push_back(std::make_pair(first, second));
+    }
+
+    return res;
+}
+
+
+
+std::vector<int> query(char *data_buf, int data_len, int row, int key){
+    int *data[8] = {};
+    for (int i = 0; i < row; ++i) {
+        data[i] = (int *)data_buf + i * data_len / row;
+    }
+
+    std::vector<int> res;
+    for(int i = 0; i < row; i++){
+        res.push_back(data[i][key]);
+    }
+    return res;
 }
 
 
@@ -117,6 +223,11 @@ int main(int argc, char *argv[])
 //    std::thread test_thread(test_operation, nullptr);
 
     int cm_rows = 8, cm_cols = 0;
+    int cs_rows = 1, cs_cols = 0;
+    int hp_rows = 8, hp_cols = 0;
+    int um_rows = 12, um_cols = 0;
+
+
     uint32_t data_len = 0;
     std::vector<std::vector<int>> cm_recv_data(cm_rows);
 
@@ -124,7 +235,7 @@ int main(int argc, char *argv[])
     std::vector<double> latencies; // 存储每次迭代的延迟时间
     uint64_t total_data_size = 0; // 存储总的数据量
 
-    client->print_flag = false;
+//    client->print_flag = false;
 
     while (test_times--){
         auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
@@ -136,37 +247,37 @@ int main(int argc, char *argv[])
         data_len = client->get_rdma_size() / sizeof(int);
 
 
-        int max_elem = *std::max_element((int *)rdma_read_res, (int *)rdma_read_res + data_len);
+////HP Query
+//        auto hp_res = query(rdma_read_res, data_len, 8, 1111);
+
+////ES heavy_part
+//        auto heavy_part = get_heavy_part(rdma_read_res, data_len, 3);
+
+////FR decode
+//        data_len = client->get_rdma_size();
+//        auto fr_res = fr_decode(rdma_read_res, data_len);
+
+////// Filter
+//        auto filter_res = filter(rdma_read_res, data_len, 1);
+////   MAX
+//        auto max = get_max(rdma_read_res, data_len);
+
+//// UM decode
+        auto um = decode_um(rdma_read_res, data_len, um_rows);
 
 
-//////DECODE
-//        cm_cols = data_len / cm_rows;
-//        for(int i = 0; i < cm_rows; i++){
-//            cm_recv_data[i].resize(cm_cols);
-//            std::memcpy(cm_recv_data[i].data(), rdma_read_res + i * cm_cols * sizeof(int), cm_cols * sizeof(int));
-//        }
-////
-////////Operation （MAX）
-////
-//        int Max = 0;
-//        for(int i = 0; i < cm_rows; i++){
-//            int max_col;
-//            max_col = *std::max_element(cm_recv_data[i].begin(), cm_recv_data[i].end());
-//            if (max_col > Max){
-//                Max = max_col;
-//            }
-//        }
 
 ////记录结果
         auto end = std::chrono::high_resolution_clock::now(); // 记录结束时间
         auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start); // 计算延迟时间
         latencies.push_back(duration.count() / 1000.0); // 将延迟时间转换为毫秒并存储
         total_data_size += data_len * sizeof(int) * 8; // 累加处理的数据量
+//        total_data_size += data_len * 8; // 累加处理的数据量 FR
 
     }
 
     double avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size(); // 计算平均延迟
-    double throughput = total_data_size / 1024 / 1024 / 1024 / (avg_latency / 1000.0) ; // 计算吞吐量(MB/s)
+    double throughput = total_data_size / (avg_latency / 1000.0) / 1024 / 1024/ 1024 ; // 计算吞吐量(Mb/s)
 
     std::cout << "Average latency: " << (avg_latency / data_len) * 1000 * 1000  << " ns" << std::endl;
     std::cout << "Throughput: " << throughput << " Gbps" << std::endl;

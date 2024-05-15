@@ -86,37 +86,81 @@ int main(int argc, char *argv[])
     rdma_buf = (char *)malloc(1000);
 
 
-    // load cm
-//    auto cm_data = load_cm_from_json();
+//////CM
 //    std::ifstream cm_json(cm_json_path);
-//    nlohmann::json cm_json_data;
-//    cm_json >> cm_json_data;
+//    auto cm_data = load_cm_from_json(cm_json);
+////CS
+//    std::ifstream cs_json(cs_json_path);
+//    auto data = load_cs_from_json(cs_json);
+////ES
+//    std::ifstream es_json(es_json_path);
+//    auto data = load_es_from_json(es_json);
+
+//// FR
+//    int offset = 0;
+//    std::ifstream fr_json("/home/zju/sunxi/turbomon/sketch_res/FlowRadar.json");
+//    nlohmann::json fr_json_data;
+//    fr_json >> fr_json_data;
+//    std::vector<uint8_t> bitArray;
+//    std::vector<std::vector<uint32_t>> countingtable_data;
 //
-//    std::vector<std::vector<int>> cm_data;
-//    cm_data = cm_json_data.get<std::vector<std::vector<int>>>();
+//    bitArray = fr_json_data["bitArray"].get<std::vector<uint8_t>>();
+//    countingtable_data = fr_json_data["countingtable"].get<std::vector<std::vector<uint32_t>>>();
+//
+//
+//    std::cout << bitArray.size() << std::endl;
+//    int data_size = sizeof(uint8_t) * bitArray.size();
+//
+//    std::cout << "load data from json, data size = " << data_size << std::endl;
+//
+//    uint8_t *int_buf = (uint8_t *)start_buf;
+//
+//    for(int i = 0; i < bitArray.size(); i++){
+//        int_buf[i] = static_cast<uint8_t>(bitArray[i % bitArray.size()]);
+//    }
+//
+//    struct FR_bucket *fr_bucket = (struct FR_bucket*)(start_buf + bitArray.size());
+//    for (int i = 0; i < countingtable_data.size(); ++i) {
+//        fr_bucket[i] = FR_bucket(countingtable_data[i]);
+//    }
+//
+//    offset = bitArray.size() + sizeof(struct FR_bucket) * countingtable_data.size();
+
+
+////HP
+//    std::ifstream hp_json(hp_json_path);
+//    auto data = load_hp_from_json(hp_json);
+
+////UM
+    std::ifstream um_json(um_json_path);
+    auto data = load_um_from_json(um_json);
+
+    uint32_t offset = 0;
+    for(int i = 0; i < data.size(); i++){
+        uint32_t first = data[i].first.size();
+        std::memcpy(start_buf + offset, data[i].first.data(), first * sizeof(int));
+        offset += first;
+
+        uint32_t second = data[i].second.size();
+        std::memcpy(start_buf + offset, data[i].second.data(), second * sizeof(int));
+        offset += second;
+    }
+
+
+
+
+
+
+
+//// CS, CM, ES, HP取消注释这一段
 //    uint32_t offset = 0;
-//    for(int i = 0; i < cm_data.size(); i++){
-//        uint32_t cols = cm_data[i].size();
-//        std::memcpy(start_buf + offset, cm_data[i].data(), cols * sizeof(int));
+//    for(int i = 0; i < data.size(); i++){
+//        uint32_t cols = data[i].size();
+//        std::memcpy(start_buf + offset, data[i].data(), cols * sizeof(int));
 //        offset += cols;
 //    }
 
 
-    std::ifstream cm_json(cm_json_path);
-    auto cm_data = load_cm_from_json(cm_json);
-//    nlohmann::json cm_json_data;
-//    cm_json >> cm_json_data;
-//    std::vector<std::vector<int>> cm_data;
-//    cm_data = cm_json_data.get<std::vector<std::vector<int>>>();
-
-    uint32_t offset = 0;
-    for(int i = 0; i < cm_data.size(); i++){
-        uint32_t cols = cm_data[i].size();
-        std::memcpy(start_buf + offset, cm_data[i].data(), cols * sizeof(int));
-        offset += cols;
-    }
-
-// 在这里,cm_json 对象仍然有效,文件仍然处于打开状态
 
 
 

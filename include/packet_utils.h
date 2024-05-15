@@ -35,6 +35,7 @@
 #define UM_SEND_BATCH 256
 
 
+
 //typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
 typedef std::array<std::map<uint32_t, uint32_t>, ARRAY_NUM> recv_data;
 extern int Array[ARRAY_NUM][ARRAY_SIZE];

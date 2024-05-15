@@ -28,6 +28,14 @@ std::vector<std::vector<int>> load_cm_from_json(){
     return cm;
 };
 
+std::vector<std::vector<int>> load_cs_from_json(std::ifstream& cs_json){
+    nlohmann::json cs_json_data;
+    cs_json >> cs_json_data;
+    std::vector<std::vector<int>> cs;
+    cs = cs_json_data.get<vector<vector<int>>>();
+    return cs;
+};
+
 std::vector<std::vector<int>> load_cs_from_json(){
     std::ifstream cs_json(cs_json_path);
     nlohmann::json cs_json_data;
@@ -37,14 +45,14 @@ std::vector<std::vector<int>> load_cs_from_json(){
     return cs;
 };
 
+
 /**
  *  第一个vector是 heavepart 的 uint32_t posvote;
     第二个vector是 heavepart 的 uint32_t negvote;
     第三个vector是 heavepart 的 bool flag;
  * @return
  */
-std::vector<std::vector<int>> load_es_from_json(){
-    std::ifstream es_json(es_json_path);
+std::vector<std::vector<int>> load_es_from_json(std::ifstream& es_json){
     nlohmann::json es_json_data;
     es_json >> es_json_data;
     std::vector<std::vector<int>> es;
@@ -56,8 +64,7 @@ std::vector<std::vector<int>> load_es_from_json(){
  * 保存的是 hashpipe 的 val
  * @return
  */
-std::vector<std::vector<int>> load_hp_from_json(){
-    std::ifstream hp_json(hp_json_path);
+std::vector<std::vector<int>> load_hp_from_json(std::ifstream& hp_json){
     nlohmann::json hp_json_data;
     hp_json >> hp_json_data;
     std::vector<std::vector<int>> hp;
@@ -67,14 +74,13 @@ std::vector<std::vector<int>> load_hp_from_json(){
 
 /**
  * 返回一个 pair
- * first : fr.BloomFilter.bitarray
+ * first : fr.BloomFilter.bitarray 长度：40000000
  * second : countingtable {    u_int64_t FlowXOR;
                                 u_int32_t FlowCount;
-                                u_int32_t PacketCount;}
+                                u_int32_t PacketCount;} 长度：315200
  * @return
  */
-std::pair<std::vector<uint8_t>, std::vector<std::vector<uint32_t>>> load_fr_from_json(){
-    std::ifstream fr_json(fr_json_path);
+std::pair<std::vector<uint8_t>, std::vector<std::vector<uint32_t>>> load_fr_from_json(std::ifstream& fr_json){
     nlohmann::json fr_json_data;
     fr_json >> fr_json_data;
     std::vector<uint8_t> bitArray;
@@ -92,8 +98,7 @@ std::pair<std::vector<uint8_t>, std::vector<std::vector<uint32_t>>> load_fr_from
  * 每个 L2HitterDetector 有2个 cm_sketch 其中每个 cm_sketch 的长度是12
  * @return
  */
-std::vector<std::pair<std::vector<int>, std::vector<int>>> load_um_from_json(){
-    std::ifstream um_json(um_json_path);
+std::vector<std::pair<std::vector<int>, std::vector<int>>> load_um_from_json(std::ifstream& um_json){
     nlohmann::json um_json_data;
     um_json >> um_json_data;
     std::vector<std::pair<std::vector<int>, std::vector<int>>> um;
@@ -103,22 +108,22 @@ std::vector<std::pair<std::vector<int>, std::vector<int>>> load_um_from_json(){
 
 
 
-int test(){
-//    auto cm_data = load_cm_from_json();
-    auto cs_data = load_cs_from_json();
-    auto es_data = load_es_from_json();
-    auto hp_data = load_hp_from_json();
-    auto um_data = load_um_from_json();
-    auto fr_data  = load_fr_from_json();
-
-
-
-
-
-
-
-//    auto fr_data = fr_from_file("../sketch_res/FlowRadar.txt");
-//    auto um_data = um_from_file("../sketch_res/UnivMon.txt");
-
-    return 0;
-}
+//int test(){
+////    auto cm_data = load_cm_from_json();
+//    auto cs_data = load_cs_from_json();
+//    auto es_data = load_es_from_json();
+//    auto hp_data = load_hp_from_json();
+//    auto um_data = load_um_from_json();
+//    auto fr_data  = load_fr_from_json();
+//
+//
+//
+//
+//
+//
+//
+////    auto fr_data = fr_from_file("../sketch_res/FlowRadar.txt");
+////    auto um_data = um_from_file("../sketch_res/UnivMon.txt");
+//
+//    return 0;
+//}
