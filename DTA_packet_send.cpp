@@ -19,11 +19,7 @@
 #include "include/packet_utils.h"
 #include "include/Sketch_operations.h"
 #include "include/rdma-utils.h"
-
-
-//-a 0000:5e:00.0 -l 0
-
-
+#include "data_load.h"
 
 uint32_t total_num[MAX_CORES] = {};
 uint32_t burst_num[MAX_CORES] = {};
@@ -84,51 +80,32 @@ int main(int argc, char *argv[])
         return -1;
     }
     const char* server_ip = argv[1];
-//    std::thread recv_thread(simulate_recv);
-
-
-//    std::ifstream cm_json("../sketch_res/ElasticSketch.json");
-//    nlohmann::json cm_json_data;
-//    cm_json >> cm_json_data;
-//    std::vector<std::vector<int>> cm;
-//    cm = cm_json_data.get<vector<std::vector<int>>>();
-//    int data_size = sizeof(uint32_t) * cm[0].size();
-////    cm_json.close();      这里不能关闭这个文件，关闭会导致 RDMA bus error 暂时不知道原因
-
-    std::ifstream fr_json("/home/zju/sunxi/turbomon/sketch_res/FlowRadar.json");
-    nlohmann::json fr_json_data;
-    fr_json >> fr_json_data;
-    std::vector<uint8_t> bitArray;
-    std::vector<std::vector<uint32_t>> countingtable_data;
-
-    bitArray = fr_json_data["bitArray"].get<std::vector<uint8_t>>();
-    countingtable_data = fr_json_data["countingtable"].get<std::vector<std::vector<uint32_t>>>();
-
-
-    std::cout << bitArray.size() << std::endl;
-    int data_size = sizeof(uint8_t) * bitArray.size();
-
-    std::cout << "load data from json, data size = " << data_size << std::endl;
 
     char *start_buf, *rdma_buf;
     start_buf = (char *)malloc(BUF_SIZE);
     rdma_buf = (char *)malloc(1000);
 
-    int *int_buf = (int *)start_buf;
 
+    // load cm
+    std::ifstream cm_json(cm_json_path);
+    nlohmann::json cm_json_data;
+    cm_json >> cm_json_data;
+    std::vector<std::vector<int>> cm_data;
+    cm_data = cm_json_data.get<std::vector<std::vector<int>>>();
 
-    for(int i = 0; i < bitArray.size(); i++){
-        int_buf[i] = static_cast<int>(bitArray[i % bitArray.size()]);
+    uint32_t offset = 0;
+
+    for(int i = 0; i < cm_data.size(); i++){
+        uint32_t cols = cm_data[i].size();
+        std::memcpy(start_buf + offset, cm_data[i].data(), cols * sizeof(int));
+        offset += cols;
     }
 
-    struct FR_bucket *fr_bucket = (struct FR_bucket*)(start_buf + bitArray.size());
-//    strcpy(start_buf, "hello world form server");
-    for (int i = 0; i < countingtable_data.size(); ++i) {
-        fr_bucket[i] = FR_bucket(countingtable_data[i]);
-//        fr_bucket[i] = FR_bucket({11, 4, 514});
-    }
 
-    auto *server = new rdma_server(server_ip, 1245, start_buf, BUF_SIZE, rdma_buf, 1000);
+    std::cout << "data load complete, data size = " << offset << std::endl;
+
+
+    auto *server = new rdma_server(server_ip, 1245, start_buf, offset * sizeof(int), rdma_buf, 1000);
     server->start();
 
     while (1){}

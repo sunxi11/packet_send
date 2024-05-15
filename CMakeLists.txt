@@ -25,8 +25,9 @@ link_directories(${RDMA_LIBRARY_DIRS})
 link_directories(${DPDK_LIBRARY_DIRS})
 
 
+
 # 添加库
-add_library(packet_utils packet_utils.cpp)
+add_library(packet_utils packet_utils.cpp data_load.cpp)
 target_link_libraries(packet_utils ${OPENSSL_LIBRARIES})
 
 add_library(sketch_operations Sketch_operations.cpp)
@@ -57,10 +58,10 @@ set(rdma_libs
 add_executable(main main.cpp)
 target_link_libraries(main packet_utils)
 
-add_executable(packet_recv ow_packet_recv.cpp rdma_client.cpp)
+add_executable(packet_recv DTA_packet_recv.cpp rdma_client.cpp)
 target_link_libraries(packet_recv ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
-add_executable(packet_send ow_packet_send.cpp rdma_server.cpp)
+add_executable(packet_send DTA_packet_send.cpp rdma_server.cpp)
 target_link_libraries(packet_send ${DPDK_LIBRARIES} packet_utils sketch_operations pthread ${rdma_libs})
 
 add_executable(ibinfo get_ibinfo.cpp)
