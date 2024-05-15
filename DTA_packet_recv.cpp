@@ -282,7 +282,6 @@ int main(int argc, char *argv[])
     std::cout << "Average latency: " << (avg_latency / data_len) * 1000 * 1000  << " ns" << std::endl;
     std::cout << "Throughput: " << throughput << " Gbps" << std::endl;
 
-
 //    test_thread.join();
     return 0;
 
