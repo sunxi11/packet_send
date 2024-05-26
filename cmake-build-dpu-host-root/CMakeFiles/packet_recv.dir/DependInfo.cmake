@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/tmp/tmp.x9554k2uHO/ow_packet_recv.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.o"
+  "/tmp/tmp.x9554k2uHO/DTA_packet_recv.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o"
   "/tmp/tmp.x9554k2uHO/rdma_client.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir/rdma_client.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

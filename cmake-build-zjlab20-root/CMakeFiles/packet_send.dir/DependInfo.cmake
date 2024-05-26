@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/zju/sunxi/turbomon/packet_send/ow_packet_send.cpp" "/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/packet_send.dir/ow_packet_send.cpp.o"
+  "/home/zju/sunxi/turbomon/packet_send/DTA_packet_send.cpp" "/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/packet_send.dir/DTA_packet_send.cpp.o"
   "/home/zju/sunxi/turbomon/packet_send/rdma_server.cpp" "/home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root/CMakeFiles/packet_send.dir/rdma_server.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

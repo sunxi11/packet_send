@@ -126,7 +126,6 @@ int main(int argc, char *argv[])
 //
 //    offset = bitArray.size() + sizeof(struct FR_bucket) * countingtable_data.size();
 
-
 ////HP
 //    std::ifstream hp_json(hp_json_path);
 //    auto data = load_hp_from_json(hp_json);
@@ -145,8 +144,6 @@ int main(int argc, char *argv[])
         std::memcpy(start_buf + offset, data[i].second.data(), second * sizeof(int));
         offset += second;
     }
-
-
 
 
 

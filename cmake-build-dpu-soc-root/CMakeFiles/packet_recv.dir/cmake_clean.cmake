@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.o"
-  "CMakeFiles/packet_recv.dir/ow_packet_recv.cpp.o.d"
+  "CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o"
+  "CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o.d"
   "CMakeFiles/packet_recv.dir/rdma_client.cpp.o"
   "CMakeFiles/packet_recv.dir/rdma_client.cpp.o.d"
   "packet_recv"

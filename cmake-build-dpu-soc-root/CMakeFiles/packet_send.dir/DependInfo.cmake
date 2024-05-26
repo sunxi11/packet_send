@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/ubuntu/sunxi/packet_send/ow_packet_send.cpp" "CMakeFiles/packet_send.dir/ow_packet_send.cpp.o" "gcc" "CMakeFiles/packet_send.dir/ow_packet_send.cpp.o.d"
+  "/home/ubuntu/sunxi/packet_send/DTA_packet_send.cpp" "CMakeFiles/packet_send.dir/DTA_packet_send.cpp.o" "gcc" "CMakeFiles/packet_send.dir/DTA_packet_send.cpp.o.d"
   "/home/ubuntu/sunxi/packet_send/rdma_server.cpp" "CMakeFiles/packet_send.dir/rdma_server.cpp.o" "gcc" "CMakeFiles/packet_send.dir/rdma_server.cpp.o.d"
   )
 
