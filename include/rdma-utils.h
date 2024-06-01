@@ -33,6 +33,7 @@ public:
     void init();
     void start();
     void rdma_read();
+    void ow_read();
     void rdma_write();
     void bindaddr();
     void cm_thread();

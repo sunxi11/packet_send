@@ -196,6 +196,65 @@ void rdma_client::cq_thread() {
 
 }
 
+void rdma_client::ow_read(){
+    if(!GET_RDMA_ADDR){
+        std::cout << "error" << std::endl;
+        exit(1);
+    }
+    RDMA_READ_COMPLETE = false;
+    struct ibv_send_wr *bad_wr;
+    int ret;
+
+    std::vector<struct ibv_send_wr> wr_list;
+    std::vector<struct ibv_sge> sge_list;
+
+//    struct ibv_send_wr rdma_sq_wr_tmp;
+//    struct ibv_sge rdma_sgl_tmp;
+
+//    memset(&rdma_sq_wr_tmp, 0, sizeof(rdma_sq_wr_tmp));
+//    memset(&rdma_sgl_tmp, 0, sizeof(rdma_sgl_tmp));
+
+    for(int i = 0; i < remote_len; i += 4){
+
+
+        rdma_sq_wr.opcode = IBV_WR_RDMA_READ;
+        rdma_sq_wr.wr.rdma.remote_addr = remote_addr + i;
+        rdma_sq_wr.wr.rdma.rkey = remote_rkey;
+        rdma_sq_wr.send_flags = IBV_SEND_SIGNALED;
+
+
+        rdma_sgl.addr = (uint64_t )(unsigned long) this->rdma_buf + i;
+        rdma_sgl.lkey = this->rdma_mr->lkey;
+        rdma_sgl.length = 4;
+
+        rdma_sq_wr.num_sge = 1;
+        rdma_sq_wr.sg_list = &rdma_sgl;
+
+//        wr_list.push_back(rdma_sq_wr_tmp);
+//        sge_list.push_back(rdma_sgl_tmp);
+
+        ret = ibv_post_send(qp, &rdma_sq_wr, &bad_wr);
+        if (ret) {
+            std::cerr << "ibv_post_send error: " << strerror(errno) << std::endl;
+            exit(1);
+        }
+
+        while (RDMA_READ_COMPLETE == false){}
+        std::this_thread::sleep_for(std::chrono::microseconds(5));
+
+    }
+
+//    for (size_t i = 0; i < wr_list.size() - 1; ++i) {
+//        wr_list[i].next = &wr_list[i + 1];
+//    }
+//    wr_list.back().next = nullptr;
+    if (print_flag)
+        std::cout << "read data: " << rdma_buf << std::endl;
+
+
+
+}
+
 void rdma_client::rdma_read() {
     if(!GET_RDMA_ADDR){
         std::cout << "error" << std::endl;

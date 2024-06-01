@@ -236,14 +236,15 @@ int main(int argc, char *argv[])
     std::vector<double> latencies; // 存储每次迭代的延迟时间
     uint64_t total_data_size = 0; // 存储总的数据量
 
-//    client->print_flag = false;
+    client->print_flag = false;
 
     while (test_times--){
         auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
 //        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 ////STEP 1 读取数据
-        client->rdma_read();
+//        client->rdma_read();
+        client->ow_read();
         char *rdma_read_res = client->get_rdma_buf();
         data_len = client->get_rdma_size() / sizeof(int);
 
