@@ -57,51 +57,33 @@ include CMakeFiles/packet_recv.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/packet_recv.dir/flags.make
 
-CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o: CMakeFiles/packet_recv.dir/flags.make
-CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o: ../DTA_packet_recv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o -c /tmp/tmp.x9554k2uHO/DTA_packet_recv.cpp
+CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o: CMakeFiles/packet_recv.dir/flags.make
+CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o: ../main_pkt_recv.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o -c /tmp/tmp.x9554k2uHO/main_pkt_recv.cpp
 
-CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.x9554k2uHO/DTA_packet_recv.cpp > CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.i
+CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.x9554k2uHO/main_pkt_recv.cpp > CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.i
 
-CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.x9554k2uHO/DTA_packet_recv.cpp -o CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.s
-
-CMakeFiles/packet_recv.dir/rdma_client.cpp.o: CMakeFiles/packet_recv.dir/flags.make
-CMakeFiles/packet_recv.dir/rdma_client.cpp.o: ../rdma_client.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/packet_recv.dir/rdma_client.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/packet_recv.dir/rdma_client.cpp.o -c /tmp/tmp.x9554k2uHO/rdma_client.cpp
-
-CMakeFiles/packet_recv.dir/rdma_client.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/packet_recv.dir/rdma_client.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /tmp/tmp.x9554k2uHO/rdma_client.cpp > CMakeFiles/packet_recv.dir/rdma_client.cpp.i
-
-CMakeFiles/packet_recv.dir/rdma_client.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/packet_recv.dir/rdma_client.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.x9554k2uHO/rdma_client.cpp -o CMakeFiles/packet_recv.dir/rdma_client.cpp.s
+CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /tmp/tmp.x9554k2uHO/main_pkt_recv.cpp -o CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.s
 
 # Object files for target packet_recv
 packet_recv_OBJECTS = \
-"CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o" \
-"CMakeFiles/packet_recv.dir/rdma_client.cpp.o"
+"CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o"
 
 # External object files for target packet_recv
 packet_recv_EXTERNAL_OBJECTS =
 
-packet_recv: CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o
-packet_recv: CMakeFiles/packet_recv.dir/rdma_client.cpp.o
+packet_recv: CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o
 packet_recv: CMakeFiles/packet_recv.dir/build.make
-packet_recv: libpacket_utils.a
-packet_recv: libsketch_operations.a
-packet_recv: librdmacm_tools.a
 packet_recv: libpacket_utils.a
 packet_recv: /usr/lib/x86_64-linux-gnu/libssl.so
 packet_recv: /usr/lib/x86_64-linux-gnu/libcrypto.so
 packet_recv: CMakeFiles/packet_recv.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable packet_recv"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable packet_recv"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/packet_recv.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

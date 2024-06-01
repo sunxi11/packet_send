@@ -83,33 +83,17 @@ CMakeFiles/packet_utils.dir/packet_utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/packet_utils.dir/packet_utils.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/sunxi/packet_send/packet_utils.cpp -o CMakeFiles/packet_utils.dir/packet_utils.cpp.s
 
-CMakeFiles/packet_utils.dir/data_load.cpp.o: CMakeFiles/packet_utils.dir/flags.make
-CMakeFiles/packet_utils.dir/data_load.cpp.o: ../data_load.cpp
-CMakeFiles/packet_utils.dir/data_load.cpp.o: CMakeFiles/packet_utils.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/packet_utils.dir/data_load.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/packet_utils.dir/data_load.cpp.o -MF CMakeFiles/packet_utils.dir/data_load.cpp.o.d -o CMakeFiles/packet_utils.dir/data_load.cpp.o -c /home/ubuntu/sunxi/packet_send/data_load.cpp
-
-CMakeFiles/packet_utils.dir/data_load.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/packet_utils.dir/data_load.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/ubuntu/sunxi/packet_send/data_load.cpp > CMakeFiles/packet_utils.dir/data_load.cpp.i
-
-CMakeFiles/packet_utils.dir/data_load.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/packet_utils.dir/data_load.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/ubuntu/sunxi/packet_send/data_load.cpp -o CMakeFiles/packet_utils.dir/data_load.cpp.s
-
 # Object files for target packet_utils
 packet_utils_OBJECTS = \
-"CMakeFiles/packet_utils.dir/packet_utils.cpp.o" \
-"CMakeFiles/packet_utils.dir/data_load.cpp.o"
+"CMakeFiles/packet_utils.dir/packet_utils.cpp.o"
 
 # External object files for target packet_utils
 packet_utils_EXTERNAL_OBJECTS =
 
 libpacket_utils.a: CMakeFiles/packet_utils.dir/packet_utils.cpp.o
-libpacket_utils.a: CMakeFiles/packet_utils.dir/data_load.cpp.o
 libpacket_utils.a: CMakeFiles/packet_utils.dir/build.make
 libpacket_utils.a: CMakeFiles/packet_utils.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libpacket_utils.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX static library libpacket_utils.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/packet_utils.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/packet_utils.dir/link.txt --verbose=$(VERBOSE)
 

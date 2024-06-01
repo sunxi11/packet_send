@@ -2,3 +2,6 @@
 -- Configuring done
 -- Generating done
 -- Build files have been written to: /home/zju/sunxi/turbomon/packet_send/cmake-build-zjlab20-root
+
+Cannot get compiler information:
+	Unable to create a temporary file

@@ -1,5 +1,4 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/packet_utils.dir/data_load.cpp.o"
   "CMakeFiles/packet_utils.dir/packet_utils.cpp.o"
   "libpacket_utils.a"
   "libpacket_utils.pdb"

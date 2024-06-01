@@ -164,6 +164,7 @@ std::pair<std::vector<uint8_t>, std::vector<std::vector<uint32_t>>> fr_decode(ch
 
 }
 
+
 std::vector<std::pair<std::vector<int>, std::vector<int>>> decode_um(char *data_buf, int data_len, int row){
     std::vector<std::pair<std::vector<int>, std::vector<int>>> res;
     int *data[12] = {};
@@ -260,7 +261,7 @@ int main(int argc, char *argv[])
 ////// Filter
 //        auto filter_res = filter(rdma_read_res, data_len, 1);
 ////   MAX
-//        auto max = get_max(rdma_read_res, data_len);
+        auto max = get_max(rdma_read_res, data_len);
 
 //// UM decode
         auto um = decode_um(rdma_read_res, data_len, um_rows);
@@ -284,6 +285,8 @@ int main(int argc, char *argv[])
 
 //    test_thread.join();
     return 0;
+
+
 
 
 }

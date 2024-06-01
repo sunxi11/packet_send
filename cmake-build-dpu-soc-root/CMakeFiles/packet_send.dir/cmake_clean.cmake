@@ -1,8 +1,6 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/packet_send.dir/DTA_packet_send.cpp.o"
-  "CMakeFiles/packet_send.dir/DTA_packet_send.cpp.o.d"
-  "CMakeFiles/packet_send.dir/rdma_server.cpp.o"
-  "CMakeFiles/packet_send.dir/rdma_server.cpp.o.d"
+  "CMakeFiles/packet_send.dir/main_pkt_send.cpp.o"
+  "CMakeFiles/packet_send.dir/main_pkt_send.cpp.o.d"
   "packet_send"
   "packet_send.pdb"
 )

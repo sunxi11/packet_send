@@ -1,9 +1,6 @@
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/packet_utils.dir
-/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/sketch_operations.dir
-/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/rdmacm_tools.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/main.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/packet_recv.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/packet_send.dir
-/home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/ibinfo.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/edit_cache.dir
 /home/ubuntu/sunxi/packet_send/cmake-build-dpu-soc-root/CMakeFiles/rebuild_cache.dir

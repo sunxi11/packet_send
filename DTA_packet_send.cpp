@@ -25,6 +25,8 @@ uint32_t total_num[MAX_CORES] = {};
 uint32_t burst_num[MAX_CORES] = {};
 uint32_t send_offset[MAX_CORES] = {};
 
+
+
 struct FR_bucket{
     uint32_t FlowCount;
     uint32_t FlowXOR;

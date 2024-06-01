@@ -1,2 +1,2 @@
-/usr/bin/ar qc libpacket_utils.a CMakeFiles/packet_utils.dir/packet_utils.cpp.o CMakeFiles/packet_utils.dir/data_load.cpp.o
+/usr/bin/ar qc libpacket_utils.a CMakeFiles/packet_utils.dir/packet_utils.cpp.o
 /usr/bin/ranlib libpacket_utils.a

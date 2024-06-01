@@ -4,8 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/tmp/tmp.x9554k2uHO/DTA_packet_recv.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o"
-  "/tmp/tmp.x9554k2uHO/rdma_client.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir/rdma_client.cpp.o"
+  "/tmp/tmp.x9554k2uHO/main_pkt_recv.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -15,14 +14,11 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/mellanox/dpdk/include/dpdk"
   "/opt/mellanox/dpdk/include/dpdk/../x86_64-linux-gnu/dpdk"
   "/opt/mellanox/grpc/include"
-  "../{CMAKE_SOURCE_DIR}/include"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_utils.dir/DependInfo.cmake"
-  "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/sketch_operations.dir/DependInfo.cmake"
-  "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/rdmacm_tools.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

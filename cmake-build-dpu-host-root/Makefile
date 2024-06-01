@@ -111,19 +111,6 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ibinfo
-
-# Build rule for target.
-ibinfo: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 ibinfo
-.PHONY : ibinfo
-
-# fast build rule for target.
-ibinfo/fast:
-	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/build
-.PHONY : ibinfo/fast
-
-#=============================================================================
 # Target rules for targets named packet_send
 
 # Build rule for target.
@@ -163,32 +150,6 @@ main/fast:
 .PHONY : main/fast
 
 #=============================================================================
-# Target rules for targets named rdmacm_tools
-
-# Build rule for target.
-rdmacm_tools: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rdmacm_tools
-.PHONY : rdmacm_tools
-
-# fast build rule for target.
-rdmacm_tools/fast:
-	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/build
-.PHONY : rdmacm_tools/fast
-
-#=============================================================================
-# Target rules for targets named sketch_operations
-
-# Build rule for target.
-sketch_operations: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 sketch_operations
-.PHONY : sketch_operations
-
-# fast build rule for target.
-sketch_operations/fast:
-	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/build
-.PHONY : sketch_operations/fast
-
-#=============================================================================
 # Target rules for targets named packet_utils
 
 # Build rule for target.
@@ -200,168 +161,6 @@ packet_utils: cmake_check_build_system
 packet_utils/fast:
 	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/build
 .PHONY : packet_utils/fast
-
-DTA_packet_recv.o: DTA_packet_recv.cpp.o
-
-.PHONY : DTA_packet_recv.o
-
-# target to build an object file
-DTA_packet_recv.cpp.o:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.o
-.PHONY : DTA_packet_recv.cpp.o
-
-DTA_packet_recv.i: DTA_packet_recv.cpp.i
-
-.PHONY : DTA_packet_recv.i
-
-# target to preprocess a source file
-DTA_packet_recv.cpp.i:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.i
-.PHONY : DTA_packet_recv.cpp.i
-
-DTA_packet_recv.s: DTA_packet_recv.cpp.s
-
-.PHONY : DTA_packet_recv.s
-
-# target to generate assembly for a file
-DTA_packet_recv.cpp.s:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/DTA_packet_recv.cpp.s
-.PHONY : DTA_packet_recv.cpp.s
-
-DTA_packet_send.o: DTA_packet_send.cpp.o
-
-.PHONY : DTA_packet_send.o
-
-# target to build an object file
-DTA_packet_send.cpp.o:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/DTA_packet_send.cpp.o
-.PHONY : DTA_packet_send.cpp.o
-
-DTA_packet_send.i: DTA_packet_send.cpp.i
-
-.PHONY : DTA_packet_send.i
-
-# target to preprocess a source file
-DTA_packet_send.cpp.i:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/DTA_packet_send.cpp.i
-.PHONY : DTA_packet_send.cpp.i
-
-DTA_packet_send.s: DTA_packet_send.cpp.s
-
-.PHONY : DTA_packet_send.s
-
-# target to generate assembly for a file
-DTA_packet_send.cpp.s:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/DTA_packet_send.cpp.s
-.PHONY : DTA_packet_send.cpp.s
-
-Sketch_operations.o: Sketch_operations.cpp.o
-
-.PHONY : Sketch_operations.o
-
-# target to build an object file
-Sketch_operations.cpp.o:
-	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.o
-.PHONY : Sketch_operations.cpp.o
-
-Sketch_operations.i: Sketch_operations.cpp.i
-
-.PHONY : Sketch_operations.i
-
-# target to preprocess a source file
-Sketch_operations.cpp.i:
-	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.i
-.PHONY : Sketch_operations.cpp.i
-
-Sketch_operations.s: Sketch_operations.cpp.s
-
-.PHONY : Sketch_operations.s
-
-# target to generate assembly for a file
-Sketch_operations.cpp.s:
-	$(MAKE) -f CMakeFiles/sketch_operations.dir/build.make CMakeFiles/sketch_operations.dir/Sketch_operations.cpp.s
-.PHONY : Sketch_operations.cpp.s
-
-common.o: common.c.o
-
-.PHONY : common.o
-
-# target to build an object file
-common.c.o:
-	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/common.c.o
-.PHONY : common.c.o
-
-common.i: common.c.i
-
-.PHONY : common.i
-
-# target to preprocess a source file
-common.c.i:
-	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/common.c.i
-.PHONY : common.c.i
-
-common.s: common.c.s
-
-.PHONY : common.s
-
-# target to generate assembly for a file
-common.c.s:
-	$(MAKE) -f CMakeFiles/rdmacm_tools.dir/build.make CMakeFiles/rdmacm_tools.dir/common.c.s
-.PHONY : common.c.s
-
-data_load.o: data_load.cpp.o
-
-.PHONY : data_load.o
-
-# target to build an object file
-data_load.cpp.o:
-	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/data_load.cpp.o
-.PHONY : data_load.cpp.o
-
-data_load.i: data_load.cpp.i
-
-.PHONY : data_load.i
-
-# target to preprocess a source file
-data_load.cpp.i:
-	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/data_load.cpp.i
-.PHONY : data_load.cpp.i
-
-data_load.s: data_load.cpp.s
-
-.PHONY : data_load.s
-
-# target to generate assembly for a file
-data_load.cpp.s:
-	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/data_load.cpp.s
-.PHONY : data_load.cpp.s
-
-get_ibinfo.o: get_ibinfo.cpp.o
-
-.PHONY : get_ibinfo.o
-
-# target to build an object file
-get_ibinfo.cpp.o:
-	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/get_ibinfo.cpp.o
-.PHONY : get_ibinfo.cpp.o
-
-get_ibinfo.i: get_ibinfo.cpp.i
-
-.PHONY : get_ibinfo.i
-
-# target to preprocess a source file
-get_ibinfo.cpp.i:
-	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/get_ibinfo.cpp.i
-.PHONY : get_ibinfo.cpp.i
-
-get_ibinfo.s: get_ibinfo.cpp.s
-
-.PHONY : get_ibinfo.s
-
-# target to generate assembly for a file
-get_ibinfo.cpp.s:
-	$(MAKE) -f CMakeFiles/ibinfo.dir/build.make CMakeFiles/ibinfo.dir/get_ibinfo.cpp.s
-.PHONY : get_ibinfo.cpp.s
 
 main.o: main.cpp.o
 
@@ -390,6 +189,60 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+main_pkt_recv.o: main_pkt_recv.cpp.o
+
+.PHONY : main_pkt_recv.o
+
+# target to build an object file
+main_pkt_recv.cpp.o:
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.o
+.PHONY : main_pkt_recv.cpp.o
+
+main_pkt_recv.i: main_pkt_recv.cpp.i
+
+.PHONY : main_pkt_recv.i
+
+# target to preprocess a source file
+main_pkt_recv.cpp.i:
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.i
+.PHONY : main_pkt_recv.cpp.i
+
+main_pkt_recv.s: main_pkt_recv.cpp.s
+
+.PHONY : main_pkt_recv.s
+
+# target to generate assembly for a file
+main_pkt_recv.cpp.s:
+	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/main_pkt_recv.cpp.s
+.PHONY : main_pkt_recv.cpp.s
+
+main_pkt_send.o: main_pkt_send.cpp.o
+
+.PHONY : main_pkt_send.o
+
+# target to build an object file
+main_pkt_send.cpp.o:
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/main_pkt_send.cpp.o
+.PHONY : main_pkt_send.cpp.o
+
+main_pkt_send.i: main_pkt_send.cpp.i
+
+.PHONY : main_pkt_send.i
+
+# target to preprocess a source file
+main_pkt_send.cpp.i:
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/main_pkt_send.cpp.i
+.PHONY : main_pkt_send.cpp.i
+
+main_pkt_send.s: main_pkt_send.cpp.s
+
+.PHONY : main_pkt_send.s
+
+# target to generate assembly for a file
+main_pkt_send.cpp.s:
+	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/main_pkt_send.cpp.s
+.PHONY : main_pkt_send.cpp.s
+
 packet_utils.o: packet_utils.cpp.o
 
 .PHONY : packet_utils.o
@@ -417,60 +270,6 @@ packet_utils.cpp.s:
 	$(MAKE) -f CMakeFiles/packet_utils.dir/build.make CMakeFiles/packet_utils.dir/packet_utils.cpp.s
 .PHONY : packet_utils.cpp.s
 
-rdma_client.o: rdma_client.cpp.o
-
-.PHONY : rdma_client.o
-
-# target to build an object file
-rdma_client.cpp.o:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/rdma_client.cpp.o
-.PHONY : rdma_client.cpp.o
-
-rdma_client.i: rdma_client.cpp.i
-
-.PHONY : rdma_client.i
-
-# target to preprocess a source file
-rdma_client.cpp.i:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/rdma_client.cpp.i
-.PHONY : rdma_client.cpp.i
-
-rdma_client.s: rdma_client.cpp.s
-
-.PHONY : rdma_client.s
-
-# target to generate assembly for a file
-rdma_client.cpp.s:
-	$(MAKE) -f CMakeFiles/packet_recv.dir/build.make CMakeFiles/packet_recv.dir/rdma_client.cpp.s
-.PHONY : rdma_client.cpp.s
-
-rdma_server.o: rdma_server.cpp.o
-
-.PHONY : rdma_server.o
-
-# target to build an object file
-rdma_server.cpp.o:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/rdma_server.cpp.o
-.PHONY : rdma_server.cpp.o
-
-rdma_server.i: rdma_server.cpp.i
-
-.PHONY : rdma_server.i
-
-# target to preprocess a source file
-rdma_server.cpp.i:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/rdma_server.cpp.i
-.PHONY : rdma_server.cpp.i
-
-rdma_server.s: rdma_server.cpp.s
-
-.PHONY : rdma_server.s
-
-# target to generate assembly for a file
-rdma_server.cpp.s:
-	$(MAKE) -f CMakeFiles/packet_send.dir/build.make CMakeFiles/packet_send.dir/rdma_server.cpp.s
-.PHONY : rdma_server.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -479,43 +278,22 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
-	@echo "... ibinfo"
 	@echo "... packet_send"
 	@echo "... packet_recv"
 	@echo "... main"
-	@echo "... rdmacm_tools"
-	@echo "... sketch_operations"
 	@echo "... packet_utils"
-	@echo "... DTA_packet_recv.o"
-	@echo "... DTA_packet_recv.i"
-	@echo "... DTA_packet_recv.s"
-	@echo "... DTA_packet_send.o"
-	@echo "... DTA_packet_send.i"
-	@echo "... DTA_packet_send.s"
-	@echo "... Sketch_operations.o"
-	@echo "... Sketch_operations.i"
-	@echo "... Sketch_operations.s"
-	@echo "... common.o"
-	@echo "... common.i"
-	@echo "... common.s"
-	@echo "... data_load.o"
-	@echo "... data_load.i"
-	@echo "... data_load.s"
-	@echo "... get_ibinfo.o"
-	@echo "... get_ibinfo.i"
-	@echo "... get_ibinfo.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... main_pkt_recv.o"
+	@echo "... main_pkt_recv.i"
+	@echo "... main_pkt_recv.s"
+	@echo "... main_pkt_send.o"
+	@echo "... main_pkt_send.i"
+	@echo "... main_pkt_send.s"
 	@echo "... packet_utils.o"
 	@echo "... packet_utils.i"
 	@echo "... packet_utils.s"
-	@echo "... rdma_client.o"
-	@echo "... rdma_client.i"
-	@echo "... rdma_client.s"
-	@echo "... rdma_server.o"
-	@echo "... rdma_server.i"
-	@echo "... rdma_server.s"
 .PHONY : help
 
 

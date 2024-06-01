@@ -4,7 +4,6 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/tmp/tmp.x9554k2uHO/data_load.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_utils.dir/data_load.cpp.o"
   "/tmp/tmp.x9554k2uHO/packet_utils.cpp" "/tmp/tmp.x9554k2uHO/cmake-build-dpu-host-root/CMakeFiles/packet_utils.dir/packet_utils.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
@@ -15,7 +14,6 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/mellanox/dpdk/include/dpdk"
   "/opt/mellanox/dpdk/include/dpdk/../x86_64-linux-gnu/dpdk"
   "/opt/mellanox/grpc/include"
-  "../{CMAKE_SOURCE_DIR}/include"
   )
 
 # Targets to which this target links.

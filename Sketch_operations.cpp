@@ -15,6 +15,7 @@
 
 
 
+
 /**
  * @brief  calculates the maximum value of a specific portion of sketch data
  * @param data
