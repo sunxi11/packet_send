@@ -335,90 +335,98 @@ void rdma_server::start() {
 
     bindaddr();
 
-    pd = ibv_alloc_pd(child_cm_id->verbs);
-    if (!pd){
-        std::cerr << "ibv_alloc_pd error: " << strerror(errno) << std::endl;
-        exit(1);
+    while(true){
+        while (state != REQUEST_GET){}
+
+        pd = ibv_alloc_pd(child_cm_id->verbs);
+        if (!pd){
+            std::cerr << "ibv_alloc_pd error: " << strerror(errno) << std::endl;
+            exit(1);
+        }
+
+        channel = ibv_create_comp_channel(child_cm_id->verbs);
+        if (!channel){
+            std::cerr << "ibv_create_comp_channel error: " << strerror(errno) << std::endl;
+            exit(1);
+        }
+
+        cq = ibv_create_cq(child_cm_id->verbs, SQ_DEPTH * 2, NULL, channel, 0);
+        if (!cq){
+            std::cerr << "ibv_create_cq error: " << strerror(errno) << std::endl;
+            exit(1);
+        }
+
+        ret = ibv_req_notify_cq(cq, 0);
+        if (ret){
+            std::cerr << "ibv_req_notify_cq error: " << strerror(errno) << std::endl;
+            exit(1);
+        }
+
+        struct ibv_qp_init_attr init_attr;
+        memset(&init_attr, 0, sizeof(init_attr));
+        init_attr.cap.max_send_wr = SQ_DEPTH;
+        init_attr.cap.max_recv_wr = 2;
+        init_attr.cap.max_recv_sge = 1;
+        init_attr.cap.max_send_sge = 1;
+        init_attr.qp_type = IBV_QPT_RC;
+        init_attr.send_cq = cq;
+        init_attr.recv_cq = cq;
+
+        ret = rdma_create_qp(child_cm_id, pd, &init_attr);
+        if(!ret){
+            qp = child_cm_id->qp;
+        } else{
+            std::cerr << "error" << strerror(errno) << std::endl;
+            exit(1);
+        }
+        setup_buffer();
+
+        ret = ibv_post_recv(qp, &rq_wr, &bad_wr);
+        if (ret){
+            std::cerr << "ibv_post_recv error: " << strerror(errno) << std::endl;
+            exit(1);
+        }
+
+        //启动cq
+        std::thread cqthread([this](){
+            this->cq_thread();
+        });
+
+        cqthread.detach();
+
+        ret = rdma_accept(child_cm_id, NULL);
+        if (ret){
+            std::cerr << "rdma_accept error: " << strerror(errno) << std::endl;
+            exit(1);
+        }
+
+        while (state != CONNECTED){}
+        std::cout << "连接建立" << std::endl;
+
+            //等待接受数据
+        while (SERVER_GET_REMOTE_ADDR == false){}
+
+        //发送数据
+        send_buf.buf = htobe64((uint64_t)(unsigned long)this->start_buf);
+        send_buf.rkey = htobe32(this->start_mr->rkey);
+        send_buf.size = htobe32(this->start_size);
+
+        sq_wr.opcode = IBV_WR_SEND_WITH_IMM;
+        sq_wr.imm_data = htobe32(1122);
+
+        struct ibv_send_wr *bad_send_wr;
+        ret = ibv_post_send(qp, &sq_wr, &bad_send_wr);
+        if(ret){
+            std::cout << "post send error" << std::endl;
+            exit(1);
+        }
+
+        while (state != SERVER_RDMA_ADDR_SEND_COMPLETE){}
+
+        state = SERVER_INIT;
+        SERVER_GET_REMOTE_ADDR = false;
+
     }
-
-    channel = ibv_create_comp_channel(child_cm_id->verbs);
-    if (!channel){
-        std::cerr << "ibv_create_comp_channel error: " << strerror(errno) << std::endl;
-        exit(1);
-    }
-
-    cq = ibv_create_cq(child_cm_id->verbs, SQ_DEPTH * 2, NULL, channel, 0);
-    if (!cq){
-        std::cerr << "ibv_create_cq error: " << strerror(errno) << std::endl;
-        exit(1);
-    }
-
-    ret = ibv_req_notify_cq(cq, 0);
-    if (ret){
-        std::cerr << "ibv_req_notify_cq error: " << strerror(errno) << std::endl;
-        exit(1);
-    }
-
-    struct ibv_qp_init_attr init_attr;
-    memset(&init_attr, 0, sizeof(init_attr));
-    init_attr.cap.max_send_wr = SQ_DEPTH;
-    init_attr.cap.max_recv_wr = 2;
-    init_attr.cap.max_recv_sge = 1;
-    init_attr.cap.max_send_sge = 1;
-    init_attr.qp_type = IBV_QPT_RC;
-    init_attr.send_cq = cq;
-    init_attr.recv_cq = cq;
-
-    ret = rdma_create_qp(child_cm_id, pd, &init_attr);
-    if(!ret){
-        qp = child_cm_id->qp;
-    } else{
-        std::cerr << "error" << strerror(errno) << std::endl;
-        exit(1);
-    }
-    setup_buffer();
-
-    ret = ibv_post_recv(qp, &rq_wr, &bad_wr);
-    if (ret){
-        std::cerr << "ibv_post_recv error: " << strerror(errno) << std::endl;
-        exit(1);
-    }
-    //启动cq
-    std::thread cqthread([this](){
-        this->cq_thread();
-    });
-
-    cqthread.detach();
-
-    ret = rdma_accept(child_cm_id, NULL);
-    if (ret){
-        std::cerr << "rdma_accept error: " << strerror(errno) << std::endl;
-        exit(1);
-    }
-
-    while (state != CONNECTED){}
-    std::cout << "连接建立" << std::endl;
-
-    //等待接受数据
-    while (SERVER_GET_REMOTE_ADDR == false){}
-
-
-    //发送数据
-    send_buf.buf = htobe64((uint64_t)(unsigned long)this->start_buf);
-    send_buf.rkey = htobe32(this->start_mr->rkey);
-    send_buf.size = htobe32(this->start_size);
-
-    sq_wr.opcode = IBV_WR_SEND_WITH_IMM;
-    sq_wr.imm_data = htobe32(1122);
-
-    struct ibv_send_wr *bad_send_wr;
-    ret = ibv_post_send(qp, &sq_wr, &bad_send_wr);
-    if(ret){
-        std::cout << "post send error" << std::endl;
-        exit(1);
-    }
-
-    while (state != SERVER_RDMA_ADDR_SEND_COMPLETE){}
 
 
 }
