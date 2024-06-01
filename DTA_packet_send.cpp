@@ -90,7 +90,7 @@ int main(int argc, char *argv[])
 
 //////CM
 //    std::ifstream cm_json(cm_json_path);
-//    auto cm_data = load_cm_from_json(cm_json);
+//    auto data = load_cm_from_json(cm_json);
 ////CS
 //    std::ifstream cs_json(cs_json_path);
 //    auto data = load_cs_from_json(cs_json);
@@ -129,35 +129,35 @@ int main(int argc, char *argv[])
 //    offset = bitArray.size() + sizeof(struct FR_bucket) * countingtable_data.size();
 
 ////HP
-//    std::ifstream hp_json(hp_json_path);
-//    auto data = load_hp_from_json(hp_json);
+    std::ifstream hp_json(hp_json_path);
+    auto data = load_hp_from_json(hp_json);
 
 ////UM
-    std::ifstream um_json(um_json_path);
-    auto data = load_um_from_json(um_json);
-
-    uint32_t offset = 0;
-    for(int i = 0; i < data.size(); i++){
-        uint32_t first = data[i].first.size();
-        std::memcpy(start_buf + offset, data[i].first.data(), first * sizeof(int));
-        offset += first;
-
-        uint32_t second = data[i].second.size();
-        std::memcpy(start_buf + offset, data[i].second.data(), second * sizeof(int));
-        offset += second;
-    }
+//    std::ifstream um_json(um_json_path);
+//    auto data = load_um_from_json(um_json);
+//
+//    uint32_t offset = 0;
+//    for(int i = 0; i < data.size(); i++){
+//        uint32_t first = data[i].first.size();
+//        std::memcpy(start_buf + offset, data[i].first.data(), first * sizeof(int));
+//        offset += first;
+//
+//        uint32_t second = data[i].second.size();
+//        std::memcpy(start_buf + offset, data[i].second.data(), second * sizeof(int));
+//        offset += second;
+//    }
 
 
 
 
 
 //// CS, CM, ES, HP取消注释这一段
-//    uint32_t offset = 0;
-//    for(int i = 0; i < data.size(); i++){
-//        uint32_t cols = data[i].size();
-//        std::memcpy(start_buf + offset, data[i].data(), cols * sizeof(int));
-//        offset += cols;
-//    }
+    uint32_t offset = 0;
+    for(int i = 0; i < data.size(); i++){
+        uint32_t cols = data[i].size();
+        std::memcpy(start_buf + offset, data[i].data(), cols * sizeof(int));
+        offset += cols;
+    }
 
 
 
@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
     std::cout << "data load complete, data size = " << offset << std::endl;
 
 
-    auto *server = new rdma_server(server_ip, 1245, start_buf, offset * sizeof(int), rdma_buf, 1000);
+    auto *server = new rdma_server(server_ip, 1245, start_buf, offset * 4, rdma_buf, 1000);  //FR 不需要 offset * sizeof(int) 直接传入 offset
     server->start();
 
     while (1){}

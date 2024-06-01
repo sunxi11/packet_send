@@ -214,18 +214,19 @@ void rdma_client::ow_read(){
 //    memset(&rdma_sq_wr_tmp, 0, sizeof(rdma_sq_wr_tmp));
 //    memset(&rdma_sgl_tmp, 0, sizeof(rdma_sgl_tmp));
 
-    for(int i = 0; i < remote_len; i += 4){
+    int batch = 1000;
+    for(int i = 0; i < remote_len; i += batch){
 
 
         rdma_sq_wr.opcode = IBV_WR_RDMA_READ;
-        rdma_sq_wr.wr.rdma.remote_addr = remote_addr + i;
+        rdma_sq_wr.wr.rdma.remote_addr = remote_addr + batch;
         rdma_sq_wr.wr.rdma.rkey = remote_rkey;
         rdma_sq_wr.send_flags = IBV_SEND_SIGNALED;
 
 
-        rdma_sgl.addr = (uint64_t )(unsigned long) this->rdma_buf + i;
+        rdma_sgl.addr = (uint64_t )(unsigned long) this->rdma_buf + batch;
         rdma_sgl.lkey = this->rdma_mr->lkey;
-        rdma_sgl.length = 4;
+        rdma_sgl.length = batch;
 
         rdma_sq_wr.num_sge = 1;
         rdma_sq_wr.sg_list = &rdma_sgl;
@@ -240,7 +241,7 @@ void rdma_client::ow_read(){
         }
 
         while (RDMA_READ_COMPLETE == false){}
-        std::this_thread::sleep_for(std::chrono::microseconds(5));
+        std::this_thread::sleep_for(std::chrono::microseconds(15));
 
     }
 

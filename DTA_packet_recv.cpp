@@ -6,6 +6,7 @@
 
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <algorithm>
 #include <map>
@@ -228,61 +229,82 @@ int main(int argc, char *argv[])
     int hp_rows = 8, hp_cols = 0;
     int um_rows = 12, um_cols = 0;
 
+    std::vector<int> epoch = {1, 5, 10, 15, 20};
+//    std::vector<int> epoch = {20};
+
+    std::vector<int> operation_nums = {5, 10, 20, 40, 60, 80, 100};
 
     uint32_t data_len = 0;
     std::vector<std::vector<int>> cm_recv_data(cm_rows);
 
-    int test_times = 50; // 测试次数
-    std::vector<double> latencies; // 存储每次迭代的延迟时间
-    uint64_t total_data_size = 0; // 存储总的数据量
+
 
     client->print_flag = false;
 
-    while (test_times--){
-        auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
+    for(int &e: epoch){
+
+        int test_times = 10; // 测试次数
+        std::vector<double> latencies; // 存储每次迭代的延迟时间
+        uint64_t total_data_size = 0; // 存储总的数据量
+
+        std::cout << "epoch: " << e << std::endl;
+        while (test_times--){
+            auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
 //        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
 
 ////STEP 1 读取数据
-//        client->rdma_read();
-        client->ow_read();
-        char *rdma_read_res = client->get_rdma_buf();
-        data_len = client->get_rdma_size() / sizeof(int);
+            for(int i = 0; i < e; i++){
+                  client->rdma_read();
+//                client->ow_read();
+            }
+            char *rdma_read_res = client->get_rdma_buf();
+            data_len = client->get_rdma_size() / sizeof(int);
 
 
 ////HP Query
-//        auto hp_res = query(rdma_read_res, data_len, 8, 1111);
+        auto hp_res = query(rdma_read_res, data_len, 8, 1111);
 
 ////ES heavy_part
 //        auto heavy_part = get_heavy_part(rdma_read_res, data_len, 3);
 
 ////FR decode
-//        data_len = client->get_rdma_size();
-//        auto fr_res = fr_decode(rdma_read_res, data_len);
+//            data_len = client->get_rdma_size();
+//            auto fr_res = fr_decode(rdma_read_res, data_len);
 
 ////// Filter
 //        auto filter_res = filter(rdma_read_res, data_len, 1);
 ////   MAX
-        auto max = get_max(rdma_read_res, data_len);
+//        auto max = get_max(rdma_read_res, data_len);
 
 //// UM decode
-        auto um = decode_um(rdma_read_res, data_len, um_rows);
+//        auto um = decode_um(rdma_read_res, data_len, um_rows);
 
 
 
 ////记录结果
-        auto end = std::chrono::high_resolution_clock::now(); // 记录结束时间
-        auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start); // 计算延迟时间
-        latencies.push_back(duration.count() / 1000.0); // 将延迟时间转换为毫秒并存储
-        total_data_size += data_len * sizeof(int) * 8; // 累加处理的数据量
+            auto end = std::chrono::high_resolution_clock::now(); // 记录结束时间
+            auto duration = std::chrono::duration_cast<std::chrono::microseconds>(end - start); // 计算延迟时间
+            latencies.push_back(duration.count() / 1000.0); // 将延迟时间转换为毫秒并存储
+            total_data_size += data_len * sizeof(int) * 8 * e; // 累加处理的数据量
 //        total_data_size += data_len * 8; // 累加处理的数据量 FR
+
+        }
+
+        double avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size(); // 计算平均延迟
+        double throughput = total_data_size / (avg_latency / 1000.0) / 1024 / 1024/ 1024 ; // 计算吞吐量(gb/s)
+
+        double pre_packet_latency = (avg_latency / data_len) * 1000 * 1000;
+
+
+        std::cout << "Throughput: " << throughput << " Gbps" << std::endl;
+        std::cout << "Average latency: " <<  pre_packet_latency << " ns" << std::endl;
+
+
+
 
     }
 
-    double avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size(); // 计算平均延迟
-    double throughput = total_data_size / (avg_latency / 1000.0) / 1024 / 1024/ 1024 ; // 计算吞吐量(Mb/s)
 
-    std::cout << "Average latency: " << (avg_latency / data_len) * 1000 * 1000  << " ns" << std::endl;
-    std::cout << "Throughput: " << throughput << " Gbps" << std::endl;
 
 //    test_thread.join();
     return 0;
