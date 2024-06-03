@@ -232,7 +232,7 @@ int main(int argc, char *argv[])
     std::vector<int> epoch = {1, 5, 10, 15, 20};
 //    std::vector<int> epoch = {20};
 
-    std::vector<int> operation_nums = {5, 10, 20, 40, 60, 80, 100};
+//    std::vector<int> operation_nums = {1, 5, 10, 20, 40, 60, 80, 100};
 
     uint32_t data_len = 0;
     std::vector<std::vector<int>> cm_recv_data(cm_rows);
@@ -243,14 +243,15 @@ int main(int argc, char *argv[])
 
     for(int &e: epoch){
 
-        int test_times = 10; // 测试次数
+        int test_times = 20; // 测试次数
         std::vector<double> latencies; // 存储每次迭代的延迟时间
         uint64_t total_data_size = 0; // 存储总的数据量
-
         std::cout << "epoch: " << e << std::endl;
+//        std::cout << "operations: " << e << std::endl;
         while (test_times--){
             auto start = std::chrono::high_resolution_clock::now(); // 记录开始时间
 //        std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+
 
 ////STEP 1 读取数据
             for(int i = 0; i < e; i++){
@@ -262,7 +263,7 @@ int main(int argc, char *argv[])
 
 
 ////HP Query
-        auto hp_res = query(rdma_read_res, data_len, 8, 1111);
+//        auto hp_res = query(rdma_read_res, data_len, 8, 1111);
 
 ////ES heavy_part
 //        auto heavy_part = get_heavy_part(rdma_read_res, data_len, 3);
@@ -274,11 +275,12 @@ int main(int argc, char *argv[])
 ////// Filter
 //        auto filter_res = filter(rdma_read_res, data_len, 1);
 ////   MAX
-//        auto max = get_max(rdma_read_res, data_len);
+//        for(int i = 0; i < e; i++){
+//            auto max = get_max(rdma_read_res, data_len);
+//        }
 
 //// UM decode
 //        auto um = decode_um(rdma_read_res, data_len, um_rows);
-
 
 
 ////记录结果
@@ -290,8 +292,9 @@ int main(int argc, char *argv[])
 
         }
 
+
         double avg_latency = std::accumulate(latencies.begin(), latencies.end(), 0.0) / latencies.size(); // 计算平均延迟
-        double throughput = total_data_size / (avg_latency / 1000.0) / 1024 / 1024/ 1024 ; // 计算吞吐量(gb/s)
+        double throughput = total_data_size / (avg_latency / 1000.0) / 1024 / 1024/ 1024; // 计算吞吐量(gb/s)
 
         double pre_packet_latency = (avg_latency / data_len) * 1000 * 1000;
 

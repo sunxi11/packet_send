@@ -15,10 +15,11 @@
 #include <thread>
 #include <vector>
 #include <algorithm>
+#include <atomic>
 
 #define SQ_DEPTH 16
 
-
+std::atomic<int> pendingReads{0};
 
 rdma_client::rdma_client(const char *ip, int port, void *start_buf, int start_size, void *rdma_buf, int rdma_size) {
     this->ip = ip;
@@ -177,6 +178,7 @@ void rdma_client::cq_thread() {
                 case IBV_WC_RDMA_READ:
                     if(print_flag)
                         std::cout << "rdma read complete" << std::endl;
+                    pendingReads--;
                     RDMA_READ_COMPLETE = true;
 //                    std::cout << "read data: " << rdma_buf << std::endl;
                     break;
@@ -214,7 +216,7 @@ void rdma_client::ow_read(){
 //    memset(&rdma_sq_wr_tmp, 0, sizeof(rdma_sq_wr_tmp));
 //    memset(&rdma_sgl_tmp, 0, sizeof(rdma_sgl_tmp));
 
-    int batch = 1000;
+    int batch = 1024;
     for(int i = 0; i < remote_len; i += batch){
 
 
@@ -240,10 +242,17 @@ void rdma_client::ow_read(){
             exit(1);
         }
 
+        pendingReads++;
+
         while (RDMA_READ_COMPLETE == false){}
-        std::this_thread::sleep_for(std::chrono::microseconds(15));
+
+        while (pendingReads > 0){
+        }
+//        std::this_thread::sleep_for(std::chrono::microseconds(5));
 
     }
+
+
 
 //    for (size_t i = 0; i < wr_list.size() - 1; ++i) {
 //        wr_list[i].next = &wr_list[i + 1];
@@ -284,7 +293,13 @@ void rdma_client::rdma_read() {
         exit(1);
     }
 
+    pendingReads++;
+
     while (RDMA_READ_COMPLETE == false){}
+
+    while (pendingReads > 0){
+    }
+
     if(print_flag)
         std::cout << "read data: " << rdma_buf << std::endl;
 }

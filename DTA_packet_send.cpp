@@ -127,10 +127,11 @@ int main(int argc, char *argv[])
 //    }
 //
 //    offset = bitArray.size() + sizeof(struct FR_bucket) * countingtable_data.size();
+//    offset = offset / 4;
 
 ////HP
-    std::ifstream hp_json(hp_json_path);
-    auto data = load_hp_from_json(hp_json);
+//    std::ifstream hp_json(hp_json_path);
+//    auto data = load_hp_from_json(hp_json);
 
 ////UM
 //    std::ifstream um_json(um_json_path);
@@ -152,13 +153,12 @@ int main(int argc, char *argv[])
 
 
 //// CS, CM, ES, HP取消注释这一段
-    uint32_t offset = 0;
-    for(int i = 0; i < data.size(); i++){
-        uint32_t cols = data[i].size();
-        std::memcpy(start_buf + offset, data[i].data(), cols * sizeof(int));
-        offset += cols;
-    }
-
+//    uint32_t offset = 0;
+//    for(int i = 0; i < data.size(); i++){
+//        uint32_t cols = data[i].size();
+//        std::memcpy(start_buf + offset, data[i].data(), cols * sizeof(int));
+//        offset += cols;
+//    }
 
 
 
@@ -166,7 +166,7 @@ int main(int argc, char *argv[])
     std::cout << "data load complete, data size = " << offset << std::endl;
 
 
-    auto *server = new rdma_server(server_ip, 1245, start_buf, offset * 4, rdma_buf, 1000);  //FR 不需要 offset * sizeof(int) 直接传入 offset
+    auto *server = new rdma_server(server_ip, 1245, start_buf, offset * 4, rdma_buf, 1000);
     server->start();
 
     while (1){}
